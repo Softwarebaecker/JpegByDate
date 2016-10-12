@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 5" >
+      <vfs_project>C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 7" >
+      <vfs_project>C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Sandro\.gps\log_files\20161012213034960$log</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 7" >
+      <vfs_project>C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Sandro\.gps\log_files\main.adb$log</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <vfs_file >C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 5">
+      <vfs_project >C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file >C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1">
+      <vfs_project >C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file >C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 7">
+      <vfs_project >C:\Users\Sandro\Documents\Ada\JpegByDate\jpegbydate.gpr</vfs_project>
+      <vfs_file >C:\Users\Sandro\Documents\Ada\JpegByDate\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1">
+      <vfs_project  />
+      <vfs_file >C:\Users\Sandro\.gps\log_files\20161012213034960$log</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
