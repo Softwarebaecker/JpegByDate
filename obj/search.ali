@@ -1,0 +1,22 @@
+V "GNAT Lib v2016"
+A -gnatA
+A -gnatc
+A -mtune=generic
+A -march=pentium4
+P NO ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U search%s		search.ads		8cc1f5c2 EE OO PK KM
+
+D search.ads		20161023125744 8cc1f5c2 search%s
+X 1 search.ads
+1K9*Search 6E4 7l5 7e11
+2U14*Search_Directory 3>7 4>7
+3a7 Directory{string}
+4a7 Pattern{string}
+6a4 File_Pattern{string}
+

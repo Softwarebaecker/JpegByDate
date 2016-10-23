@@ -12,7 +12,7 @@ project Jpegbydate is
    package Builder is
    end Builder;
 
-   for Source_Files use ("param.adb", "param.ads", "start.adb", "start.ads");
+   for Source_Files use ("param.adb", "param.ads", "search.adb", "search.ads", "start.adb", "start.ads");
 
 end Jpegbydate;
 
