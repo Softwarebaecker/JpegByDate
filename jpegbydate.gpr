@@ -3,6 +3,7 @@ project Jpegbydate is
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Main use ("start.adb");
+   for Source_Files use ("param.adb", "param.ads", "search.adb", "search.ads", "start.adb", "start.ads");
 
    package Ide is
       for Vcs_Kind use "Git";
@@ -10,9 +11,8 @@ project Jpegbydate is
    end Ide;
 
    package Builder is
+      for Executable ("start.adb") use "jpegbydate";
    end Builder;
-
-   for Source_Files use ("param.adb", "param.ads", "search.adb", "search.ads", "start.adb", "start.ads");
 
 end Jpegbydate;
 

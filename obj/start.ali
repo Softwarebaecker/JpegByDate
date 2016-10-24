@@ -1,8 +1,6 @@
-V "GNAT Lib v2016"
+V "GNAT Lib v2014"
 M P W=b
 A -gnatA
-A -mtune=generic
-A -march=pentium4
 P SS ZX
 
 RN
@@ -18,7 +16,7 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U main%b		start.adb		5e5579fc NE OO SU IL
+U main%b		start.adb		25ef5206 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
@@ -28,55 +26,59 @@ W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W param%s		param.adb		param.ali
+W search%s		search.adb		search.ali
 W system.img_bool%s	s-imgboo.adb		s-imgboo.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
 
-D ada.ads		20160516092928 3ffc8e18 ada%s
-D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
-D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
-D a-comlin.ads		20160516092930 ea62afbc ada.command_line%s
-D a-except.ads		20160516092928 291912d5 ada.exceptions%s
-D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
-D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
-D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
-D a-string.ads		20160516092930 90ac6797 ada.strings%s
-D a-strfix.ads		20160516092932 d07c346e ada.strings.fixed%s
-D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
-D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
-D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
-D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
-D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
-D a-uncdea.ads		20160516092930 f15a5ed1 ada.unchecked_deallocation%s
-D interfac.ads		20160516092928 5ab55268 interfaces%s
-D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
-D start.adb		20161023132012 32b43d65 main%b
-D param.ads		20161023132012 5103fe5a param%s
-D system.ads		20160516092930 2da59038 system%s
-D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
-D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
-D s-exctab.ads		20160516092930 54135002 system.exception_table%s
-D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
-D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
-D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
-D s-imgboo.ads		20160516092926 f5d971eb system.img_bool%s
-D s-memory.ads		20160516092930 597d6634 system.memory%s
-D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
-D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
-D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
-D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
-D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
-D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
-D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
-D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
-D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
-D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
-D s-string.ads		20160516092930 8fe54fb7 system.strings%s
-D s-ststop.ads		20160516092928 e6693757 system.strings.stream_ops%s
-D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
-D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
-D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D ada.ads		20140406181354 3ffc8e18 ada%s
+D a-charac.ads		20140406181358 2d3ec45b ada.characters%s
+D a-chlat1.ads		20140406181358 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20140406181358 ea62afbc ada.command_line%s
+D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
+D a-finali.ads		20140406181358 69f99942 ada.finalization%s
+D a-ioexce.ads		20140406181358 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20140406181354 1a984740 ada.streams%s
+D a-string.ads		20140406181358 90ac6797 ada.strings%s
+D a-strfix.ads		20140406181356 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20140406181358 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20140406181358 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
+D a-textio.ads		20140406181358 386df5d4 ada.text_io%s
+D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
+D interfac.ads		20140406181358 69adb1b9 interfaces%s
+D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
+D start.adb		20161024135342 ea7a2a66 main%b
+D param.ads		20161024160838 512d5bdd param%s
+D search.ads		20161024133446 a35a997e search%s
+D system.ads		20140406181358 5fc8ae56 system%s
+D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
+D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
+D s-crtl.ads		20140406181356 2c012597 system.crtl%s
+D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-ficobl.ads		20140406181354 078245e4 system.file_control_block%s
+D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
+D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
+D s-imgboo.ads		20140406181354 f5d971eb system.img_bool%s
+D s-maccod.ads		20140406181358 0fbb7bce system.machine_code%s
+D s-parame.ads		20140406181358 06da98b2 system.parameters%s
+D s-pooglo.ads		20140406181356 542f33d0 system.pool_global%s
+D s-secsta.ads		20140406181358 86a2856d system.secondary_stack%s
+D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
+D s-stache.ads		20140406181354 a37c21ec system.stack_checking%s
+D s-stalib.ads		20140406181354 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140406181356 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20140406181354 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20140406181356 b16154c2 system.storage_pools%s
+D s-stposu.ads		20140406181354 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20140406181358 aedef97e system.stream_attributes%s
+D s-string.ads		20140406181358 8fe54fb7 system.strings%s
+D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
+D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
+D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
 X 1 ada.ads
 16K9*Ada 19e8 19|1r6 1r28 2r6 2r23 3r6 3r29 4r6 4r33
 X 4 a-comlin.ads
@@ -87,33 +89,28 @@ X 10 a-strfix.ads
 18K21*Fixed 251e22 19|3w18 3r41
 X 12 a-strunb.ads
 76K21*Unbounded 489e26 19|4w18 4r45
-100V13*To_String{string} 19|22s13 24s13
+100V13*To_String{string} 19|23s13 25s13
 X 14 a-textio.ads
 49K13*Text_IO 471e16 19|2w10 2r27
-242U14*Put 19|15s4 17s4 19s4 21s4 23s4 25s4
-263U14*Put_Line 19|16s4 18s4 20s4 22s4 24s4 26s4 29s7 30s7
+242U14*Put 19|16s4 18s4 20s4 22s4 24s4 26s4
+263U14*Put_Line 19|17s4 19s4 21s4 23s4 25s4 27s4 32s7 33s7
 X 19 start.adb
-7U11*main 7b11 32l5 32t9
-8i4 i{integer}
-9a4 arg{string}
-10r4 parameter{20|6R9} 14m4 16r28 18r28 20r28 22r23 24r23 26r28
+8U11*main 8b11 35l5 35t9
+9i4 i{integer}
+10a4 arg{string}
+11r4 parameter{20|6R9} 15m4 17r28 19r28 21r28 23r23 25r23 27r28 29r21
 X 20 param.ads
-3K9*Param 19|5w6 5r17 20|19e10
-6R9*params 19|10r24 20|14e17
-8b8*isWildcard{boolean} 19|16r38
-9b8*isHelp{boolean} 19|18r38
-10b8*isRecursive{boolean} 19|20r38
-11r8*fileName{12|79R9} 19|22r33
-12r8*directory{12|79R9} 19|24r33
-13b8*isWholePath{boolean} 19|26r38
-15U14*initialize 19|13s4
-16V13*getParams{6R9} 19|14s17
-X 21 system.ads
-67M9*Address
-X 29 s-memory.ads
-53V13*Alloc{21|67M9} 103i<c,__gnat_malloc>22
-68U14*Free 104i<c,__gnat_free>22
-76V13*Realloc{21|67M9} 105i<c,__gnat_realloc>22
-X 35 s-stalib.adb
-93U14 Break_Start 94i<c,__gnat_break_start>22
+3K9*Param 19|5w6 5r17 20|21e10
+6R9*params 19|11r24 20|14e14
+8b8*isWildcard{boolean} 19|17r38
+9b8*isHelp{boolean} 19|19r38
+10b8*isRecursive{boolean} 19|21r38
+11r8*fileName{12|79R9} 19|23r33
+12r8*directory{12|79R9} 19|25r33
+13b8*isWholePath{boolean} 19|27r38
+17U14*initialize 19|14s4
+19V13*getParams{6R9} 19|15s17
+X 21 search.ads
+3K9*Search 19|6w6 6r18 21|8e11
+4U14*Search_Directory 19|29s4
 
