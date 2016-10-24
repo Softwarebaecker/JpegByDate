@@ -13,6 +13,8 @@ procedure main is
 begin
    initialize;
    parameter := getParams;
+   Put_Line("Debug Information:");
+   Put_Line("");
    Put("Wildcard is ");
    Put_Line(Boolean' Image(parameter.isWildcard));
    Put("Help is ");
