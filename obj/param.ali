@@ -1,5 +1,7 @@
-V "GNAT Lib v2014"
+V "GNAT Lib v2016"
 A -gnatA
+A -mtune=generic
+A -march=pentium4
 P SS ZX
 
 RN
@@ -15,6 +17,7 @@ RV NO_NESTED_FINALIZATION
 RV NO_SECONDARY_STACK
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
@@ -51,52 +54,51 @@ W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
 W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
 W system.strings.stream_ops%s  s-ststop.adb	s-ststop.ali
 
-D ada.ads		20140406181354 3ffc8e18 ada%s
-D a-charac.ads		20140406181358 2d3ec45b ada.characters%s
-D a-chlat1.ads		20140406181358 66457d31 ada.characters.latin_1%s
-D a-comlin.ads		20140406181358 ea62afbc ada.command_line%s
-D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
-D a-finali.ads		20140406181358 69f99942 ada.finalization%s
-D a-ioexce.ads		20140406181358 e4a01f64 ada.io_exceptions%s
-D a-stream.ads		20140406181354 1a984740 ada.streams%s
-D a-string.ads		20140406181358 90ac6797 ada.strings%s
-D a-strfix.ads		20140406181356 d07c346e ada.strings.fixed%s
-D a-strmap.ads		20140406181358 e8bb714a ada.strings.maps%s
-D a-strunb.ads		20140406181358 3f91d4c5 ada.strings.unbounded%s
-D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
-D a-textio.ads		20140406181358 386df5d4 ada.text_io%s
-D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
-D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
-D interfac.ads		20140406181358 69adb1b9 interfaces%s
-D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
-D param.ads		20161017151208 5103fe5a param%s
-D param.adb		20161017151214 35e275cd param%b
-D system.ads		20140406181358 5fc8ae56 system%s
-D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
-D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
-D s-crtl.ads		20140406181356 2c012597 system.crtl%s
-D s-exctab.ads		20140406181354 54135002 system.exception_table%s
-D s-ficobl.ads		20140406181354 078245e4 system.file_control_block%s
-D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
-D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
-D s-maccod.ads		20140406181358 0fbb7bce system.machine_code%s
-D s-parame.ads		20140406181358 06da98b2 system.parameters%s
-D s-pooglo.ads		20140406181356 542f33d0 system.pool_global%s
-D s-secsta.ads		20140406181358 86a2856d system.secondary_stack%s
-D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
-D s-stache.ads		20140406181354 a37c21ec system.stack_checking%s
-D s-stalib.ads		20140406181354 fa0a3617 system.standard_library%s
-D s-stoele.ads		20140406181356 2dc34a04 system.storage_elements%s
-D s-stoele.adb		20140406181354 ed88f8fb system.storage_elements%b
-D s-stopoo.ads		20140406181356 b16154c2 system.storage_pools%s
-D s-stposu.ads		20140406181354 97a6219c system.storage_pools.subpools%s
-D s-stratt.ads		20140406181358 aedef97e system.stream_attributes%s
-D s-string.ads		20140406181358 8fe54fb7 system.strings%s
-D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
-D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
-D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
-D s-valenu.ads		20140406181358 bb1a4295 system.val_enum%s
-D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-charac.ads		20160516092930 2d3ec45b ada.characters%s
+D a-chlat1.ads		20160516092930 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20160516092930 ea62afbc ada.command_line%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092930 bf4f806b ada.finalization%s
+D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-string.ads		20160516092930 90ac6797 ada.strings%s
+D a-strfix.ads		20160516092932 d07c346e ada.strings.fixed%s
+D a-strmap.ads		20160516092930 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20160516092928 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-unccon.ads		20160516092930 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20160516092930 f15a5ed1 ada.unchecked_deallocation%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
+D param.ads		20161023132012 5103fe5a param%s
+D param.adb		20161023132012 35e275cd param%b
+D system.ads		20160516092930 2da59038 system%s
+D s-atocou.ads		20160516092932 b45c2d8d system.atomic_counters%s
+D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092930 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D s-finmas.ads		20160516092930 7811a767 system.finalization_masters%s
+D s-finroo.ads		20160516092930 4ff27390 system.finalization_root%s
+D s-memory.ads		20160516092930 597d6634 system.memory%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092930 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092928 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092930 09bd3940 system.standard_library%s
+D s-stalib.adb		20160516092926 f2fe2716 system.standard_library%b
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20160516092928 b16154c2 system.storage_pools%s
+D s-stposu.ads		20160516092926 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20160516092926 aedef97e system.stream_attributes%s
+D s-string.ads		20160516092930 8fe54fb7 system.strings%s
+D s-ststop.ads		20160516092928 e6693757 system.strings.stream_ops%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-valenu.ads		20160516092930 bb1a4295 system.val_enum%s
+D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
 X 1 ada.ads
 16K9*Ada 19e8 19|1r6 1r33 20|1r6 1r28 2r6 2r23 3r6 3r29 4r6 4r33
 X 4 a-comlin.ads
@@ -137,4 +139,12 @@ X 20 param.adb
 13n38 s{13E12} 29r18
 13n41 p{13E12} 32r18
 14b7 help{boolean}
+X 21 system.ads
+67M9*Address
+X 28 s-memory.ads
+53V13*Alloc{21|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{21|67M9} 105i<c,__gnat_realloc>22
+X 34 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
 
