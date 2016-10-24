@@ -9,7 +9,7 @@ Package Param is
        isHelp : Boolean := false;
        isRecursive : Boolean := false;
        fileName : Unbounded_String;
-       directory : Unbounded_String;
+       directory : Unbounded_String := To_Unbounded_String(".");
        isWholePath : Boolean := false;
       end record;
    procedure initialize;

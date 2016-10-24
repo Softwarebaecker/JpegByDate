@@ -3,6 +3,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Param; use Param;
+with Search; use Search;
 
 procedure main is
    i : Integer := 0;
@@ -24,6 +25,8 @@ begin
    Put_Line(To_String(parameter.directory));
    Put("Whole path is ");
    Put_Line(Boolean' Image(parameter.isWholePath));
+
+   Search_Directory(parameter);
    exception
    when Constraint_Error =>
       Put_Line("");

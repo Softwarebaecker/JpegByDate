@@ -1,7 +1,8 @@
+with Param;
+
 Package Search is
    procedure Search_Directory
-     (Directory : in String := ".";
-      Pattern	: in String := "");
+     (parameters : Param.params);
 private
-   File_Pattern : String := "*.jpg";
+   filePattern : String := "*.jpg";
 end Search;
