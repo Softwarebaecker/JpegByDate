@@ -25,7 +25,7 @@ W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
 
-U search%s		search.ads		f277c2a3 EE NE OO PK KM
+U search%s		search.ads		6415b6d0 EE NE OO PK KM
 W param%s		param.adb		param.ali
 
 D ada.ads		20140406181354 3ffc8e18 ada%s
@@ -46,7 +46,7 @@ D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
 D interfac.ads		20140406181358 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
-D param.ads		20161024160838 512d5bdd param%s
+D param.ads		20161028135850 c74f2fae param%s
 D search.ads		20161024133446 a35a997e search%s
 D search.adb		20161024133958 b2ea50ac search%b
 D system.ads		20140406181358 5fc8ae56 system%s
@@ -97,7 +97,7 @@ X 14 a-textio.ads
 49K13*Text_IO 471e16 21|2w10 2r27
 263U14*Put_Line 21|20s10
 X 19 param.ads
-3K9*Param 21e10 20|1w6 5r20 21|8r20
+3K9*Param 24e10 20|1w6 5r20 21|8r20
 6R9*params 14e14 20|5r26 21|8r26
 12r8*directory{12|79R9} 21|15r54
 X 20 search.ads

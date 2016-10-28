@@ -5,10 +5,10 @@ Package Param is
    --in that type all input parameter information are stored
    type params is
      tagged record
-       isWildcard : Boolean := false;
+       date : Unbounded_String;
        isHelp : Boolean := false;
        isRecursive : Boolean := false;
-       fileName : Unbounded_String;
+       fileName : Unbounded_String := To_Unbounded_String("");
        directory : Unbounded_String := To_Unbounded_String(".");
        isWholePath : Boolean := false;
    end record;
@@ -17,5 +17,8 @@ Package Param is
    procedure initialize;
    --makes it possible to access the type params
    function getParams return params;
+
+private
+   function validateDate(date: String) return Boolean;
 
 end Param;
