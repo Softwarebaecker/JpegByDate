@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project >
-    <file_marker current="true" column=" 15" line=" 1" >
+  <Project>
+    <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\jpegbydate.gpr</vfs_file>
+    <file_marker current="true" column=" 1" line=" 2" >
       <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\src\start.ads</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <file_marker current="true" column=" 15" line=" 1">
+      <vfs_file >C:\GNAT\2014\Workspace\JpegByDate\src\start.ads</vfs_file>
     </file_marker>
   </Project>
   <Project >

@@ -70,9 +70,17 @@ Package body Param is
           end if;
       end loop;
 
-      if month(1) /= '?' and month(2) /= '?' and month(1) /= '0' and month(2) not in '0' .. '9' and (month(1) /= '1' or month(2) not in '0' .. '2') then
+      if month(1) /= '?' and month(2) /= '?' and (month(1) /= '0' or month(2) not in '0' .. '9' or (month(1) = '0' and month(2) = '0')) then
+         if month(1) not in '0' .. '1' or (month(1) = '1' and month(2) not in '0' .. '2') or (month(1) = '0' and month(2) = '0') then
             return false;
          end if;
+      end if;
+
+      if day(1) /= '?' and day(2) /= '?' and (day(1) not in '0' .. '2' or day(2) not in '0' .. '9' or(day(1) = '0' and day(2) = '0')) then
+         if day(1) not in '0' .. '3' or (day(1) not in '0' .. '2' and day(2) not in '0' .. '1') or (day(1) = '0' and day(2) = '0') then
+            return false;
+         end if;
+      end if;
 
       return true;
 

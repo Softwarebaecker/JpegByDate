@@ -27,10 +27,10 @@ begin
    Put("Whole path is ");
    Put_Line(Boolean' Image(parameter.isWholePath));
 
-   --Search_Directory(parameter);
-   --exception
-   --when Constraint_Error =>
-   --   Put_Line("");
-   --   Put_Line("ERROR: Some parameters could not be loaded!");
+   Search_Directory(parameter);
+   exception
+   when Constraint_Error =>
+      Put_Line("");
+      Put_Line("ERROR: Some parameters could not be loaded!");
 
 end main;

@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U param%b		param.adb		1477df2b OO PK KM
+U param%b		param.adb		498deba6 OO PK KM
 W ada%s			ada.ads			ada.ali
 W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
@@ -72,7 +72,7 @@ D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
 D interfac.ads		20140406181358 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
 D param.ads		20161028135850 c74f2fae param%s
-D param.adb		20161028143820 06613b0c param%b
+D param.adb		20161028193306 5b9b0f81 param%b
 D system.ads		20140406181358 5fc8ae56 system%s
 D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
 D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
@@ -122,8 +122,8 @@ X 14 a-textio.ads
 49K13*Text_IO 471e16 20|2w10 2r27
 263U14*Put_Line 20|47s13
 X 19 param.ads
-3K9*Param 22E13 24l5 24e10 20|7b14 86l5 86t10
-6R9*params 14e14 19p13 19r30 20|9r24 81r30
+3K9*Param 22E13 24l5 24e10 20|7b14 94l5 94t10
+6R9*params 14e14 19p13 19r30 20|9r24 89r30
 8r8*date{12|79R9} 20|29m32
 9b8*isHelp{boolean} 20|16r35 34m29
 10b8*isRecursive{boolean} 20|36m29
@@ -131,11 +131,11 @@ X 19 param.ads
 12r8*directory{12|79R9} 20|42m29
 13b8*isWholePath{boolean} 20|44m29
 17U14*initialize 20|11b14 51l8 51t18
-19V13*getParams{6R9} 20|81b13 84l8 84t17
-22V13 validateDate{boolean} 22>26 20|28s22 53b13 79l8 79t20
+19V13*getParams{6R9} 20|89b13 92l8 92t17
+22V13 validateDate{boolean} 22>26 20|28s22 53b13 87l8 87t20
 22a26 date{string} 20|53b26 59r15 60r16 61r14 63r10 63r28
 X 20 param.adb
-9r4 parameter{19|6R9} 16r25 29m22 34m19 36m19 39m19 42m19 44m19 83r14
+9r4 parameter{19|6R9} 16r25 29m22 34m19 36m19 39m19 42m19 44m19 91r14
 12i7 i{integer} 20r13 21m10 21r15 22r48 27m19 27r24 28r44 29r69 38m19 38r24
 . 39r70 41m19 41r24 42r71
 13r7 input{12|79R9} 22m10 23r21 24r27
@@ -149,7 +149,9 @@ X 20 param.adb
 15n43 p{15E12} 43r21
 16b7 help{boolean}
 54a7 year{string} 59m7 68r14 68r44
-55a7 month{string} 60m7 73r10 73r30 73r50 73r70 73r102 73r121
-56a7 day{string} 61m7
+55a7 month{string} 60m7 73r10 73r30 73r51 73r70 73r101 73r120 74r13 74r44
+. 74r63 74r95 74r114
+56a7 day{string} 61m7 79r10 79r28 79r47 79r75 79r103 79r120 80r13 80r42 80r71
+. 80r101 80r118
 67i11 i{integer} 68r19 68r49
 
