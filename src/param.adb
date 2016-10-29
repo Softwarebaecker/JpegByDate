@@ -54,6 +54,12 @@ Package body Param is
       year : String (1 .. 4);
       month : String (1 .. 2);
       day : String (1 .. 2);
+      y : Integer;
+      m : Integer;
+      d : Integer;
+      type DPM is array(1 .. 12) of Integer;
+      daysPerMonth : DPM := (31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+      isLeapYear : Boolean := false;
 
    begin
       year := date(1 .. 4);
@@ -81,6 +87,34 @@ Package body Param is
             return false;
          end if;
       end if;
+
+      if ada.strings.Fixed.count(date, "?") > 0 then
+         if ada.strings.Fixed.count(year, "?") = ada.strings.Fixed.count(date, "?") then
+            m := Integer' value(month);
+            d := Integer' value(day);
+            if d > daysPerMonth(m) then
+               return false;
+            end if;
+         end if;
+      else
+         y := Integer' value(year);
+         m := Integer' value(month);
+         d := Integer' value(day);
+
+         if y mod 4 = 0 and (y mod 100 /= 0 or y mod 400 = 0) then
+            isLeapYear := true;
+            put_Line("LeapYear!");
+         end if;
+
+         if d > daysPerMonth(m) then
+            return false;
+         elsif not(m = 2 and d = 29 and isLeapYear) then
+            return false;
+         end if;
+         isLeapYear := false;
+      end if;
+
+      --Put_Line(Natural' Image(ada.strings.Fixed.count(date, "?")));
 
       return true;
 
