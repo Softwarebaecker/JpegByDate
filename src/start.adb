@@ -27,7 +27,7 @@ begin
    Put("Whole path is ");
    Put_Line(Boolean' Image(parameter.isWholePath));
 
-   searchDirectory(parameter);
+   --searchDirectory(parameter);
    exception
    when Constraint_Error =>
       Put_Line("");
