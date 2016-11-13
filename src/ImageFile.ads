@@ -11,11 +11,12 @@ Package ImageFile is
       filename : Unbounded_String;
       date : String(1..10);
       Time : String(1..8);
-
    end record;
 
-   --Konstruktor
-   function create(fileName : Unbounded_String) return access ExifData;
+   type ExifDataAccess is access ExifData;
+
+   --constructor
+   function create(fileName : Unbounded_String) return ExifDataAccess;
 
   private
    littleEndian : Boolean;
@@ -25,7 +26,7 @@ Package ImageFile is
 
    function checkFile return Boolean;
    procedure readFormat;
-   procedure readDateTime(ExifDatas : access ExifData);
+   procedure readDateTime(ExifDatas : ExifDataAccess);
 
    function readInt(Position : Ada.Streams.Stream_IO.Positive_Count;
                     ByteCount : Integer) return Integer;

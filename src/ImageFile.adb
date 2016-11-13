@@ -5,8 +5,8 @@
 
 Package body ImageFile is
 
-   function create(fileName : Unbounded_String) return access ExifData is
-      ExifDatas : access ExifData := new ExifData;
+   function create(fileName : Unbounded_String) return ExifDataAccess is
+      ExifDatas : ExifDataAccess := new ExifData;
    begin
       ExifDatas.filename := fileName;
       --open FileStream
@@ -48,7 +48,7 @@ Package body ImageFile is
          return FALSE;
       end if;
 
-      --find Exif Header
+      --find TIFF Header
       Set_Index(File, 1);
       while Index(File) <= Size(File) - 6 loop
       if Character'Input(Input_Stream) = Character'Val(16#45#) and then
@@ -95,7 +95,7 @@ Package body ImageFile is
    end readFormat;
 
 
-   procedure readDateTime(ExifDatas : access ExifData) is
+   procedure readDateTime(ExifDatas : ExifDataAccess) is
       DatePosition : Integer;
    begin
       Set_Index(File,TIFFHeaderEndPos);
