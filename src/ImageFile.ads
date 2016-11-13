@@ -9,8 +9,11 @@ Package ImageFile is
    type ExifData is
      tagged record
       filename : Unbounded_String;
+      fileSize : Integer;
       date : String(1..10);
       Time : String(1..8);
+      ImageWidth : Integer;
+      ImageHeight : Integer;
    end record;
 
    type ExifDataAccess is access ExifData;
@@ -26,7 +29,10 @@ Package ImageFile is
 
    function checkFile return Boolean;
    procedure readFormat;
+   procedure readFileSize(ExifDatas : ExifDataAccess);
    procedure readDateTime(ExifDatas : ExifDataAccess);
+   procedure readImageWidth(ExidDatas : ExifDataAccess);
+   procedure readImageHeight(ExidDatas : ExifDataAccess);
 
    function readInt(Position : Ada.Streams.Stream_IO.Positive_Count;
                     ByteCount : Integer) return Integer;

@@ -16,7 +16,8 @@ Package body ImageFile is
 
       if checkFile = FALSE then
          Close(File);
-         return null;
+         ExifDatas.filename := Ada.Strings.Unbounded.To_Unbounded_String("");
+         return ExifDatas;
       end if;
 
       --read Format
@@ -42,7 +43,7 @@ Package body ImageFile is
 
       Set_Index(File, Ada.Streams.Stream_IO.Size(File)-1);
       --Jpeg End FF D9
-      if Character'Input(Input_Stream) /= Character'Val(16#FF#) and
+      if Character'Input(Input_Stream) /= Character'Val(16#FF#) and then
         Character'Input(Input_Stream) /= Character'Val(16#D9#) then
          --No Jepeg
          return FALSE;
@@ -95,6 +96,11 @@ Package body ImageFile is
    end readFormat;
 
 
+   procedure readFileSize(ExifDatas : ExifDataAccess) is
+   begin
+      ExifDatas.fileSize := Integer(Size(File));
+   end readFileSize;
+
    procedure readDateTime(ExifDatas : ExifDataAccess) is
       DatePosition : Integer;
    begin
@@ -123,6 +129,21 @@ Package body ImageFile is
 
    end readDateTime;
 
+   procedure readImageWidth(ExidDatas : ExifDataAccess) is
+   begin
+      -- width =  A002
+
+      Ada.Text_IO.Put_Line("width");
+
+   end readImageWidth;
+
+   procedure readImageHeight(ExidDatas : ExifDataAccess) is
+   begin
+      -- Height =  A003
+
+Ada.Text_IO.Put_Line("Height");
+
+   end readImageHeight;
 
    function readInt(Position : Ada.Streams.Stream_IO.Positive_Count ;
                     ByteCount : Integer) return Integer is
