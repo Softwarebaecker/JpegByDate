@@ -18,6 +18,13 @@ Package ImageFile is
 
    type ExifDataAccess is access ExifData;
 
+   --exceptions
+   ExceptionFileNotOpen : exception;
+   ExceptionWrongImageTag : exception;
+   ExceptionNoExifTag : exception;
+   ExceptionTiffError : exception;
+   ExceptionReadError : exception;
+
    --constructor
    function create(fileName : Unbounded_String) return ExifDataAccess;
 
@@ -25,14 +32,18 @@ Package ImageFile is
    littleEndian : Boolean;
    File : Ada.Streams.Stream_IO.File_Type;
    Input_Stream : Ada.Streams.Stream_IO.Stream_Access;
-   TIFFHeaderEndPos : Ada.Streams.Stream_IO.Positive_Count;
+   TIFFHeaderPos : Ada.Streams.Stream_IO.Positive_Count;
+   ExifDatas : ExifDataAccess;
 
-   function checkFile return Boolean;
-   procedure readFormat;
-   procedure readFileSize(ExifDatas : ExifDataAccess);
-   procedure readDateTime(ExifDatas : ExifDataAccess);
-   procedure readImageWidth(ExidDatas : ExifDataAccess);
-   procedure readImageHeight(ExidDatas : ExifDataAccess);
+   procedure checkFile;
+   procedure readExifTag;
+   procedure readTiffHeader;
+   procedure readImageFileDirectories;
+   procedure readIFDEntry(Position : Ada.Streams.Stream_IO.Positive_Count);
+   procedure readFileSize;
+   procedure readDateTime;
+   procedure readImageWidth;
+   procedure readImageHeight;
 
    function readInt(Position : Ada.Streams.Stream_IO.Positive_Count;
                     ByteCount : Integer) return Integer;
