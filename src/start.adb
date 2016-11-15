@@ -2,16 +2,20 @@ with Ada.Command_Line; use Ada.Command_Line;
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Ada.Containers.Vectors;     use Ada.Containers;
 with Param; use Param;
 with Search; use Search;
+with UIController; use UIController;
 
 procedure main is
    i : Integer := 0;
    parameter : aliased params;
+   vec : FileVector.Vector;
 
 begin
    initialize;
    parameter := getParams;
+   vec := startFile(parameter);
    Put_Line("Debug Information:");
    Put_Line("");
    Put("Date is ");
@@ -26,6 +30,8 @@ begin
    Put_Line(To_String(parameter.directory));
    Put("Whole path is ");
    Put_Line(Boolean' Image(parameter.isWholePath));
+
+
 
    --searchDirectory(parameter);
    exception
