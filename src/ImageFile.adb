@@ -80,7 +80,7 @@ Package body ImageFile is
         Character'Input(Input_Stream) = Character'Val(16#00#) and
         Character'Input(Input_Stream) = Character'Val(16#00#) then
          --set to Intel Format
-         littleEndian := FALSE;
+         littleEndian := TRUE;
       else if Character'Input(Input_Stream) = Character'Val(16#4d#) and
         Character'Input(Input_Stream) = Character'Val(16#4d#) and
         Character'Input(Input_Stream) = Character'Val(16#00#) and
@@ -117,7 +117,6 @@ Package body ImageFile is
 
             --read Position
             DatePosition := readInt(Index(File), 4);
-            DatePosition := readInt(Index(File), 4) + 1;
 
             --read Date
             ExifDatas.date := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderEndPos, 10);
@@ -145,25 +144,29 @@ Ada.Text_IO.Put_Line("Height");
 
    end readImageHeight;
 
+
    function readInt(Position : Ada.Streams.Stream_IO.Positive_Count ;
                     ByteCount : Integer) return Integer is
-      firstCharacter : Character;
-      secondCharacter : Character;
+      characterPosition : Ada.Streams.Stream_IO.Positive_Count;
+      readCharacter : Character;
+      return32Int : Integer;
    begin
-      --set Index to Position
-      Set_Index(File,Position);
+      if ByteCount > 1 then
+         return32Int := readInt(Position, ByteCount - 1);
+         characterPosition := Position + ByteCount - 1;
+      end if;
 
-      --read two byts
-      firstCharacter := Character'Input(Input_Stream);
-      secondCharacter := Character'Input(Input_Stream);
+      --set Index to Position
+      Set_Index(File,characterPosition);
+
+      --read two bytes
+      readCharacter := Character'Input(Input_Stream);
 
       --calculate Integer
       if littleEndian = TRUE then --litteleendian LLHH
-         return Character'Pos(secondCharacter) * 16#100#
-         + Character'Pos(firstCharacter);
+         return (Character'Pos(readCharacter) * ((2 ** 8) ** ByteCount)) + return32Int;
       else --bigendian HHLL
-         return Character'Pos(firstCharacter) * 16#100#
-         + Character'Pos(secondCharacter);
+         return (return32Int * (2 ** 8)) + Character'Pos(readCharacter);
       end if;
    end readInt;
 
