@@ -44,6 +44,7 @@ Package body Search is
             end if;
          exception
             when others =>
+            --   Ada.Text_IO.Put_Line("Exception OTHERS");
                null;
          end;
       end loop;

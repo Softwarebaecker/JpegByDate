@@ -9,10 +9,12 @@ Package body ImageFile is
    begin
       ExifDatas := new ExifData;
       ExifDatas.filename := fileName;
+
       --open FileStream
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
                                  Ada.Strings.Unbounded.To_String(filename));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
+
 
       readFileSize;
 
@@ -23,7 +25,7 @@ Package body ImageFile is
       checkFile;
 
       readExifTag;
-      --read Format
+
       readTiffHeader;
 
       readImageFileDirectories;
@@ -39,6 +41,7 @@ Package body ImageFile is
       if Character'Input(Input_Stream) /= Character'Val(16#FF#) and
         Character'Input(Input_Stream) /= Character'Val(16#D8#) then
          --No Jepeg
+         Close(File);
          raise ExceptionWrongImageTag;
       end if;
 
@@ -47,6 +50,7 @@ Package body ImageFile is
       if Character'Input(Input_Stream) /= Character'Val(16#FF#) and then
         Character'Input(Input_Stream) /= Character'Val(16#D9#) then
          --No Jepeg
+         Close(File);
          raise ExceptionWrongImageTag;
       end if;
    end checkFile;
@@ -67,6 +71,7 @@ Package body ImageFile is
             return;
          end if;
       end loop;
+      Close(File);
       raise ExceptionNoExifTag;
    end readExifTag;
 
@@ -85,66 +90,40 @@ Package body ImageFile is
         Character'Input(Input_Stream) = Character'Val(16#00#) then
          --set to Intel Format
          littleEndian := TRUE;
-      else if Character'Input(Input_Stream) = Character'Val(16#4d#) and
-        Character'Input(Input_Stream) = Character'Val(16#4d#) and
-        Character'Input(Input_Stream) = Character'Val(16#00#) and
-        Character'Input(Input_Stream) = Character'Val(16#2a#) and
-        Character'Input(Input_Stream) = Character'Val(16#00#) and
-        Character'Input(Input_Stream) = Character'Val(16#00#) and
-        Character'Input(Input_Stream) = Character'Val(16#00#) and
-        Character'Input(Input_Stream) = Character'Val(16#08#) then
-         --set Motorola Format
+      else
             littleEndian := FALSE;
-         end if;
       end if;
    end readTiffHeader;
 
    procedure readImageFileDirectories is
-      entryCount : Integer;
-      IFDStartPosition : Ada.Streams.Stream_IO.Positive_Count;
+      entryCount : Integer := 0;
+      readTag : Integer := 0;
+      subDirPos : Integer := 0;
    begin
       -- read count of Entrys in IFD0
-      Set_Index(File, TIFFHeaderPos + 8);
-      entryCount := readInt(Index(File), 2);
+      Set_Index(File, TIFFHeaderPos + 9);
+      entryCount := readInt(2);
 
-      -- IFD0 not used
-
-      --set Index to Entry with the pointer to IFD1
-      Set_Index(File, Index(File) + Ada.Streams.Stream_IO.Positive_Count(12 * entryCount));
-
-      if Character'Input(Input_Stream) /= Character'Val(16#87#) or
-        Character'Input(Input_Stream) /= Character'Val(16#69#) then
-         raise ExceptionTiffError;
-      end if;
-
-      -- read beginn position from IFD1 and set the Stream to the Index
-      Set_Index(File, Ada.Streams.Stream_IO.Positive_Count(readInt(Index(File), 2)) + TIFFHeaderPos);
-
-      -- read count of Entry in IFD1
-      entryCount := readInt(Index(File), 2);
-      IFDStartPosition := Index(File);
-      for i in 1 .. entryCount loop
-         readIFDEntry(IFDStartPosition + Ada.Streams.Stream_IO.Positive_Count(12 * i - 1));
+      --search in IFD0 and Sub Dirs
+      while entryCount > 0 loop
+         --read Tag
+         readTag := readInt(2);
+         if readTag = Integer(16#9003#) then
+            readDateTime;
+            entryCount := entryCount - 1;
+         else if readTag = Integer(16#8769#) then
+               --readSubDir
+               Set_Index(File, Index(File) + 6);
+               subDirPos := readInt(4);
+               Set_Index(File, Ada.Streams.Stream_IO.Positive_Count(subDirPos) + TIFFHeaderPos + 1);
+               entryCount := readInt(2);
+            else
+               Set_Index(File, Index(File) + 10);
+               entryCount := entryCount - 1;
+            end if;
+         end if;
       end loop;
-
    end readImageFileDirectories;
-
-
-   procedure readIFDEntry(Position : Ada.Streams.Stream_IO.Positive_Count) is
-      firstCharacter : Character;
-      secondCharacter : Character;
-   begin
-      Set_Index(File, Position);
-      firstCharacter := Character'Input(Input_Stream);
-      secondCharacter := Character'Input(Input_Stream);
-
-      if firstCharacter = Character'Val(16#90#) and then
-        secondCharacter = Character'Val(16#03#) then
-         readDateTime;
-      end if;
-
-   end readIFDEntry;
-
 
    procedure readFileSize is
    begin
@@ -153,26 +132,21 @@ Package body ImageFile is
 
    procedure readDateTime is
       DatePosition : Integer;
+      saveIndex : Ada.Streams.Stream_IO.Positive_Count;
    begin
+      Set_Index(File, Index(File) + 6);
+      --read Position
+      DatePosition := readInt(4);
 
-      if Character'Input(Input_Stream) = Character'Val(16#00#) and then
-        Character'Input(Input_Stream) = Character'Val(16#02#) and then
-        Character'Input(Input_Stream) = Character'Val(16#00#) and then
-        Character'Input(Input_Stream) = Character'Val(16#00#) and then
-        Character'Input(Input_Stream) = Character'Val(16#00#) and then
-        Character'Input(Input_Stream) = Character'Val(16#14#) then
+      saveIndex := Index(File);
 
-        --read Position
-        DatePosition := readInt(Index(File), 4);
+      --read Date
+      ExifDatas.date := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderPos + 1, 10);
+      ExifDatas.date := convertDate(ExifDatas.date);
+      --read Time
+      ExifDatas.Time := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8);
 
-        --read Date
-        ExifDatas.date := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderPos, 10);
-        ExifDatas.date := convertDate(ExifDatas.date);
-        --read Time
-         ExifDatas.Time := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 11 + TIFFHeaderPos, 8);
-      else
-         raise ExceptionReadError;
-      end if;
+      Set_Index(File, saveIndex);
    end readDateTime;
 
    procedure readImageWidth is
@@ -192,26 +166,23 @@ Package body ImageFile is
    end readImageHeight;
 
 
-   function readInt(Position : Ada.Streams.Stream_IO.Positive_Count ;
-                    ByteCount : Integer) return Integer is
-      characterPosition : Ada.Streams.Stream_IO.Positive_Count;
+   function readInt(ByteCount : Integer) return Integer is
       readCharacter : Character;
-      return32Int : Integer;
+      return32Int : Integer := 0;
    begin
       if ByteCount > 1 then
-         return32Int := readInt(Position, ByteCount - 1);
-         characterPosition := Position + Ada.Streams.Stream_IO.Positive_Count (ByteCount) - 1;
+         return32Int := readInt(ByteCount - 1);
       end if;
-
-      --set Index to Position
-      Set_Index(File,characterPosition);
 
       --read two bytes
       readCharacter := Character'Input(Input_Stream);
+      --Ada.Text_IO.Put_Line("CharacterNumber: " & Integer'Image(Integer(Character'Pos(readCharacter))));
+      --Ada.Text_IO.Put_Line("Return: " & Integer'Image(return32Int));
 
       --calculate Integer
       if littleEndian = TRUE then --litteleendian LLHH
-         return (Character'Pos(readCharacter) * ((2 ** 8) ** ByteCount)) + return32Int;
+         --Ada.Text_IO.Put_Line("LLHH");
+         return (Character'Pos(readCharacter) * ((2 ** 8) ** (ByteCount - 1))) + return32Int;
       else --bigendian HHLL
          return (return32Int * (2 ** 8)) + Character'Pos(readCharacter);
       end if;

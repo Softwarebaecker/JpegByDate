@@ -7,6 +7,6 @@ with Search;			 use Search;
 with Cli;                        use Cli;
 
 Package UIController is
-   function startFile( parameter : Param.params ) return FileVector.Vector;
+   procedure startFileSearch( parameter : Param.params );
    procedure startUI( vec : FileVector.Vector );
 end UIController;
