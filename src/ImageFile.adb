@@ -153,7 +153,7 @@ Ada.Text_IO.Put_Line("Height");
    begin
       if ByteCount > 1 then
          return32Int := readInt(Position, ByteCount - 1);
-         characterPosition := Position + ByteCount - 1;
+         characterPosition := Position + Ada.Streams.Stream_IO.Positive_Count (ByteCount) - 1;
       end if;
 
       --set Index to Position
