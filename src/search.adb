@@ -24,12 +24,12 @@ Package body Search is
       --filter the correct files
       while Directories.More_Entries(currentSearch) loop
          Directories.Get_Next_Entry(currentSearch, dirEnt);
-         --only call create if dirEnt is a readable file
-         if Directories.Kind(Directory_Entry => dirEnt) = Directories.Ordinary_File then
-            exifDataObj := ImageFile.create(Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt)));
+         begin
+            --only call create if dirEnt is a readable file
+            if Directories.Kind(Directory_Entry => dirEnt) = Directories.Ordinary_File then
+               exifDataObj := ImageFile.create(Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt)));
 
-            --add file to the vector if it fits the parameters
-            if exifDataObj.filename /= "" then
+               --add file to the vector if it fits the parameters
                --check if the file fits the date parameter
                if checkDate and then exifDataObj.date /= Ada.Strings.Unbounded.To_String(parameters.date) then
                   addFileToVector := False;
@@ -40,8 +40,12 @@ Package body Search is
                   FileVector.Append(Container => fileVectorObj,
                                     New_Item  => exifDataObj);
                end if;
+
             end if;
-         end if;
+         exception
+            when others =>
+               null;
+         end;
       end loop;
 
       Directories.End_Search(currentSearch);
