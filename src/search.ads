@@ -7,13 +7,19 @@ with ImageFile; use ImageFile;
 with Param;
 
 Package Search is
+   --package renames
    package Directories renames Ada.Directories;
    package IO renames Ada.Text_IO;
 
+   --this function is needed for the Ada.Containers.Vectors package to be able
+   --to work
    function "="(imageFile1, imageFile2 : ImageFile.ExifDataAccess) return Boolean;
+   --the vector of files that contains the found files
    Package FileVector is new Ada.Containers.Vectors(Index_Type   => Natural,
                                                     Element_Type => ImageFile.ExifDataAccess);
+   --searches the directory for files that fit the parameters
    function searchDirectory(parameters : Param.params) return FileVector.Vector;
 private
-   filePattern : String := ""; --no file pattern is used currently, kept for easier changing
+   --the file pattern is not used currently, kept for easier changing
+   filePattern : String := "";
 end Search;
