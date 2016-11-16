@@ -1,0 +1,43 @@
+[GENERATED OBJECT FILE]
+b__test_runner.o
+[PROJECT FILES]
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_driver.gpr
+20161031085708
+C:\GNAT\2014\Workspace\JpegByDate\jpegbydate.gpr
+20161024161300
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_jpegbydate.gpr
+20161030095946
+C:\GNAT\2014\lib\gnat\aunit_shared.gpr
+20140410144134
+C:\GNAT\2014\lib\gnat\aunit.gpr
+20161031091412
+[BOUND OBJECT FILES]
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\gnattest_generated.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_runner.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\param.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data-params_tests-suite.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-test_data.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-test_data-tests-suite.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\search.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\search-test_data.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\search-test_data-tests.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\search-test_data-tests-suite.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\gnattest_main_suite.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_info.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-test_data-tests.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data-params_tests.o
+[GENERATED SOURCE FILES]
+b__test_runner.ads
+b__test_runner.adb
+b__test_runner.ali
+[RESULTING OPTIONS]
+-LC:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\
+-LC:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\
+-LC:\GNAT\2014\lib\aunit\native-full\
+-LC:\GNAT\2014\Workspace\JpegByDate\obj\
+-LC:/gnat/2014/lib/gcc/i686-pc-mingw32/4.7.4/adalib/
+-static
+-static-libgcc
+C:/gnat/2014/lib/gcc/i686-pc-mingw32/4.7.4/adalib/libgnat.a
+-Wl,--stack=0x2000000

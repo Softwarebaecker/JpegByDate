@@ -1,0 +1,36 @@
+<tests_mapping mode="monolith">
+   <unit source_file="param.ads">
+      <test_unit target_file="param-params_test_data-params_tests.ads">
+         <setup file="param-params_test_data.adb" line="4"  column="4"/>
+         <teardown file="param-params_test_data.adb" line="8"  column="4"/>
+         <tested name="getParams" line="19" column="4">
+            <test file="param-params_test_data-params_tests.adb" line="13" column="1" timestamp="2016-10-30 09:59:46"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="param-test_data-tests.ads">
+         <setup file="param-test_data.adb" line="3"  column="4"/>
+         <teardown file="param-test_data.adb" line="9"  column="4"/>
+         <tested name="initialize" line="17" column="4">
+            <test file="param-test_data-tests.adb" line="13" column="1" timestamp="2016-10-30 09:59:46"/>
+         </tested>
+         <tested name="validateDate" line="22" column="4">
+            <test file="param-test_data-tests.adb" line="34" column="1" timestamp="2016-10-30 09:59:46"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="search.ads">
+      <test_unit target_file="search-test_data-tests.ads">
+         <setup file="search-test_data.adb" line="3"  column="4"/>
+         <teardown file="search-test_data.adb" line="9"  column="4"/>
+         <tested name="Search_Directory" line="4" column="4">
+            <test file="search-test_data-tests.adb" line="13" column="1" timestamp="2016-10-30 09:59:46"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+</tests_mapping>

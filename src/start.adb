@@ -8,10 +8,19 @@ with Search; use Search;
 procedure main is
    i : Integer := 0;
    parameter : aliased params;
+   input : Param.Input(1 .. Argument_Count);
 
 begin
-   initialize;
+   --Copy passed arguments in array
+   for i in 1 .. Argument_Count loop
+      input(i) := To_Unbounded_String(Argument(i));
+   end loop;
+
+   --Evaluating the passed arguments
+   initialize(Argument_Count, input);
    parameter := getParams;
+
+   --Output debug information
    Put_Line("Debug Information:");
    Put_Line("");
    Put("Date is ");
@@ -27,8 +36,11 @@ begin
    Put("Whole path is ");
    Put_Line(Boolean' Image(parameter.isWholePath));
 
+   --Start search
    Search_Directory(parameter);
-   exception
+
+exception
+   --Not valid input
    when Constraint_Error =>
       Put_Line("");
       Put_Line("ERROR: Some parameters could not be loaded!");

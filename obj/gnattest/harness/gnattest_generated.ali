@@ -1,0 +1,23 @@
+V "GNAT Lib v2014"
+A -O1
+A -gnatA
+A -g
+A -gnatyM0
+A -gnata
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U gnattest_generated%s	gnattest_generated.ads	33489ddc NE OO PK
+
+D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
+D system.ads		20140406181358 5fc8ae56 system%s
+D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
+X 1 gnattest_generated.ads
+1K9*Gnattest_Generated 4l5 4e23
+2K12*GNATtest_Standard=2:38
+3b4*Default_Assert_Value{boolean}
+

@@ -16,7 +16,7 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U main%b		start.adb		d8105235 NE OO SU IL
+U main%b		start.adb		0461aa75 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
@@ -25,6 +25,7 @@ W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
 W param%s		param.adb		param.ali
 W search%s		search.adb		search.ali
 W system.img_bool%s	s-imgboo.adb		s-imgboo.ali
@@ -50,8 +51,8 @@ D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
 D interfac.ads		20140406181358 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
-D start.adb		20161028193318 81e75e26 main%b
-D param.ads		20161028135850 c74f2fae param%s
+D start.adb		20161031100332 272f1e3d main%b
+D param.ads		20161101142942 bdf697f5 param%s
 D search.ads		20161024133446 a35a997e search%s
 D system.ads		20140406181358 5fc8ae56 system%s
 D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
@@ -83,33 +84,39 @@ X 1 ada.ads
 16K9*Ada 19e8 19|1r6 1r28 2r6 2r23 3r6 3r29 4r6 4r33
 X 4 a-comlin.ads
 38K13*Command_Line 139e21 19|1w10 1r32
+41V13*Argument_Count{natural} 19|11s29 14s18 18s15
+48V13*Argument{string} 19|15s39
 X 9 a-string.ads
 16K13*Strings 35e16 19|3r10 3r33 4r10 4r37
 X 10 a-strfix.ads
 18K21*Fixed 251e22 19|3w18 3r41
 X 12 a-strunb.ads
 76K21*Unbounded 489e26 19|4w18 4r45
-100V13*To_String{string} 19|18s13 24s13 26s13
+94V13*To_Unbounded_String{79R9} 19|15s19
+100V13*To_String{string} 19|23s13 29s13 31s13
 X 14 a-textio.ads
 49K13*Text_IO 471e16 19|2w10 2r27
-242U14*Put 19|17s4 19s4 21s4 23s4 25s4 27s4
-263U14*Put_Line 19|15s4 16s4 18s4 20s4 22s4 24s4 26s4 28s4 33s7 34s7
+242U14*Put 19|22s4 24s4 26s4 28s4 30s4 32s4
+263U14*Put_Line 19|20s4 21s4 23s4 25s4 27s4 29s4 31s4 33s4 38s7 39s7
 X 19 start.adb
-8U11*main 8b11 36l5 36t9
+8U11*main 8b11 41l5 41t9
 9i4 i{integer}
-10r4 parameter{20|6R9} 14m4 18r23 20r28 22r28 24r23 26r23 28r28 30r21
+10r4 parameter{20|7R9} 19m4 23r23 25r28 27r28 29r23 31r23 33r28 35r21
+11a4 input{20|16A9} 15m7 18r31
+14i8 i{integer} 15r13 15r48
 X 20 param.ads
-3K9*Param 19|5w6 5r17 20|24e10
-6R9*params 19|10r24 20|14e14
-8r8*date{12|79R9} 19|18r33
-9b8*isHelp{boolean} 19|20r38
-10b8*isRecursive{boolean} 19|22r38
-11r8*fileName{12|79R9} 19|24r33
-12r8*directory{12|79R9} 19|26r33
-13b8*isWholePath{boolean} 19|28r38
-17U14*initialize 19|13s4
-19V13*getParams{6R9} 19|14s17
+4K9*Param 19|5w6 5r17 11r12 20|26e10
+7R9*params 19|10r24 20|15e14
+9r8*date{12|79R9} 19|23r33
+10b8*isHelp{boolean} 19|25r38
+11b8*isRecursive{boolean} 19|27r38
+12r8*fileName{12|79R9} 19|29r33
+13r8*directory{12|79R9} 19|31r33
+14b8*isWholePath{boolean} 19|33r38
+16A9*Input(12|79R9)<integer> 19|11r18
+19U14*initialize 19|18s4
+21V13*getParams{7R9} 19|19s17
 X 21 search.ads
 3K9*Search 19|6w6 6r18 21|8e11
-4U14*Search_Directory 19|30s4
+4U14*Search_Directory 19|35s4
 

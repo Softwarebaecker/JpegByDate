@@ -1,0 +1,130 @@
+V "GNAT Lib v2014"
+M P W=b
+A -O1
+A -gnatA
+A -g
+A -gnatyM0
+A -gnata
+A -mtune=generic
+A -march=pentiumpro
+P SS ZX
+
+RN
+RV NO_DISPATCH
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_SECONDARY_STACK
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U test_runner%b		test_runner.adb		cdcd05d2 NE OO SU
+W aunit%s		aunit.adb		aunit.ali
+W aunit.options%s	aunit-options.ads	aunit-options.ali
+W aunit.reporter%s	aunit-reporter.ads	aunit-reporter.ali
+W aunit.reporter.gnattest%s  aunit-reporter-gnattest.adb  aunit-reporter-gnattest.ali
+W aunit.run%s		aunit-run.adb		aunit-run.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.command_line%s	g-comlin.adb		g-comlin.ali
+W gnattest_generated%s	gnattest_generated.ads	gnattest_generated.ali
+W gnattest_main_suite%s	gnattest_main_suite.adb	gnattest_main_suite.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+D ada.ads		20140406181354 3ffc8e18 ada%s
+D a-calend.ads		20140406181358 d86d6c8c ada.calendar%s
+D a-charac.ads		20140406181358 2d3ec45b ada.characters%s
+D a-chlat1.ads		20140406181358 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20140406181358 ea62afbc ada.command_line%s
+D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
+D a-finali.ads		20140406181358 69f99942 ada.finalization%s
+D a-stream.ads		20140406181354 1a984740 ada.streams%s
+D a-string.ads		20140406181358 90ac6797 ada.strings%s
+D a-strmap.ads		20140406181358 e8bb714a ada.strings.maps%s
+D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
+D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
+D ada_containers.ads	20140410144134 11329e00 ada_containers%s
+D ada_containers-aunit_lists.ads  20140410144134 d9ebc89a ada_containers.aunit_lists%s
+D aunit.ads		20161031084100 76cdf7c6 aunit%s
+D aunit-assertions.ads	20161031091700 b7f9ecd6 aunit.assertions%s
+D aunit-options.ads	20140410144134 6e5a02a6 aunit.options%s
+D aunit-reporter.ads	20140410144134 1856e702 aunit.reporter%s
+D aunit-reporter-gnattest.ads  20140410144134 8485ad0b aunit.reporter.gnattest%s
+D aunit-run.ads		20140410144134 34d20999 aunit.run%s
+D aunit-run.adb		20140410144134 1550dc91 aunit.run%b
+D aunit-simple_test_cases.ads  20140410144134 4111c32f aunit.simple_test_cases%s
+D aunit-test_filters.ads  20140410144134 f10b2127 aunit.test_filters%s
+D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
+D aunit-test_suites.ads	20140410144134 6821dc24 aunit.test_suites%s
+D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
+D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D gnat.ads		20140406181358 fd2ad2f1 gnat%s
+D g-comlin.ads		20140406181354 e5012573 gnat.command_line%s
+D g-dirope.ads		20140406181354 940c4438 gnat.directory_operations%s
+D g-os_lib.ads		20140406181358 0db74523 gnat.os_lib%s
+D g-regexp.ads		20140406181358 691be386 gnat.regexp%s
+D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
+D g-string.ads		20140406181356 c6abc540 gnat.strings%s
+D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
+D gnattest_main_suite.ads  20161030095946 868035b7 gnattest_main_suite%s
+D system.ads		20140406181358 5fc8ae56 system%s
+D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
+D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
+D s-os_lib.ads		20140406181356 1b2477e1 system.os_lib%s
+D s-parame.ads		20140406181358 06da98b2 system.parameters%s
+D s-pooglo.ads		20140406181356 542f33d0 system.pool_global%s
+D s-regexp.ads		20140406181358 9c7d27a7 system.regexp%s
+D s-secsta.ads		20140406181358 86a2856d system.secondary_stack%s
+D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
+D s-stache.ads		20140406181354 a37c21ec system.stack_checking%s
+D s-stalib.ads		20140406181354 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140406181356 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20140406181354 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20140406181356 b16154c2 system.storage_pools%s
+D s-stposu.ads		20140406181354 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20140406181358 aedef97e system.stream_attributes%s
+D s-string.ads		20140406181358 8fe54fb7 system.strings%s
+D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
+D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D test_runner.adb	20161030095946 43092efe test_runner%b
+D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
+X 16 aunit.ads
+34K9*AUnit 48e10 58|5r6 6r6 7r6 7r25 15r28 16r15
+X 18 aunit-options.ads
+34K15*Options 50e18 58|7w12 7r31
+36R9*AUnit_Options 41e14 58|17r17
+39b7*Report_Successes{boolean} 58|20m15 38m33 40m33
+44r4*Default_Options{36R9} 58|17r34
+X 19 aunit-reporter.ads
+35K15*Reporter 46e19 58|5r12 16r21
+X 20 aunit-reporter-gnattest.ads
+34K24*GNATtest 41e28 58|5w21 16r30
+36R9*GNATtest_Reporter<19|37R9> 36e59 58|16r39
+X 21 aunit-run.ads
+38K15*Run 65e14 58|6w12 15r34
+42u14*Test_Runner 58|15r38
+X 26 aunit-test_suites.ads
+44P9*Access_Test_Suite(43R9)
+X 29 gnat.ads
+34K9*GNAT 37e9 58|10r6 10r29 25r15 47r12
+X 30 g-comlin.ads
+287K14*Command_Line 1201e22 58|10w11 10r34 25r20 47r17
+304U14*Initialize_Option_Scan 58|23s7
+366V13*Full_Switch{string} 58|29s19 36s19
+377V13*Getopt{character} 58|25s33
+475V13*Parameter{string} 58|30s22 32s25 37s22 39s25
+494X4*Invalid_Switch 58|47r30
+X 36 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 58|12w6 31r22 33r22
+3b4*Default_Assert_Value{boolean} 58|31m41 33m41
+X 37 gnattest_main_suite.ads
+7K9*Gnattest_Main_Suite 11e24 58|8w6 8r31
+9V13*Suite{26|44P9} 58|15r51
+X 58 test_runner.adb
+14U11*Test_Runner 14b11 51l5 51t16
+15U14 Runner[21|42] 22|79b14 58|50s4
+16r4 Reporter{20|36R9} 50r12
+17r4 GT_Options{18|36R9} 20m4 38m22 40m22 50r22
+
