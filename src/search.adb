@@ -31,6 +31,9 @@ Package body Search is
       while Directories.More_Entries(currentSearch) loop
          Directories.Get_Next_Entry(currentSearch, dirEnt);
          begin
+            --reset addFileToVector
+            addFileToVector := True;
+
             --when isRecursive is TRUE search recursilvely
             if parameters.isRecursive then
 
