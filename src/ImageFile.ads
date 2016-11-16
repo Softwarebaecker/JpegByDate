@@ -13,9 +13,9 @@ Package ImageFile is
       filename : Unbounded_String;
       fileSize : Integer;
       date : String(1..10);
-      Time : String(1..8);
-      ImageWidth : Integer;
-      ImageHeight : Integer;
+      time : String(1..8);
+      imageWidth : Integer;
+      imageHeight : Integer;
    end record;
 
    type ExifDataAccess is access ExifData;

@@ -144,7 +144,7 @@ Package body ImageFile is
       ExifDatas.date := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderPos + 1, 10);
       ExifDatas.date := convertDate(ExifDatas.date);
       --read Time
-      ExifDatas.Time := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8);
+      ExifDatas.time := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8);
 
       Set_Index(File, saveIndex);
    end readDateTime;
