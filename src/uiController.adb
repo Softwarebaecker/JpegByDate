@@ -2,13 +2,13 @@
 --output on an user-called interface. This handling is set throught parameters
 --inserted from the user.
 Package body UIController is
-   vec : FileVector.Vector;
 
    --this procedure starts the search and gives to received vector to the cli
    procedure startFileSearch(parameter : Param.params)is
       vec : FileVector.Vector;
    begin
       vec := Search.searchDirectory(parameter);
+
       startUI(vec => vec, parameter => parameter);
 
    end startFileSearch;
