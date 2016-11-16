@@ -5,9 +5,8 @@ Package body Cli is
       --format : array(1..2) of Character;
    begin
 
-
-
-
+      --Parametresized view
+      --Output depends on parameters
       Ada.Text_IO.Put_Line("Found Images: " & Integer'Image(Integer(Search.FileVector.Length(files))));
       Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
       if parameter.isWholePath then
@@ -20,13 +19,13 @@ Package body Cli is
       end if;
       Ada.Text_IO.Put_Line(" #" & HT & "Date"  & HT&HT&"Time"& HT & HT & "Name");
       Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
+
       --Output Vector
+      --Loop from beginning to end from the vector. While in loop extraction of Data.
       for i in files.First_Index .. files.Last_Index loop
          x:= x+1;
          --SUIO.Put_Line (Item => i'Img & " " & files.Element(i).filename);
          SUIO.Put_Line (Item =>x'Img&HT&files.Element(i).date & HT & files.Element(i).time &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
-
-
       end loop;
        Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
 
