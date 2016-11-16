@@ -3,6 +3,7 @@ Package body Search is
    function searchDirectory (parameters : Param.params) return FileVector.Vector
      --searches the directory Directory for .jpg files and prints files with the pattern Pattern
    is
+      parametersCopy : Param.params;
       currentSearch : Directories.Search_Type;
       dirEnt : Directories.Directory_Entry_Type;
       exifDataObj : ImageFile.ExifDataAccess;
@@ -21,15 +22,38 @@ Package body Search is
       Directories.Start_Search(Search    => currentSearch,
                                Directory => Ada.Strings.Unbounded.To_String(parameters.directory),
                                Pattern   => filePattern);
+
+      --skip files "." and ".."
+      Directories.Get_Next_Entry(currentSearch, dirEnt);
+      Directories.Get_Next_Entry(currentSearch, dirEnt);
+
       --filter the correct files
       while Directories.More_Entries(currentSearch) loop
          Directories.Get_Next_Entry(currentSearch, dirEnt);
          begin
+            --when isRecursive is TRUE search recursilvely
+            if parameters.isRecursive then
+
+               --when the dirEnt is a directory, call searchDirectory
+               if Directories.Kind(Directory_Entry => dirEnt) = Directories.Directory then
+
+                  --change the parameter to the found directory
+                  parametersCopy := parameters;
+                  parametersCopy.directory := Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt));
+
+                  --call searchDirectory again and append the returned vector
+                  FileVector.Append(Container => fileVectorObj,
+                                    New_Item  => searchDirectory(parametersCopy));
+               end if;
+            end if;
+
             --only call create if dirEnt is a readable file
             if Directories.Kind(Directory_Entry => dirEnt) = Directories.Ordinary_File then
+
                exifDataObj := ImageFile.create(Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt)));
 
                --add file to the vector if it fits the parameters
+
                --check if the file fits the date parameter
                if checkDate and then exifDataObj.date /= Ada.Strings.Unbounded.To_String(parameters.date) then
                   addFileToVector := False;
