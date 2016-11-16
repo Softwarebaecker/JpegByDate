@@ -1,1 +1,1 @@
-procedure main;
+procedure start;
