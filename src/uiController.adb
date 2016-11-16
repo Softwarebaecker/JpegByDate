@@ -9,16 +9,16 @@ Package body UIController is
       vec : FileVector.Vector;
    begin
       vec := Search.searchDirectory(parameter);
-      startUI(vec => vec);
+      startUI(vec => vec, parameter => parameter);
 
    end startFileSearch;
 
    --starts the output on the cli. this procedure is needed if another kind of
    --output should get implemented
-   procedure startUI(vec : FileVector.Vector) is
+   procedure startUI(vec : FileVector.Vector; parameter : Param.params) is
 
    begin
-      cli.displayMessage(vec);
+      cli.displayMessage(vec, parameter);
    end startUI;
 
 end UIController;
