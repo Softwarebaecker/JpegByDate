@@ -3,16 +3,33 @@ with Ada.Command_Line;
 
 Package Param is
 
+   --Type declaration for the attributes of params.
+   type DateType is new Unbounded_String;
+   --type FileNameType is new Unbounded_String;
+   --type DirectoryType is new Unbounded_String;
+   type ImageSizeType is new Integer range 1 .. Integer'Last;
+   type FileSizeType is new Integer range 1 .. Integer'Last;
+   type DateTimeType is new Unbounded_String;
+
    --in that type all input parameter information are stored
    type params is
      tagged record
-       date : Unbounded_String := To_Unbounded_String("");
-       isHelp : Boolean := false;
-       isRecursive : Boolean := false;
-       fileName : Unbounded_String := To_Unbounded_String("");
-       directory : Unbounded_String := To_Unbounded_String(".");
-       isWholePath : Boolean := false;
+      date : Unbounded_String := To_Unbounded_String("");
+      isHelp : Boolean := false;
+      isRecursive : Boolean := false;
+      fileName : Unbounded_String := To_Unbounded_String("");
+      directory : Unbounded_String := To_Unbounded_String(".");
+      isWholePath : Boolean := false;
+      isPipe : Boolean := false;
+      imageSizeX : ImageSizeType := 1;
+      imageSizeY : ImageSizeType := 1;
+      fileSize : FileSizeType := 1;
+      dateRangeStart : DateType := To_Unbounded_String("");
+      dateRangeEnd : DateType := To_Unbounded_String("");
+      dateTime : DateTimeType := To_Unbounded_String("");
+
    end record;
+
    type Input is array(Integer Range <>) of Unbounded_String;
    --reads all input parameters, extracts the information and stores it
    --inside of the type params.

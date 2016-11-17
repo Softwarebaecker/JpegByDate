@@ -11,7 +11,7 @@ Package body Param is
       i : Integer := 0;
       input : Unbounded_String;
       arg : Unbounded_String;
-      type paramlist is (d, h, r, f, dir, p);
+      type paramlist is (d, h, r, f, dir, p, pp, fis, ffs, fdr, fdt);
       help : Boolean := parameter.isHelp;
 
 
@@ -23,6 +23,14 @@ Package body Param is
       parameter.fileName := To_Unbounded_String("");
       parameter.directory := To_Unbounded_String(".");
       parameter.isWholePath := FALSE;
+      parameter.isPipe := false;
+      parameter.imageSizeX := 1;
+      parameter.imageSizeY := 1;
+      parameter.fileSize := 1;
+      parameter.dateRangeStart := To_Unbounded_String("");
+      parameter.dateRangeEnd := To_Unbounded_String("");
+      parameter.dateTime := To_Unbounded_String("");
+
 
       while i < Argument_Count loop
          i := i + 1;
@@ -60,6 +68,39 @@ Package body Param is
                when p =>
                   parameter.isWholePath := true;
 
+               when pp =>
+                  parameter.isPipe := true;
+
+               when fis =>
+                  i := i + 1;
+                  parameter.imageSizeX := ImageSizeType' Value(To_String(Argument(i)));
+                  i := i + 1;
+                  parameter.imageSizeY := ImageSizeType' Value(To_String(Argument(i)));
+
+               when ffs =>
+                  i := i + 1;
+                  parameter.fileSize := FileSizeType' Value(To_String(Argument(i)));
+
+               when fdr =>
+                  i := i + 1;
+                  if validateDate(To_String(Argument(i))) then
+                     parameter.dateRangeStart := DateType(Argument(i));
+                  else
+                     raise Constraint_Error;
+                  end if;
+
+                  i := i + 1;
+                  if validateDate(To_String(Argument(i))) then
+                     parameter.dateRangeEnd := DateType(Argument(i));
+                  else
+                     raise Constraint_Error;
+                  end if;
+
+               when fdt =>
+                  i := i + 1;
+                  parameter.dateTime := DateTimeType(Argument(i));
+
+
             end case;
          else
             raise Constraint_Error;
@@ -80,12 +121,12 @@ Package body Param is
 
    begin
       --Split input
-      year := date(1 .. 4);
-      month := date(6 .. 7);
-      day := date(9 .. 10);
+      year := date(date'First .. date'First + 3);
+      month := date(date'First + 5 .. date'First + 6);
+      day := date(date'First + 8 .. date'First + 9);
 
       --Date has correct syntax
-      if date(5) /= '-' or date(8) /= '-' then
+      if date(date'First + 4) /= '-' or date(date'First + 7) /= '-' then
          return false;
       end if;
 
