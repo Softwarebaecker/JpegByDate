@@ -1,0 +1,16 @@
+Debug Information:
+
+Date is 
+Help is FALSE
+Recursiv is FALSE
+File Name is 
+Directory is .
+Whole path is FALSE
+Debug Information:
+
+Date is 
+Help is FALSE
+Recursiv is FALSE
+File Name is 
+Directory is .
+Whole path is FALSE

@@ -1,0 +1,24 @@
+V "GNAT Lib v2014"
+A -O1
+A -gnatA
+A -g
+A -gnatyM0
+A -gnata
+A -mtune=generic
+A -march=pentiumpro
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U test_info%s		test_info.ads		e0e722b4 NE OO PK
+
+D system.ads		20140406181358 5fc8ae56 system%s
+D test_info.ads		20161102130356 e0e722b4 test_info%s
+D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
+X 2 test_info.ads
+1K9*Test_Info 4l5 4e14
+2a4*SW_Version{string}
+3a4*CURRENT_DATE{string}
+

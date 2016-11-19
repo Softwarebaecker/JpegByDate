@@ -1,0 +1,16 @@
+with "aunit";
+with "..\..\..\jpegbydate.gpr";
+project test_jpegbydate is
+
+   for Source_Dirs use
+     ("..\tests",
+      "common");
+
+   package Compiler is
+      for Default_Switches ("ada") use
+        ("-g", "-O1", "-gnatyM0", "-gnata");
+   end Compiler;
+
+   package Ide renames jpegbydate.Ide;
+
+end test_jpegbydate;

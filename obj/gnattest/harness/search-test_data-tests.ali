@@ -1,0 +1,116 @@
+V "GNAT Lib v2014"
+A -O1
+A -gnatA
+A -g
+A -gnatyM0
+A -gnata
+A -mtune=generic
+A -march=pentiumpro
+P SS ZX
+
+RN
+RV NO_DISPATCHING_CALLS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U search.test_data.tests%b  search-test_data-tests.adb  f755a72f NE OO PK
+W aunit%s		aunit.adb		aunit.ali
+W aunit.assertions%s	aunit-assertions.adb	aunit-assertions.ali
+W search.test_data%s	search-test_data.adb	search-test_data.ali
+
+U search.test_data.tests%s  search-test_data-tests.ads  e8acdab6 EE OO PF PK
+W ada.tags%s		a-tags.adb		a-tags.ali
+W gnattest_generated%s	gnattest_generated.ads	gnattest_generated.ali
+W search.test_data%s	search-test_data.adb	search-test_data.ali
+W system%s		system.ads		system.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+
+D ada.ads		20140406181354 3ffc8e18 ada%s
+D a-calend.ads		20140406181358 d86d6c8c ada.calendar%s
+D a-charac.ads		20140406181358 2d3ec45b ada.characters%s
+D a-chlat1.ads		20140406181358 66457d31 ada.characters.latin_1%s
+D a-comlin.ads		20140406181358 ea62afbc ada.command_line%s
+D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
+D a-finali.ads		20140406181358 69f99942 ada.finalization%s
+D a-stream.ads		20140406181354 1a984740 ada.streams%s
+D a-string.ads		20140406181358 90ac6797 ada.strings%s
+D a-strmap.ads		20140406181358 e8bb714a ada.strings.maps%s
+D a-strunb.ads		20140406181358 3f91d4c5 ada.strings.unbounded%s
+D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
+D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
+D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
+D ada_containers.ads	20140410144134 11329e00 ada_containers%s
+D ada_containers-aunit_lists.ads  20140410144134 d9ebc89a ada_containers.aunit_lists%s
+D aunit.ads		20161031084100 76cdf7c6 aunit%s
+D aunit-assertions.ads	20161031091700 b7f9ecd6 aunit.assertions%s
+D aunit-test_fixtures.ads  20140410144134 faadeab5 aunit.test_fixtures%s
+D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
+D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
+D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D gnat.ads		20140406181358 fd2ad2f1 gnat%s
+D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
+D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
+D param.ads		20161101142942 bdf697f5 param%s
+D search.ads		20161024133446 a35a997e search%s
+D search-test_data.ads	20161030095946 46ed0565 search.test_data%s
+D search-test_data-tests.ads  20161030095946 9d09420f search.test_data.tests%s
+D search-test_data-tests.adb  20161030095946 dda509f6 search.test_data.tests%b
+D system.ads		20140406181358 5fc8ae56 system%s
+D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
+D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
+D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
+D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
+D s-maccod.ads		20140406181358 0fbb7bce system.machine_code%s
+D s-parame.ads		20140406181358 06da98b2 system.parameters%s
+D s-pooglo.ads		20140406181356 542f33d0 system.pool_global%s
+D s-secsta.ads		20140406181358 86a2856d system.secondary_stack%s
+D s-soflin.ads		20140406181358 aa763b52 system.soft_links%s
+D s-stache.ads		20140406181354 a37c21ec system.stack_checking%s
+D s-stalib.ads		20140406181354 fa0a3617 system.standard_library%s
+D s-stoele.ads		20140406181356 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20140406181354 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20140406181356 b16154c2 system.storage_pools%s
+D s-stposu.ads		20140406181354 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20140406181358 aedef97e system.stream_attributes%s
+D s-string.ads		20140406181358 8fe54fb7 system.strings%s
+D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
+D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
+D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
+X 16 ada_containers-aunit_lists.ads
+53R9*Cursor
+X 17 aunit.ads
+34K9*AUnit 48e10 30|8r6 8r28 25r7
+X 18 aunit-assertions.ads
+44K15*Assertions 155e21 30|8w12 8r34 25r13
+48U14*Assert 30|25s24
+101U14*Init_Test
+104U14*Clear_Failures
+107V13*Has_Failures{boolean}
+110R9*Failure_Iter<16|53R9[145]>
+113V13*First_Failure{110R9}
+X 25 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 29|5w6 9r21 30|26r10
+2K12*GNATtest_Standard=2:38 29|9r40
+3b4*Default_Assert_Value{boolean} 30|26r29
+X 27 search.ads
+3K9*Search 8e11 29|7r9 9r58 15r5 30|10r14 33r5
+X 28 search-test_data.ads
+8K16*Test_Data 27|3k9 28|18e21 29|7r16 9r65 15r12 30|10r21 33r12
+11R9*Test<19|78R9> 13e20 29|9r75
+15U14*Set_Up<19|80p14>
+16U14*Tear_Down<19|83p14>
+X 29 search-test_data-tests.ads
+7K26*Tests 28|8k16 29|15l22 15e27 30|10b31 33l22 33t27
+9R9*Test<28|11R9> 18|101p14 104p14 107p13 113p13 28|15P14 16P14 29|10e20
+. 12p14 12r64 30|14r57 15r64 17r57
+12U14*Test_Search_Directory_666e42 12=44 30|15b14
+12r44 Gnattest_T{9R9} 30|15b44
+X 30 search-test_data-tests.adb
+14U14 Test_Search_Directory 14=37 15r78 17b14 30l8 30t29
+14r37 Gnattest_T{29|9R9} 17b37 21r28
+

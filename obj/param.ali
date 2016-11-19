@@ -3,6 +3,7 @@ A -gnatA
 P SS ZX
 
 RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_DISPATCHING_CALLS
 RV NO_ENUMERATION_MAPS
 RV NO_EXCEPTION_HANDLERS
@@ -10,6 +11,7 @@ RV NO_EXCEPTION_PROPAGATION
 RV NO_EXCEPTIONS
 RV NO_IO
 RV NO_IMPLICIT_CONDITIONALS
+RV NO_IMPLICIT_LOOPS
 RV NO_LOCAL_ALLOCATORS
 RV NO_NESTED_FINALIZATION
 RV NO_SECONDARY_STACK
@@ -19,12 +21,12 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U param%b		param.adb		592d94d3 OO PK KM
+U param%b		param.adb		abf7cd23 OO PK KM
 W ada%s			ada.ads			ada.ali
-W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
+W ada.strings.maps%s	a-strmap.adb		a-strmap.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
@@ -34,15 +36,18 @@ W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
 W system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
 W system.val_enum%s	s-valenu.adb		s-valenu.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
 
-U param%s		param.ads		6ebc8f18 EE OO PF PK KM
+U param%s		param.ads		6805ec8c EE OO PF PK KM
 W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.streams%s		a-stream.adb		a-stream.ali
 W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W system%s		system.ads		system.ali
+W system.finalization_masters%s  s-finmas.adb	s-finmas.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
@@ -69,8 +74,8 @@ D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
 D interfac.ads		20140406181358 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
-D param.ads		20161024160838 512d5bdd param%s
-D param.adb		20161024124934 35e275cd param%b
+D param.ads		20161101142942 bdf697f5 param%s
+D param.adb		20161101154600 293a3ee3 param%b
 D system.ads		20140406181358 5fc8ae56 system%s
 D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
 D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
@@ -96,45 +101,71 @@ D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
 D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
 D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
 D s-valenu.ads		20140406181358 bb1a4295 system.val_enum%s
+D s-valint.ads		20140406181356 48a52a3f system.val_int%s
 D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 19e8 19|1r6 1r33 20|1r6 1r28 2r6 2r23 3r6 3r29 4r6 4r33
+16K9*Ada 19e8 19|1r6 1r33 2r6 20|1r6 1r23 2r6 2r29 3r6 3r33 4r6 4r28 96r10
+. 97r13 97r50
 X 4 a-comlin.ads
-38K13*Command_Line 139e21 20|1w10 1r32
-41V13*Argument_Count{natural} 20|16s17
-48V13*Argument{string} 20|18s24 28s58 31s59
+38K13*Command_Line 139e21 19|2w10
 X 9 a-string.ads
-16K13*Strings 35e16 19|1r10 1r37 20|3r10 3r33 4r10 4r37
+16K13*Strings 35e16 19|1r10 1r37 20|2r10 2r33 3r10 3r37 4r10 4r32 96r14 97r17
+. 97r54
 X 10 a-strfix.ads
-18K21*Fixed 251e22 20|3w18 3r41
-179V13*Delete{string} 20|18s17
+18K21*Fixed 251e22 20|2w18 2r41 96r22 97r25 97r62
+88V13*Count{natural} 20|96s28 97s31 97s68
+X 11 a-strmap.ads
+38K21*Maps 411e21 20|4w18 4r40
 X 12 a-strunb.ads
-76K21*Unbounded 489e26 19|1w18 1r45 20|4w18 4r45
-79R9*Unbounded_String<6|43R9> 473e14 19|11r19 12r20
-94V13*To_Unbounded_String{79R9} 19|12s40 20|28s38 31s39
+76K21*Unbounded 489e26 19|1w18 1r45 20|3w18 3r45
+79R9*Unbounded_String<6|43R9> 473e14 19|9r15 12r19 13r20 16r45 20|12r15 13r13
+94V13*To_Unbounded_String{79R9} 19|9s35 12s39 13s40 20|19s25 22s29 23s30
+100V13*To_String{string} 20|31s34 34s35
+139V13*Element{character} 20|29s13
+368V13*Delete{79R9} 20|30s20
 X 14 a-textio.ads
-49K13*Text_IO 471e16 20|2w10 2r27
+49K13*Text_IO 471e16 20|1w10 1r27
 X 19 param.ads
-3K9*Param 21l5 21e10 20|6b14 45l5 45t10
-6R9*params 14e14 19p13 19r30 20|8r24 40r30
-8b8*isWildcard{boolean} 20|21m26
-9b8*isHelp{boolean} 20|14r35 23m26
-10b8*isRecursive{boolean} 20|25m26
-11r8*fileName{12|79R9} 20|28m26
-12r8*directory{12|79R9} 20|31m26
-13b8*isWholePath{boolean} 20|33m26
-17U14*initialize 20|10b14 38l8 38t18
-19V13*getParams{6R9} 20|40b13 43l8 43t17
+4K9*Param 24E13 26l5 26e10 20|6b14 130l5 130t10
+7R9*params 15e14 21p13 21r30 20|8r24 125r30
+9r8*date{12|79R9} 20|19m17 35m32
+10b8*isHelp{boolean} 20|15r35 20m17 40m29
+11b8*isRecursive{boolean} 20|21m17 42m29
+12r8*fileName{12|79R9} 20|22m17 45m29
+13r8*directory{12|79R9} 20|23m17 48m29
+14b8*isWholePath{boolean} 20|24m17 50m29
+16A9*Input(12|79R9)<integer> 19r62 20|10r63
+19U14*initialize 19>25 19>51 20|10b15 56l8 56t18
+19i25 Argument_Count{integer} 20|10b26 26r17
+19a51 Argument{16A9} 20|10b52 28r19 34r45 35r40 45r41 48r42
+21V13*getParams{7R9} 20|125b13 128l8 128t17
+24V13 validateDate{boolean} 24>26 20|34s22 58b13 123l8 123t20
+24a26 date{string} 20|58b26 70r15 71r16 72r14 74r10 74r28 96r34 97r74
 X 20 param.adb
-8r4 parameter{19|6R9} 14r25 21m16 23m16 25m16 28m16 31m16 33m16 42r14
-11i7 i{integer} 16r13 17m10 17r15 18r33 27m16 27r21 28r67 30m16 30r21 31r68
-12a7 arg{string} 18m10 19r31
-13E12 paramlist 13e43 19r15
-13n26 d{13E12} 20r18
-13n29 h{13E12} 22r18
-13n32 r{13E12} 24r18
-13n35 f{13E12} 26r18
-13n38 s{13E12} 29r18
-13n41 p{13E12} 32r18
-14b7 help{boolean}
+8r4 parameter{19|7R9} 15r25 19m7 20m7 21m7 22m7 23m7 24m7 35m22 40m19 42m19
+. 45m19 48m19 50m19 127r14
+11i7 i{integer} 26r13 27m10 27r15 28r28 33m19 33r24 34r54 35r49 44m19 44r24
+. 45r50 47m19 47r24 48r51
+12r7 input{12|79R9} 28m10 29r21 30r27
+13r7 arg{12|79R9} 30m13 31r44
+14E12 paramlist 14e45 31r18
+14n26 d{14E12} 32r21
+14n29 h{14E12} 39r21
+14n32 r{14E12} 41r21
+14n35 f{14E12} 43r21
+14n38 dir{14E12} 46r21
+14n43 p{14E12} 49r21
+15b7 help{boolean}
+59a7 year{string} 70m7 79r14 79r44 97r37 105r30
+60a7 month{string} 71m7 84r10 84r30 84r51 84r70 84r101 84r120 85r13 85r44
+. 85r63 85r95 85r114 98r33 106r30
+61a7 day{string} 72m7 90r10 90r28 90r47 90r75 90r103 90r120 91r13 91r42 91r71
+. 91r101 91r118 99r33 107r30
+62i7 y{integer} 105m10 109r13 109r30 109r48
+63i7 m{integer} 98m13 100r33 106m10 113r30 115r16
+64i7 d{integer} 99m13 100r16 107m10 113r13 115r26
+65A12 DPM(integer)<integer> 66r22
+66a7 daysPerMonth{65A12} 100r20 113r17
+67b7 isLeapYear{boolean} 110m13 115r41 118m10
+78i11 i{integer} 79r19 79r49
 
