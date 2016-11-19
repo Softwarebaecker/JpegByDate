@@ -11,6 +11,7 @@ with Ada.Directories; use Ada.Directories;
 package Cli is
    package SUIO renames Ada.Text_IO.Unbounded_IO;
    package PU renames Ada.Strings.Unbounded;
+   x:Integer:=0;
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params );
 
 end Cli;

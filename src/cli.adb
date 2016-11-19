@@ -1,7 +1,7 @@
 Package body Cli is
 
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params ) is
-      x:Integer:=0;
+
       --format : array(1..2) of Character;
    begin
       if parameter.isPipe then
