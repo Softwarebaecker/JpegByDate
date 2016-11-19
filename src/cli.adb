@@ -4,7 +4,11 @@ Package body Cli is
       x:Integer:=0;
       --format : array(1..2) of Character;
    begin
-
+      if parameter.isPipe then
+         for i in files.First_Index .. files.Last_Index loop
+            SUIO.Put_Line(Item => files.Element(i).filename);
+            end loop;
+      else
       --Parametresized view
       --Output depends on parameters
       Ada.Text_IO.Put_Line("Found Images: " & Integer'Image(Integer(Search.FileVector.Length(files))));
@@ -28,7 +32,7 @@ Package body Cli is
          SUIO.Put_Line (Item =>x'Img&HT&files.Element(i).date & HT & files.Element(i).time &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
       end loop;
        Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
-
+         end if;
 
    end displayMessage;
 
