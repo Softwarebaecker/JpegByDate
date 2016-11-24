@@ -29,7 +29,7 @@ Package body Cli is
       for i in files.First_Index .. files.Last_Index loop
          x:= x+1;
          --SUIO.Put_Line (Item => i'Img & " " & files.Element(i).filename);
-         SUIO.Put_Line (Item =>x'Img&HT&files.Element(i).date & HT & files.Element(i).time &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
+         SUIO.Put_Line (Item =>x'Img & HT & String(files.Element(i).date) & HT & String(files.Element(i).time) &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
       end loop;
        Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
          end if;

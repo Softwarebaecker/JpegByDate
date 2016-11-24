@@ -58,7 +58,7 @@ Package body Search is
                --add file to the vector if it fits the parameters
 
                --check if the file fits the date parameter
-               if checkDate and then exifDataObj.date /= Ada.Strings.Unbounded.To_String(parameters.date) then
+               if checkDate and then String(exifDataObj.date) /= Ada.Strings.Unbounded.To_String(parameters.date) then
                   addFileToVector := False;
                end if;
 

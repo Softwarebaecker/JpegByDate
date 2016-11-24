@@ -127,7 +127,7 @@ Package body ImageFile is
 
    procedure readFileSize is
    begin
-      ExifDatas.fileSize := Integer(Size(File));
+      ExifDatas.fileSize := FileSizeType(Size(File));
    end readFileSize;
 
    procedure readDateTime is
@@ -141,10 +141,10 @@ Package body ImageFile is
       saveIndex := Index(File);
 
       --read Date
-      ExifDatas.date := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderPos + 1, 10);
+      ExifDatas.date := DateType(readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + TIFFHeaderPos + 1, 10));
       ExifDatas.date := convertDate(ExifDatas.date);
       --read Time
-      ExifDatas.time := readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8);
+      ExifDatas.time := TimeType(readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8));
 
       Set_Index(File, saveIndex);
    end readDateTime;
@@ -206,11 +206,11 @@ Package body ImageFile is
 
    end readString;
 
-   function convertDate(Date : String) return String is
-      returnString : String(1..10) := Date;
+   function convertDate(Date : DateType) return DateType is
+      returnString : DateType := Date;
    begin
-      returnString := Ada.Strings.Fixed.Overwrite(returnString, 5, "-");
-      returnString := Ada.Strings.Fixed.Overwrite(returnString, 8, "-");
+      returnString := DateType(Ada.Strings.Fixed.Overwrite(String(returnString), 5, "-"));
+      returnString := DateType(Ada.Strings.Fixed.Overwrite(String(returnString), 8, "-"));
 
       return returnString;
    end convertDate;

@@ -3,6 +3,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Streams.Stream_IO; use Ada.Streams.Stream_IO;
 with Ada.Strings.Bounded;
 with Ada.Strings.Fixed;
+with GlobelTyps; use GlobelTyps;
 
 with Ada.Text_IO.Unbounded_IO;
 
@@ -11,11 +12,11 @@ Package ImageFile is
    type ExifData is
      tagged record
       filename : Unbounded_String;
-      fileSize : Integer;
-      date : String(1..10);
-      time : String(1..8);
-      imageWidth : Integer;
-      imageHeight : Integer;
+      fileSize : FileSizeType;
+      date : DateType;
+      time : TimeType;
+      imageWidth : ImageSizeType;
+      imageHeight : ImageSizeType;
    end record;
 
    type ExifDataAccess is access ExifData;
@@ -49,6 +50,6 @@ Package ImageFile is
    function readInt(ByteCount : Integer) return Integer;
    function readString(Position : Ada.Streams.Stream_IO.Positive_Count;
                        Length : Integer) return String;
-   function convertDate(Date : String) return String;
+   function convertDate(Date : DateType) return DateType;
 
 end ImageFile;
