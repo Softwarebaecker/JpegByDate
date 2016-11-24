@@ -112,14 +112,23 @@ Package body ImageFile is
             readDateTime;
             entryCount := entryCount - 1;
          else if readTag = Integer(16#8769#) then
-               --readSubDir
+               --read SubDir
                Set_Index(File, Index(File) + 6);
                subDirPos := readInt(4);
                Set_Index(File, Ada.Streams.Stream_IO.Positive_Count(subDirPos) + TIFFHeaderPos + 1);
                entryCount := readInt(2);
-            else
-               Set_Index(File, Index(File) + 10);
-               entryCount := entryCount - 1;
+            else if readTag = Integer(16#A002#) then
+                  --read X-size
+                  readImageWidth;
+               else if readTag = Integer(16#A003#) then
+                     --read Y-size
+                     readImageHeight;
+                  else
+                     Set_Index(File, Index(File) + 10);
+                     entryCount := entryCount - 1;
+                  end if;
+               end if;
+
             end if;
          end if;
       end loop;
@@ -150,18 +159,32 @@ Package body ImageFile is
    end readDateTime;
 
    procedure readImageWidth is
+      VariableType : Integer;
    begin
-      -- width =  A002
 
-      Ada.Text_IO.Put_Line("width");
+      --read Type;
+      VariableType := readInt(2);
+      Set_Index(File, Index(File) + 4);
+      if VariableType = 3 then
+         ExifDatas.imageWidth := ImageSizeType(readInt(2));
+      else
+         ExifDatas.imageWidth := ImageSizeType(readInt(4));
+      end if;
 
    end readImageWidth;
 
    procedure readImageHeight is
+      VariableType : Integer;
    begin
-      -- Height =  A003
 
-      Ada.Text_IO.Put_Line("Height");
+      --read Type;
+      VariableType := readInt(2);
+      Set_Index(File, Index(File) + 4);
+      if VariableType = 3 then
+         ExifDatas.imageHeight := ImageSizeType(readInt(2));
+      else
+         ExifDatas.imageHeight := ImageSizeType(readInt(4));
+      end if;
 
    end readImageHeight;
 
