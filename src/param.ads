@@ -1,15 +1,8 @@
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Command_Line;
+with GlobelTyps;
 
 Package Param is
-
-   --Type declaration for the attributes of params.
-   type DateType is new Unbounded_String;
-   --type FileNameType is new Unbounded_String;
-   --type DirectoryType is new Unbounded_String;
-   type ImageSizeType is new Integer range 1 .. Integer'Last;
-   type FileSizeType is new Integer range 1 .. Integer'Last;
-   type DateTimeType is new Unbounded_String;
 
    --in that type all input parameter information are stored
    type params is
@@ -21,12 +14,12 @@ Package Param is
       directory : Unbounded_String := To_Unbounded_String(".");
       isWholePath : Boolean := false;
       isPipe : Boolean := false;
-      imageSizeX : ImageSizeType := 1;
-      imageSizeY : ImageSizeType := 1;
-      fileSize : FileSizeType := 1;
-      dateRangeStart : DateType := To_Unbounded_String("");
-      dateRangeEnd : DateType := To_Unbounded_String("");
-      dateTime : DateTimeType := To_Unbounded_String("");
+      imageSizeX : GlobelTyps.ImageSizeType := 1;
+      imageSizeY : GlobelTyps.ImageSizeType := 1;
+      fileSize : GlobelTyps.FileSizeType := 1;
+      dateRangeStart : GlobelTyps.DateType := "          ";
+      dateRangeEnd : GlobelTyps.DateType := "          ";
+      dateTime : GlobelTyps.TimeType := "        ";
 
    end record;
 

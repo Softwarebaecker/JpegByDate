@@ -2,6 +2,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
+with GlobelTyps;
 
 Package body Param is
 
@@ -27,9 +28,9 @@ Package body Param is
       parameter.imageSizeX := 1;
       parameter.imageSizeY := 1;
       parameter.fileSize := 1;
-      parameter.dateRangeStart := To_Unbounded_String("");
-      parameter.dateRangeEnd := To_Unbounded_String("");
-      parameter.dateTime := To_Unbounded_String("");
+      parameter.dateRangeStart := "          ";
+      parameter.dateRangeEnd := "          ";
+      parameter.dateTime := "        ";
 
 
       while i < Argument_Count loop
@@ -73,32 +74,32 @@ Package body Param is
 
                when fis =>
                   i := i + 1;
-                  parameter.imageSizeX := ImageSizeType' Value(To_String(Argument(i)));
+                  parameter.imageSizeX := GlobelTyps.ImageSizeType' Value(To_String(Argument(i)));
                   i := i + 1;
-                  parameter.imageSizeY := ImageSizeType' Value(To_String(Argument(i)));
+                  parameter.imageSizeY := GlobelTyps.ImageSizeType' Value(To_String(Argument(i)));
 
                when ffs =>
                   i := i + 1;
-                  parameter.fileSize := FileSizeType' Value(To_String(Argument(i)));
+                  parameter.fileSize := GlobelTyps.FileSizeType' Value(To_String(Argument(i)));
 
                when fdr =>
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.dateRangeStart := DateType(Argument(i));
+                     parameter.dateRangeStart := GlobelTyps.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
 
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.dateRangeEnd := DateType(Argument(i));
+                     parameter.dateRangeEnd := GlobelTyps.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
 
                when fdt =>
                   i := i + 1;
-                  parameter.dateTime := DateTimeType(Argument(i));
+                  parameter.dateTime := GlobelTyps.TimeType(To_String(Argument(i)));
 
 
             end case;
