@@ -22,7 +22,7 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT&"-fdr"&HT&"Search for a specific date range.");
          Ada.Text_IO.Put_Line(HT&"-fdt"&HT&"Search specific date time.");
       end if;
-      if parameter.isPipe then
+      if parameter.isPipe and parameter.isHelp /= true then
          for i in files.First_Index .. files.Last_Index loop
             SUIO.Put_Line(Item => files.Element(i).filename);
             end loop;
