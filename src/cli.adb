@@ -2,9 +2,9 @@ Package body Cli is
 
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params ) is
 
-      --format : array(1..2) of Character;
    begin
       if parameter.isHelp then
+
          Ada.Text_IO.Put_Line("");
          Ada.Text_IO.Put_Line("Usage:"&HT& "JpegByDate"&HT& "[-dir PATH] [-d YYYY-MM-DD] [-r] [-f] [-p] [-pp]");
          Ada.Text_IO.Put_Line(HT&HT& HT & "[-fis x,y] [-ffs] [-fdr YYYY-MM-DD, YYYY-MM-DD] [-fdt]");
@@ -25,7 +25,22 @@ Package body Cli is
       if parameter.isPipe and parameter.isHelp /= true then
          for i in files.First_Index .. files.Last_Index loop
             SUIO.Put_Line(Item => files.Element(i).filename);
-            end loop;
+         end loop;
+
+         --Getting current Date in String and replacing ":" with "-" and buidling excel file.
+         currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
+         for z in currentDate'range loop
+            if currentDate(z) = ':' then
+                currentDate(z) := '-';
+            end if;
+        end loop;
+
+         xl.Create("Image Search from " & currentDate & ".xls");
+         for i in files.First_Index .. files.Last_Index loop
+            xl.Put_Line(files.Element(i).filename);
+         end loop;
+         xl.Close;
+         --End of Excel creation.
       else
          if parameter.isHelp /= true then
 
