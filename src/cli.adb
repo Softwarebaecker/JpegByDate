@@ -3,7 +3,8 @@ Package body Cli is
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params ) is
 
    begin
-      if parameter.isHelp then
+
+      if parameter.isHelp or parameter.directory = "." then
 
          Ada.Text_IO.Put_Line("");
          Ada.Text_IO.Put_Line("Usage:"&HT& "JpegByDate"&HT& "[-dir PATH] [-d YYYY-MM-DD] [-r] [-f] [-p] [-pp]");
@@ -42,7 +43,7 @@ Package body Cli is
          xl.Close;
          --End of Excel creation.
       else
-         if parameter.isHelp /= true then
+         if parameter.isHelp /= true and parameter.directory /= "." then
 
       --Parametresized view
       --Output depends on parameters
