@@ -7,24 +7,14 @@ Package body Search is
       dirEnt : Directories.Directory_Entry_Type;
       exifDataObj : ImageFile.ExifDataAccess;
       fileVectorObj : FileVector.Vector;
-      checkDate : Boolean;
       addFileToVector : Boolean := True;
    begin
-      --check for parameters
-      if parameters.date = "" then
-         checkDate := False;
-      else
-         checkDate := True;
-      end if;
 
       --get all files in the directory
+      --files that don't fit the filename parameter, will not be returned
       Directories.Start_Search(Search    => currentSearch,
                                Directory => Ada.Strings.Unbounded.To_String(parameters.directory),
-                               Pattern   => filePattern);
-
-      --skip files "." and ".."
-      Directories.Get_Next_Entry(currentSearch, dirEnt);
-      Directories.Get_Next_Entry(currentSearch, dirEnt);
+                               Pattern   => To_String(parameters.fileName));
 
       --filter the correct files
       while Directories.More_Entries(currentSearch) loop
@@ -33,7 +23,17 @@ Package body Search is
             --reset addFileToVector
             addFileToVector := True;
 
-            --when isRecursive is TRUE search recursilvely
+            --skip file "."
+            if Directories.Simple_Name(dirEnt) = "." then
+               Directories.Get_Next_Entry(currentSearch, dirEnt);
+            end if;
+
+            --skip file ".."
+            if Directories.Simple_Name(dirEnt) = ".." then
+               Directories.Get_Next_Entry(currentSearch, dirEnt);
+            end if;
+
+            --when isRecursive is TRUE search recursively
             if parameters.isRecursive then
 
                --when the dirEnt is a directory, call searchDirectory
@@ -49,20 +49,15 @@ Package body Search is
                end if;
             end if;
 
-            --only call create if dirEnt is a readable file
+            --only call create, if dirEnt is a readable file
             if Directories.Kind(Directory_Entry => dirEnt) = Directories.Ordinary_File then
 
+               --if the dirEnt is not a file with the correct format, an
+               --exception is thrown
                exifDataObj := ImageFile.create(Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt)));
 
                --add file to the vector if it fits the parameters
-
-               --check if the file fits the date parameter
-               if checkDate and then String(exifDataObj.date) /= Ada.Strings.Unbounded.To_String(parameters.date) then
-                  addFileToVector := False;
-               end if;
-
-               --add file to the vector
-               if addFileToVector then
+               if checkParameters(parameters, exifDataObj) then
                   FileVector.Append(Container => fileVectorObj,
                                     New_Item  => exifDataObj);
                end if;
@@ -70,7 +65,7 @@ Package body Search is
             end if;
          exception
             when others =>
-            --   Ada.Text_IO.Put_Line("Exception OTHERS");
+               --the exception is just for restarting the loop
                null;
          end;
       end loop;
@@ -88,6 +83,8 @@ Package body Search is
       --if the values of the parameters are on their default values then they
       --don't have to be checked
       if parameters.date = To_Unbounded_String("") then
+        --parameters.date = image.date then
+         --fileFitsParameters := False;
          null;
       end if;
 
