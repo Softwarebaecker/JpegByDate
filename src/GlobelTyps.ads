@@ -10,4 +10,10 @@ package GlobelTyps is
    type FileSizeType is new Integer range 1 .. Integer'Last;
    type TimeType is new String(1..8);
 
-   end GlobelTyps;
+   function "="(date1, date2 : DateType) return Boolean;
+   function "<"(date1, date2 : DateType) return Boolean;
+   function ">"(date1, date2 : DateType) return Boolean;
+   function "<"(time1, time2 : TimeType) return Boolean;
+   function ">"(time1, time2 : TimeType) return Boolean;
+
+end GlobelTyps;
