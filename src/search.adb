@@ -1,7 +1,6 @@
 Package body Search is
    --See https://rosettacode.org/wiki/Walk_a_directory/Non-recursively#Ada
    function searchDirectory (parameters : Param.params) return FileVector.Vector
-     --searches the directory Directory for .jpg files and prints files with the pattern Pattern
    is
       parametersCopy : Param.params;
       currentSearch : Directories.Search_Type;
@@ -79,6 +78,57 @@ Package body Search is
       Directories.End_Search(currentSearch);
       return fileVectorObj;
    end searchDirectory;
+
+   function checkParameters(parameters : Param.params;
+                            image : ImageFile.ExifDataAccess) return Boolean
+   is
+      fileFitsParameters : Boolean := True;
+   begin
+      --check whether the image fits to the parameters
+      --if the values of the parameters are on their default values then they
+      --don't have to be checked
+      if parameters.date = To_Unbounded_String("") then
+         null;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.imageSizeX /= 1 and then
+        parameters.imageSizeX > image.imageWidth then
+         fileFitsParameters := False;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.imageSizeY /= 1 and then
+        parameters.imageSizeY > image.imageHeight then
+         fileFitsParameters := False;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.fileSize /= 1 and then
+        parameters.fileSize > image.fileSize then
+         fileFitsParameters := False;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.dateRangeStart /= "          " and then
+        parameters.dateRangeStart > image.date then
+         fileFitsParameters := False;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.dateRangeEnd /= "          " and then
+        parameters.dateRangeStart < image.date then
+         fileFitsParameters := False;
+      end if;
+
+      if fileFitsParameters and then
+        parameters.dateTime /= "        " and then
+        parameters.dateTime > image.time then
+         fileFitsParameters := False;
+      end if;
+
+      return fileFitsParameters;
+   end checkParameters;
 
    --function for the use with vectors
    function "="(imageFile1, imageFile2 : ImageFile.ExifDataAccess) return Boolean is
