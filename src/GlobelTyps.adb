@@ -4,9 +4,9 @@ Package body GlobelTyps is
    is
       isEqual : Boolean := True;
    begin
-      for i in 0 .. date1'Length loop
+      for i in 0 .. date1'Length - 1 loop
          if date1(date1'First + i) /= '?' then
-            if date1(date1'First + i) = date2(date2'First + i) then
+            if date1(date1'First + i) /= date2(date2'First + i) then
                isEqual := False;
             end if;
          end if;
@@ -19,7 +19,7 @@ Package body GlobelTyps is
    is
       isEarlier : Boolean := True;
    begin
-      for i in 0 .. date1'Length loop
+      for i in 0 .. date1'Length - 1 loop
          if date1(date1'First + i) /= '?' then
             if date1(date1'First + i) > date2(date2'First + i) then
                isEarlier := False;
@@ -39,7 +39,7 @@ Package body GlobelTyps is
    is
       isLater : Boolean := True;
    begin
-      for i in 0 .. date1'Length loop
+      for i in 0 .. date1'Length - 1 loop
          if date1(date1'First + i) /= '?' then
             if date1(date1'First + i) < date2(date2'First + i) then
                isLater := False;
@@ -59,7 +59,7 @@ Package body GlobelTyps is
    is
       isEarlier : Boolean := True;
    begin
-      for i in 0 .. time1'Length loop
+      for i in 0 .. time1'Length - 1 loop
          if time1(time1'First + i) /= '?' then
             if time1(time1'First + i) > time2(time2'First + i) then
                isEarlier := False;
