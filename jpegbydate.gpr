@@ -3,7 +3,7 @@ project Jpegbydate is
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Main use ("start.adb");
-   for Source_Files use ("cli.adb", "cli.ads", "excel_out.adb", "excel_out.ads", "GlobelTyps.adb", "GlobelTyps.ads", "ieee_754-generic_double_precision.adb", "ieee_754-generic_double_precision.ads", "ieee_754.ads", "ImageFile.adb", 
+   for Source_Files use ("cli.adb", "cli.ads", "excel_out.adb", "excel_out.ads", "GlobalTypes.adb", "GlobalTypes.ads", "ieee_754-generic_double_precision.adb", "ieee_754-generic_double_precision.ads", "ieee_754.ads", "ImageFile.adb", 
       "ImageFile.ads", "param.adb", "param.ads", "search.adb", "search.ads", "start.adb", "start.ads", "uiController.adb", "uiController.ads");
 
    package Ide is
