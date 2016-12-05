@@ -7,7 +7,7 @@ Package Param is
    --in that type all input parameter information are stored
    type params is
      tagged record
-      date : Unbounded_String := To_Unbounded_String("");
+      date : GlobelTyps.DateType := "          ";
       isHelp : Boolean := false;
       isRecursive : Boolean := false;
       fileName : Unbounded_String := To_Unbounded_String("");
@@ -20,6 +20,7 @@ Package Param is
       dateRangeStart : GlobelTyps.DateType := "          ";
       dateRangeEnd : GlobelTyps.DateType := "          ";
       dateTime : GlobelTyps.TimeType := "        ";
+      isExcelOutput : Boolean := false;
 
    end record;
 

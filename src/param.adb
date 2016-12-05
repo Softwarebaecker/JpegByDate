@@ -12,13 +12,12 @@ Package body Param is
       i : Integer := 0;
       input : Unbounded_String;
       arg : Unbounded_String;
-      type paramlist is (d, h, r, f, dir, p, pp, fis, ffs, fdr, fdt);
-      help : Boolean := parameter.isHelp;
+      type paramlist is (d, h, r, f, dir, p, pp, fis, ffs, fdr, fdt, e);
 
 
    begin
       --Reset default values for testing
-      parameter.date := To_Unbounded_String("");
+      parameter.date := "          ";
       parameter.isHelp := FALSE;
       parameter.isRecursive := FALSE;
       parameter.fileName := To_Unbounded_String("");
@@ -31,6 +30,7 @@ Package body Param is
       parameter.dateRangeStart := "          ";
       parameter.dateRangeEnd := "          ";
       parameter.dateTime := "        ";
+      parameter.isExcelOutput := false;
 
 
       while i < Argument_Count loop
@@ -47,7 +47,7 @@ Package body Param is
                when d =>
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.date := Argument(i);
+                     parameter.date := GlobelTyps.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
@@ -101,6 +101,8 @@ Package body Param is
                   i := i + 1;
                   parameter.dateTime := GlobelTyps.TimeType(To_String(Argument(i)));
 
+               when e =>
+                  parameter.isExcelOutput := true;
 
             end case;
          else
