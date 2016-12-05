@@ -13,7 +13,7 @@ Package body Search is
       --get all files in the directory
       --files that don't fit the filename parameter, will not be returned
       Directories.Start_Search(Search    => currentSearch,
-                               Directory => Ada.Strings.Unbounded.To_String(parameters.directory),
+                               Directory => Ada.Strings.Unbounded.To_String(Ada.Strings.Unbounded.Unbounded_String(parameters.directory)),
                                Pattern   => To_String(parameters.fileName));
 
       --filter the correct files
@@ -41,7 +41,7 @@ Package body Search is
 
                   --change the parameter to the found directory
                   parametersCopy := parameters;
-                  parametersCopy.directory := Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt));
+                  parametersCopy.directory := DirectoryType(Ada.Strings.Unbounded.To_Unbounded_String(Directories.Full_Name(dirEnt)));
 
                   --call searchDirectory again and append the returned vector
                   FileVector.Append(Container => fileVectorObj,

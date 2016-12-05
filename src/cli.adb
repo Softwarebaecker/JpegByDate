@@ -24,12 +24,10 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-fdr" & HT & "Search for a specific date range.");
          Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
       end if;
-      if parameter.isPipe and parameter.isHelp /= true then
-         for i in files.First_Index .. files.Last_Index loop
-            SUIO.Put_Line(Item => files.Element(i).filename);
-         end loop;
 
-         --Getting current Date in String and replacing ":" with "-" and buidling excel file.
+      if parameter.isExcelOutput and parameter.isHelp /= true Then
+
+      --Getting current Date in String and replacing ":" with "-" and buidling excel file.
          currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
          for z in currentDate'range loop
             if currentDate(z) = ':' then
@@ -43,6 +41,14 @@ Package body Cli is
          end loop;
          xl.Close;
          --End of Excel creation.
+
+      end if;
+      if parameter.isPipe and parameter.isHelp /= true then
+         for i in files.First_Index .. files.Last_Index loop
+            SUIO.Put_Line(Item => files.Element(i).filename);
+         end loop;
+
+
       else
          if parameter.isHelp /= true and parameter.directory /= "." then
 
@@ -53,7 +59,7 @@ Package body Cli is
 
       Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
       if parameter.isWholePath then
-      Ada.Text_IO.Put_Line("Path: "&PU.To_String(parameter.directory));
+      Ada.Text_IO.Put_Line("Path: "&PU.To_String(PU.Unbounded_String(parameter.directory)));
          Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
       end if;
       if parameter.date /= "          " then
