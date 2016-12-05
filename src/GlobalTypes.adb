@@ -1,4 +1,4 @@
-Package body GlobelTyps is
+Package body GlobalTypes is
 
    function "="(date1,date2 : DateType) return Boolean
    is
@@ -95,4 +95,4 @@ Package body GlobelTyps is
       return isLater;
    end ">";
 
-end GlobelTyps;
+end GlobalTypes;

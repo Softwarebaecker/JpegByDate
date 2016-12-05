@@ -3,7 +3,7 @@ with Ada.Directories; use Ada.Directories;
 with Ada.Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
-with GlobelTyps; use GlobelTyps;
+with GlobalTypes; use GlobalTypes;
 with ImageFile; use ImageFile;
 with Param;
 

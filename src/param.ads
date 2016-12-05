@@ -1,25 +1,25 @@
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Command_Line;
-with GlobelTyps;
+with GlobalTypes;
 
 Package Param is
 
    --in that type all input parameter information are stored
    type params is
      tagged record
-      date : GlobelTyps.DateType := "          ";
+      date : GlobalTypes.DateType := "          ";
       isHelp : Boolean := false;
       isRecursive : Boolean := false;
-      fileName : GlobelTyps.FileNameType := GlobelTyps.FileNameType(To_Unbounded_String("*"));
-      directory : GlobelTyps.DirectoryType := GlobelTyps.DirectoryType(To_Unbounded_String("."));
+      fileName : GlobalTypes.FileNameType := GlobalTypes.FileNameType(To_Unbounded_String("*"));
+      directory : GlobalTypes.DirectoryType := GlobalTypes.DirectoryType(To_Unbounded_String("."));
       isWholePath : Boolean := false;
       isPipe : Boolean := false;
-      imageSizeX : GlobelTyps.ImageSizeType := 1;
-      imageSizeY : GlobelTyps.ImageSizeType := 1;
-      fileSize : GlobelTyps.FileSizeType := 1;
-      dateRangeStart : GlobelTyps.DateType := "          ";
-      dateRangeEnd : GlobelTyps.DateType := "          ";
-      dateTime : GlobelTyps.TimeType := "        ";
+      imageSizeX : GlobalTypes.ImageSizeType := 1;
+      imageSizeY : GlobalTypes.ImageSizeType := 1;
+      fileSize : GlobalTypes.FileSizeType := 1;
+      dateRangeStart : GlobalTypes.DateType := "          ";
+      dateRangeEnd : GlobalTypes.DateType := "          ";
+      dateTime : GlobalTypes.TimeType := "        ";
       isExcelOutput : Boolean := false;
 
    end record;

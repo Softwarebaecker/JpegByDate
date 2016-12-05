@@ -7,7 +7,7 @@ with Ada.Real_Time; use Ada.Real_Time;
 with Param; use Param;
 with Ada.Real_Time;
 with Ada.Characters.Latin_1; use Ada.Characters.Latin_1;
-with GlobelTyps; use GlobelTyps;
+with GlobalTypes; use GlobalTypes;
 with param; use param;
 with Ada.Directories; use Ada.Directories;
 with Excel_Out; use Excel_Out;

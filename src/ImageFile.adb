@@ -1,32 +1,24 @@
-      --Buffer := Character'Input(Input_Stream);
-      --Ada.Text_IO.Put(Integer'Image(Character'Pos(Buffer)));
-      --Buffer := Character'Input(Input_Stream);
-      --Ada.Text_IO.Put(Integer'Image(Character'Pos(Buffer)));
+with Ada.Strings.Maps.Constants;
 
 Package body ImageFile is
 
    function create(fileName : Unbounded_String) return ExifDataAccess is
+      Extension : Unbounded_String;
    begin
       ExifDatas := new ExifData;
       ExifDatas.filename := fileName;
 
-      --open FileStream
-      Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
-                                 Ada.Strings.Unbounded.To_String(filename));
-      Input_Stream := Ada.Streams.Stream_IO.Stream(File);
+      Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(ExifDatas.filename)));
+      Extension := To_Unbounded_String(Ada.Strings.Fixed.Translate(To_String(Extension), Ada.Strings.Maps.Constants.Lower_Case_Map));
 
-
-      readFileSize;
-
-      if ExifDatas.fileSize < 1 then
-         raise ExceptionFileNotOpen;
+      if Extension = "jpeg" or Extension = "jpg" or Extension = "jpe" or Extension = "jfif" then
+         readJpegFiel;
+      else if Extension = "tif" then
+            readTiffFile;
+         else
+            raise ExceptionFileTypeError;
+         end if;
       end if;
-
-      checkFile;
-
-      readExifTag;
-
-      readTiffHeader;
 
       readImageFileDirectories;
 
@@ -35,7 +27,26 @@ Package body ImageFile is
 
    end create;
 
-   procedure checkFile is
+   procedure readJpegFiel is
+   begin
+      --open FileStream
+      Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
+                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+      Input_Stream := Ada.Streams.Stream_IO.Stream(File);
+      readFileSize;
+
+      if ExifDatas.fileSize < 1 then
+         raise ExceptionFileNotOpen;
+      end if;
+
+      checkJpegFile;
+      readExifTag;
+      readTiffHeader;
+      IFD0 := TIFFHeaderPos + 9;
+
+   end readJpegFiel;
+
+   procedure checkJpegFile is
    begin
       --Jpeg Beginn FF D8
       if Character'Input(Input_Stream) /= Character'Val(16#FF#) and
@@ -53,7 +64,7 @@ Package body ImageFile is
          Close(File);
          raise ExceptionWrongImageTag;
       end if;
-   end checkFile;
+   end checkJpegFile;
 
    procedure readExifTag is
    begin
@@ -72,9 +83,9 @@ Package body ImageFile is
          end if;
       end loop;
       Close(File);
+      --Ada.Text_IO.Put_Line(To_String(ExifDatas.filename));
       raise ExceptionNoExifTag;
    end readExifTag;
-
 
    procedure readTiffHeader is
    begin
@@ -95,17 +106,56 @@ Package body ImageFile is
       end if;
    end readTiffHeader;
 
+   procedure readTiffFile is
+      byte : Character;
+   begin
+      --open FileStream
+      Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
+                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+      Input_Stream := Ada.Streams.Stream_IO.Stream(File);
+      readFileSize;
+
+      if ExifDatas.fileSize < 1 then
+         raise ExceptionFileNotOpen;
+      end if;
+
+      --first 49 49 2a 00 / 4d 4d 00 2a
+      byte := Character'Input(Input_Stream);
+
+      if byte = Character'Val(16#49#) and then
+         Character'Input(Input_Stream) = Character'Val(16#49#) and then
+           Character'Input(Input_Stream) = Character'Val(16#2a#) and then
+           Character'Input(Input_Stream) = Character'Val(16#00#) then
+         littleEndian := True;
+      else if byte = Character'Val(16#4d#) and then
+            Character'Input(Input_Stream) = Character'Val(16#4d#) and then
+              Character'Input(Input_Stream) = Character'Val(16#00#) and then
+              Character'Input(Input_Stream) = Character'Val(16#2a#) then
+              littleEndian := False;
+         else
+            raise ExceptionNoTiffHeader;
+         end if;
+         TIFFHeaderPos := 1;
+         IFD0 := Ada.Streams.Stream_IO.Positive_Count(readInt(4));
+      end if;
+
+
+   end readTiffFile;
+
    procedure readImageFileDirectories is
       entryCount : Integer := 0;
       readTag : Integer := 0;
       subDirPos : Integer := 0;
    begin
       -- read count of Entrys in IFD0
-      Set_Index(File, TIFFHeaderPos + 9);
+      Set_Index(File, IFD0);
       entryCount := readInt(2);
-
       --search in IFD0 and Sub Dirs
       while entryCount > 0 loop
+         --test filesize
+         if ExifDatas.fileSize <= GlobalTypes.FileSizeType(Index(File)) + 10 then
+            return;
+         end if;
          --read Tag
          readTag := readInt(2);
          if readTag = Integer(16#9003#) then
@@ -167,8 +217,12 @@ Package body ImageFile is
       Set_Index(File, Index(File) + 4);
       if VariableType = 3 then
          ExifDatas.imageWidth := ImageSizeType(readInt(2));
-      else
-         ExifDatas.imageWidth := ImageSizeType(readInt(4));
+       else if VariableType = 4 then
+            ExifDatas.imageWidth := ImageSizeType(readInt(4));
+         else
+            return;
+         end if;
+
       end if;
 
    end readImageWidth;
@@ -176,14 +230,16 @@ Package body ImageFile is
    procedure readImageHeight is
       VariableType : Integer;
    begin
-
       --read Type;
       VariableType := readInt(2);
       Set_Index(File, Index(File) + 4);
       if VariableType = 3 then
          ExifDatas.imageHeight := ImageSizeType(readInt(2));
-      else
-         ExifDatas.imageHeight := ImageSizeType(readInt(4));
+      else if VariableType = 4 then
+            ExifDatas.imageHeight := ImageSizeType(readInt(4));
+         else
+            return;
+         end if;
       end if;
 
    end readImageHeight;

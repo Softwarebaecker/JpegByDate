@@ -2,7 +2,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
-with GlobelTyps;
+with GlobalTypes;
 
 Package body Param is
 
@@ -20,8 +20,8 @@ Package body Param is
       parameter.date := "          ";
       parameter.isHelp := FALSE;
       parameter.isRecursive := FALSE;
-      parameter.fileName := GlobelTyps.FileNameType(To_Unbounded_String("*"));
-      parameter.directory := GlobelTyps.DirectoryType(To_Unbounded_String("."));
+      parameter.fileName := GlobalTypes.FileNameType(To_Unbounded_String("*"));
+      parameter.directory := GlobalTypes.DirectoryType(To_Unbounded_String("."));
       parameter.isWholePath := FALSE;
       parameter.isPipe := false;
       parameter.imageSizeX := 1;
@@ -47,7 +47,7 @@ Package body Param is
                when d =>
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.date := GlobelTyps.DateType(To_String(Argument(i)));
+                     parameter.date := GlobalTypes.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
@@ -60,11 +60,11 @@ Package body Param is
 
                when f =>
                   i := i + 1;
-                  parameter.fileName := GlobelTyps.FileNameType(Argument(i));
+                  parameter.fileName := GlobalTypes.FileNameType(Argument(i));
 
                when dir =>
                   i := i + 1;
-                  parameter.directory := GlobelTyps.DirectoryType(Argument(i));
+                  parameter.directory := GlobalTypes.DirectoryType(Argument(i));
 
                when p =>
                   parameter.isWholePath := true;
@@ -74,32 +74,32 @@ Package body Param is
 
                when fis =>
                   i := i + 1;
-                  parameter.imageSizeX := GlobelTyps.ImageSizeType' Value(To_String(Argument(i)));
+                  parameter.imageSizeX := GlobalTypes.ImageSizeType' Value(To_String(Argument(i)));
                   i := i + 1;
-                  parameter.imageSizeY := GlobelTyps.ImageSizeType' Value(To_String(Argument(i)));
+                  parameter.imageSizeY := GlobalTypes.ImageSizeType' Value(To_String(Argument(i)));
 
                when ffs =>
                   i := i + 1;
-                  parameter.fileSize := GlobelTyps.FileSizeType' Value(To_String(Argument(i)));
+                  parameter.fileSize := GlobalTypes.FileSizeType' Value(To_String(Argument(i)));
 
                when fdr =>
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.dateRangeStart := GlobelTyps.DateType(To_String(Argument(i)));
+                     parameter.dateRangeStart := GlobalTypes.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
 
                   i := i + 1;
                   if validateDate(To_String(Argument(i))) then
-                     parameter.dateRangeEnd := GlobelTyps.DateType(To_String(Argument(i)));
+                     parameter.dateRangeEnd := GlobalTypes.DateType(To_String(Argument(i)));
                   else
                      raise Constraint_Error;
                   end if;
 
                when fdt =>
                   i := i + 1;
-                  parameter.dateTime := GlobelTyps.TimeType(To_String(Argument(i)));
+                  parameter.dateTime := GlobalTypes.TimeType(To_String(Argument(i)));
 
                when e =>
                   parameter.isExcelOutput := true;
