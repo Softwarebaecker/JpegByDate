@@ -10,8 +10,8 @@ Package Param is
       date : GlobelTyps.DateType := "          ";
       isHelp : Boolean := false;
       isRecursive : Boolean := false;
-      fileName : GlobelTyps.FileNameType := GlobelTyps.FileNameType(To_Unbounded_String(""));
-      directory : GlobelTyps.DirectoryType := GlobelTyps.DirectoryType(To_Unbounded_String(""));
+      fileName : GlobelTyps.FileNameType := GlobelTyps.FileNameType(To_Unbounded_String("*"));
+      directory : GlobelTyps.DirectoryType := GlobelTyps.DirectoryType(To_Unbounded_String("."));
       isWholePath : Boolean := false;
       isPipe : Boolean := false;
       imageSizeX : GlobelTyps.ImageSizeType := 1;

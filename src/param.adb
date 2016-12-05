@@ -20,8 +20,8 @@ Package body Param is
       parameter.date := "          ";
       parameter.isHelp := FALSE;
       parameter.isRecursive := FALSE;
-      parameter.fileName := GlobelTyps.FileNameType(To_Unbounded_String(""));
-      parameter.directory := GlobelTyps.DirectoryType(To_Unbounded_String(""));
+      parameter.fileName := GlobelTyps.FileNameType(To_Unbounded_String("*"));
+      parameter.directory := GlobelTyps.DirectoryType(To_Unbounded_String("."));
       parameter.isWholePath := FALSE;
       parameter.isPipe := false;
       parameter.imageSizeX := 1;

@@ -25,7 +25,7 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
       end if;
 
-      if parameter.isExcelOutput and parameter.isHelp /= true Then
+      if parameter.isExcelOutput and parameter.isHelp /= true and parameter.directory /= "." Then
 
       --Getting current Date in String and replacing ":" with "-" and buidling excel file.
          currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
@@ -33,6 +33,7 @@ Package body Cli is
             if currentDate(z) = ':' then
                 currentDate(z) := '-';
             end if;
+
         end loop;
 
          xl.Create("Image Search from " & currentDate & ".xls");
@@ -43,6 +44,7 @@ Package body Cli is
          --End of Excel creation.
 
       end if;
+
       if parameter.isPipe and parameter.isHelp /= true then
          for i in files.First_Index .. files.Last_Index loop
             SUIO.Put_Line(Item => files.Element(i).filename);
