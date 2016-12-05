@@ -8,18 +8,23 @@ Package body ImageFile is
       ExifDatas := new ExifData;
       ExifDatas.filename := fileName;
 
+      --get file extension
       Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(ExifDatas.filename)));
+      --file extension to lowercase
       Extension := To_Unbounded_String(Ada.Strings.Fixed.Translate(To_String(Extension), Ada.Strings.Maps.Constants.Lower_Case_Map));
 
+      --check file extension
       if Extension = "jpeg" or Extension = "jpg" or Extension = "jpe" or Extension = "jfif" then
          readJpegFiel;
       else if Extension = "tif" then
             readTiffFile;
          else
+            --no ligal file extension
             raise ExceptionFileTypeError;
          end if;
       end if;
 
+      --read the exif datas
       readImageFileDirectories;
 
       Close(File);
@@ -27,6 +32,7 @@ Package body ImageFile is
 
    end create;
 
+   -- read a jpeg file and validat it
    procedure readJpegFiel is
    begin
       --open FileStream
@@ -46,6 +52,7 @@ Package body ImageFile is
 
    end readJpegFiel;
 
+   --checks the formate of a jpeg file
    procedure checkJpegFile is
    begin
       --Jpeg Beginn FF D8
@@ -66,6 +73,7 @@ Package body ImageFile is
       end if;
    end checkJpegFile;
 
+   --search the exif tag for the tiff header
    procedure readExifTag is
    begin
       --find Exif Tag
@@ -87,6 +95,7 @@ Package body ImageFile is
       raise ExceptionNoExifTag;
    end readExifTag;
 
+   --read the tiff header in a jepg file
    procedure readTiffHeader is
    begin
       -- Intel: 49 49 2a 00 08 00 00 00 = LLHH
@@ -106,6 +115,7 @@ Package body ImageFile is
       end if;
    end readTiffHeader;
 
+   --read the tiff file format
    procedure readTiffFile is
       byte : Character;
    begin
@@ -113,35 +123,38 @@ Package body ImageFile is
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
                                  Ada.Strings.Unbounded.To_String(ExifDatas.filename));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
-      readFileSize;
 
+      readFileSize;
+      --check file size
       if ExifDatas.fileSize < 1 then
          raise ExceptionFileNotOpen;
       end if;
 
       --first 49 49 2a 00 / 4d 4d 00 2a
+      --read first tag
       byte := Character'Input(Input_Stream);
 
-      if byte = Character'Val(16#49#) and then
+      --check format
+      if byte = Character'Val(16#49#) and then --little endian
          Character'Input(Input_Stream) = Character'Val(16#49#) and then
            Character'Input(Input_Stream) = Character'Val(16#2a#) and then
            Character'Input(Input_Stream) = Character'Val(16#00#) then
          littleEndian := True;
-      else if byte = Character'Val(16#4d#) and then
+      else if byte = Character'Val(16#4d#) and then --big endian
             Character'Input(Input_Stream) = Character'Val(16#4d#) and then
               Character'Input(Input_Stream) = Character'Val(16#00#) and then
               Character'Input(Input_Stream) = Character'Val(16#2a#) then
               littleEndian := False;
          else
+            --wrong file format
             raise ExceptionNoTiffHeader;
          end if;
          TIFFHeaderPos := 1;
          IFD0 := Ada.Streams.Stream_IO.Positive_Count(readInt(4));
       end if;
-
-
    end readTiffFile;
 
+   --search the image file Directories for specific tags
    procedure readImageFileDirectories is
       entryCount : Integer := 0;
       readTag : Integer := 0;
@@ -156,6 +169,7 @@ Package body ImageFile is
          if ExifDatas.fileSize <= GlobalTypes.FileSizeType(Index(File)) + 10 then
             return;
          end if;
+
          --read Tag
          readTag := readInt(2);
          if readTag = Integer(16#9003#) then
@@ -197,6 +211,7 @@ Package body ImageFile is
       --read Position
       DatePosition := readInt(4);
 
+      --save index of entry
       saveIndex := Index(File);
 
       --read Date
@@ -205,6 +220,7 @@ Package body ImageFile is
       --read Time
       ExifDatas.time := TimeType(readString(Ada.Streams.Stream_IO.Positive_Count(DatePosition) + 12 + TIFFHeaderPos, 8));
 
+      --set index back to entry
       Set_Index(File, saveIndex);
    end readDateTime;
 
@@ -215,6 +231,7 @@ Package body ImageFile is
       --read Type;
       VariableType := readInt(2);
       Set_Index(File, Index(File) + 4);
+      --read image Height
       if VariableType = 3 then
          ExifDatas.imageWidth := ImageSizeType(readInt(2));
        else if VariableType = 4 then
@@ -230,9 +247,10 @@ Package body ImageFile is
    procedure readImageHeight is
       VariableType : Integer;
    begin
-      --read Type;
+      --read variable type;
       VariableType := readInt(2);
       Set_Index(File, Index(File) + 4);
+      --read image Height
       if VariableType = 3 then
          ExifDatas.imageHeight := ImageSizeType(readInt(2));
       else if VariableType = 4 then
@@ -241,7 +259,6 @@ Package body ImageFile is
             return;
          end if;
       end if;
-
    end readImageHeight;
 
 
@@ -255,8 +272,6 @@ Package body ImageFile is
 
       --read two bytes
       readCharacter := Character'Input(Input_Stream);
-      --Ada.Text_IO.Put_Line("CharacterNumber: " & Integer'Image(Integer(Character'Pos(readCharacter))));
-      --Ada.Text_IO.Put_Line("Return: " & Integer'Image(return32Int));
 
       --calculate Integer
       if littleEndian = TRUE then --litteleendian LLHH
@@ -267,14 +282,15 @@ Package body ImageFile is
       end if;
    end readInt;
 
+   --read a string with a specific length from the file
    function readString(Position : Ada.Streams.Stream_IO.Positive_Count;
                        Length : Integer) return String is
       Counter : Integer := 1;
       Return_String : Unbounded_String;
    begin
-      --set Index to Position
+      --set index to position
       Set_Index(File,Position);
-      --read Charakter
+      --read charakters
       while Counter <= Length loop
          Ada.Strings.Unbounded.Append(Return_String, Character'Input(Input_Stream));
          Counter := Counter + 1;
@@ -285,6 +301,7 @@ Package body ImageFile is
 
    end readString;
 
+   --convert the date in the ISO formate
    function convertDate(Date : DateType) return DateType is
       returnString : DateType := Date;
    begin
