@@ -8,7 +8,7 @@ Package body Cli is
 
          Ada.Text_IO.Put_Line("");
          Ada.Text_IO.Put_Line("Usage:" & HT & "JpegByDate" & HT & "[-dir PATH] [-d YYYY-MM-DD] [-r] [-e] [-f] [-p] [-pp]");
-         Ada.Text_IO.Put_Line(HT & HT & HT & "[-fis x,y] [-ffs] [-fdr YYYY-MM-DD YYYY-MM-DD] [-fdt]");
+         Ada.Text_IO.Put_Line(HT & HT & HT & "[-fis x y] [-ffs] [-fdr YYYY-MM-DD YYYY-MM-DD] [-fdt]");
          Ada.Text_IO.Put_Line("");
          Ada.Text_IO.Put_Line("Options: ");
          Ada.Text_IO.Put_Line("");
@@ -19,7 +19,7 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-f" & HT & "Search for a specific filename.");
          Ada.Text_IO.Put_Line(HT & "-p" & HT & "Shows the selected path on the output.");
          Ada.Text_IO.Put_Line(HT & "-pp" & HT & "Pipe stream for special use.");
-         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for specific imagesize (width, height),");
+         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for specific imagesize (width height).");
          Ada.Text_IO.Put_Line(HT & "-ffs" & HT & "Search with specific filesize.");
          Ada.Text_IO.Put_Line(HT & "-fdr" & HT & "Search for a specific date range.");
          Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
