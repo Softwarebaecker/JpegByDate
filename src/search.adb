@@ -82,10 +82,9 @@ Package body Search is
       --check whether the image fits to the parameters
       --if the values of the parameters are on their default values then they
       --don't have to be checked
-      if parameters.date = To_Unbounded_String("") then
-        --parameters.date = image.date then
-         --fileFitsParameters := False;
-         null;
+      if parameters.date /= "          " and then
+        parameters.date = image.date then
+         fileFitsParameters := False;
       end if;
 
       if fileFitsParameters and then
