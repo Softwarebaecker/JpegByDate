@@ -7,7 +7,11 @@ Package body UIController is
    procedure startFileSearch(parameter : Param.params)is
       vec : FileVector.Vector;
    begin
-      vec := Search.searchDirectory(parameter);
+      --if the parameter help is called there is no reason to call the search
+      --in an other case the search is called to get the requested files
+      if parameter.isHelp = false then
+         vec := Search.searchDirectory(parameter);
+      end if;
 
       startUI(vec => vec, parameter => parameter);
 
