@@ -56,7 +56,7 @@ Package body Cli is
       else
          if parameter.isPipe and parameter.isHelp /= true and parameter.isWholePath /= True then
          for i in files.First_Index .. files.Last_Index loop
-            SUIO.Put_Line(Item => PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
+            SUIO.Put_Line(Item => PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(Unbounded_String(files.Element(i).filename)))));
          end loop;
             else
 
