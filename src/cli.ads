@@ -18,12 +18,18 @@ with Ada.Numerics.Float_Random;         use Ada.Numerics.Float_Random;
 with Ada.Streams.Stream_IO, Ada.Text_IO;
 
 package Cli is
+   --renames for quicker coding
    package SUIO renames Ada.Text_IO.Unbounded_IO;
    package PU renames Ada.Strings.Unbounded;
+   --Variable x is needed for correkt count of images on output display
    x:Integer:=0;
+   --Variable xl is needed for creating the Excel file.
    xl: Excel_Out_File;
+   --Variable currentDate is needed for excel output filename.
    currentDate: String(1 .. 19);
+   --displayMessage expects files as FileVector.Vector and parameter as Param.params
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params );
+   --The_Clock, As_Time_Span, Epoch, and Dur is needed for calculating the current DateTime.
    The_Clock : Ada.Real_Time.Time := Ada.Real_Time.Clock;
    As_Time_Span : Ada.Real_Time.Time_Span := The_Clock - Time_Of(0, Time_Span_Zero);
    Epoch : constant Ada.Calendar.Time := Ada.Calendar.Time_Of(1970, 01, 01);

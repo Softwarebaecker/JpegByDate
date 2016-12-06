@@ -42,12 +42,14 @@ Package ImageFile is
    IFD0 : Ada.Streams.Stream_IO.Positive_Count;
    ExifDatas : ExifDataAccess;
 
+   --JPEG
+   procedure readJpegFiel;
    procedure checkJpegFile;
    procedure readExifTag;
    procedure readTiffHeader;
 
+   --TIFF
    procedure readTiffFile;
-   procedure readJpegFiel;
 
    procedure readImageFileDirectories;
    procedure readFileSize;
@@ -58,6 +60,7 @@ Package ImageFile is
    function readInt(ByteCount : Integer) return Integer;
    function readString(Position : Ada.Streams.Stream_IO.Positive_Count;
                        Length : Integer) return String;
+
    function convertDate(Date : DateType) return DateType;
 
 end ImageFile;
