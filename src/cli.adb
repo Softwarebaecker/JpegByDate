@@ -4,7 +4,7 @@ Package body Cli is
 
    begin
 
-      if parameter.isHelp or parameter.directory = "." then
+      if parameter.isHelp then
 
          Ada.Text_IO.Put_Line("");
          Ada.Text_IO.Put_Line("Usage:" & HT & "JpegByDate" & HT & "[-dir PATH] [-d YYYY-MM-DD] [-r] [-e] [-f] [-p] [-pp]");
@@ -25,7 +25,7 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
       end if;
 
-      if parameter.isExcelOutput and parameter.isHelp /= true and parameter.directory /= "." Then
+      if parameter.isExcelOutput and parameter.isHelp /= true Then
 
       --Getting current Date in String and replacing ":" with "-" and buidling excel file.
          currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
@@ -52,7 +52,7 @@ Package body Cli is
 
 
       else
-         if parameter.isHelp /= true and parameter.directory /= "." then
+      if parameter.isHelp /= true then
 
       --Parametresized view
       --Output depends on parameters
@@ -81,7 +81,13 @@ Package body Cli is
             Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
 
             end if;
-         end if;
+      end if;
+      if parameter.directory /= "." and parameter.isHelp = True Then
+
+
+         null;
+      end if;
+
 
    end displayMessage;
 
