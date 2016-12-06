@@ -19,10 +19,10 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-f" & HT & "Search for a specific filename.");
          Ada.Text_IO.Put_Line(HT & "-p" & HT & "Shows the selected path on the output.");
          Ada.Text_IO.Put_Line(HT & "-pp" & HT & "Pipe stream for special use.");
-         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for specific imagesize (width height).");
-         Ada.Text_IO.Put_Line(HT & "-ffs" & HT & "Search with specific filesize.");
+         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for imagesize greater then (width height).");
+         Ada.Text_IO.Put_Line(HT & "-ffs" & HT & "Search with filesize greater then (Byte).");
          Ada.Text_IO.Put_Line(HT & "-fdr" & HT & "Search for a specific date range.");
-         Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
+         Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search time of day greater then.");
       end if;
 
       --When parameter.isExcelOutput is True and parameter.isHelp is false then the search result
@@ -47,13 +47,20 @@ Package body Cli is
       end if;
       --When parameter.isPipe is True and parameter.isHelp is false then the searh result
       --appears line by line on cmd.
-      if parameter.isPipe and parameter.isHelp /= true then
+      if parameter.isPipe and parameter.isHelp /= true and parameter.isWholePath then
          for i in files.First_Index .. files.Last_Index loop
             SUIO.Put_Line(Item => Unbounded_String(files.Element(i).filename));
          end loop;
 
 
       else
+         if parameter.isPipe and parameter.isHelp /= true and parameter.isWholePath /= True then
+         for i in files.First_Index .. files.Last_Index loop
+            SUIO.Put_Line(Item => PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
+         end loop;
+            else
+
+
       if parameter.isHelp /= true then
       --Parametresized view
       --Output depends on parameters
@@ -86,7 +93,7 @@ Package body Cli is
 
          null;
       end if;
-
+      end if;
 
    end displayMessage;
 
