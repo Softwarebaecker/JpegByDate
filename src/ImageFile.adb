@@ -2,14 +2,15 @@ with Ada.Strings.Maps.Constants;
 
 Package body ImageFile is
 
+   --open the commited file, read the exif datas and give a pointer to a ExifData type back.
    function create(fileName : Unbounded_String) return ExifDataAccess is
       Extension : Unbounded_String;
    begin
       ExifDatas := new ExifData;
-      ExifDatas.filename := fileName;
+      ExifDatas.filename := FileNameType(fileName);
 
       --get file extension
-      Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(ExifDatas.filename)));
+      Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(filename)));
       --file extension to lowercase
       Extension := To_Unbounded_String(Ada.Strings.Fixed.Translate(To_String(Extension), Ada.Strings.Maps.Constants.Lower_Case_Map));
 
@@ -32,12 +33,13 @@ Package body ImageFile is
 
    end create;
 
+
    -- read a jpeg file and validat it
    procedure readJpegFiel is
    begin
       --open FileStream
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
-                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+                                 Ada.Strings.Unbounded.To_String(Unbounded_String(ExifDatas.filename)));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
       readFileSize;
 
@@ -51,6 +53,7 @@ Package body ImageFile is
       IFD0 := TIFFHeaderPos + 9;
 
    end readJpegFiel;
+
 
    --checks the formate of a jpeg file
    procedure checkJpegFile is
@@ -72,6 +75,7 @@ Package body ImageFile is
          raise ExceptionWrongImageTag;
       end if;
    end checkJpegFile;
+
 
    --search the exif tag for the tiff header
    procedure readExifTag is
@@ -95,6 +99,7 @@ Package body ImageFile is
       raise ExceptionNoExifTag;
    end readExifTag;
 
+
    --read the tiff header in a jepg file
    procedure readTiffHeader is
    begin
@@ -115,13 +120,14 @@ Package body ImageFile is
       end if;
    end readTiffHeader;
 
+
    --read the tiff file format
    procedure readTiffFile is
       byte : Character;
    begin
       --open FileStream
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
-                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+                                 Ada.Strings.Unbounded.To_String(Unbounded_String(ExifDatas.filename)));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
 
       readFileSize;
@@ -153,6 +159,7 @@ Package body ImageFile is
          IFD0 := Ada.Streams.Stream_IO.Positive_Count(readInt(4));
       end if;
    end readTiffFile;
+
 
    --search the image file Directories for specific tags
    procedure readImageFileDirectories is
@@ -198,11 +205,13 @@ Package body ImageFile is
       end loop;
    end readImageFileDirectories;
 
+   --read the file size
    procedure readFileSize is
    begin
       ExifDatas.fileSize := FileSizeType(Size(File));
    end readFileSize;
 
+   --read the date and time tag (9003) from the exif data
    procedure readDateTime is
       DatePosition : Integer;
       saveIndex : Ada.Streams.Stream_IO.Positive_Count;
@@ -224,6 +233,7 @@ Package body ImageFile is
       Set_Index(File, saveIndex);
    end readDateTime;
 
+   --read the width pixel tag (A002) in the exif data
    procedure readImageWidth is
       VariableType : Integer;
    begin
@@ -244,6 +254,7 @@ Package body ImageFile is
 
    end readImageWidth;
 
+   --read the height pixel tag (A003) in the exif data
    procedure readImageHeight is
       VariableType : Integer;
    begin
@@ -262,6 +273,7 @@ Package body ImageFile is
    end readImageHeight;
 
 
+   --read a Integer with the commited lenth from the open file
    function readInt(ByteCount : Integer) return Integer is
       readCharacter : Character;
       return32Int : Integer := 0;

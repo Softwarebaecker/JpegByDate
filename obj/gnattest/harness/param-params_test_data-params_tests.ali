@@ -24,13 +24,14 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U param.params_test_data.params_tests%b  param-params_test_data-params_tests.adb  d76fa29a NE OO PK
+U param.params_test_data.params_tests%b  param-params_test_data-params_tests.adb  0b3c2ad1 NE OO PK
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W aunit%s		aunit.adb		aunit.ali
 W aunit.assertions%s	aunit-assertions.adb	aunit-assertions.ali
+W globaltypes%s		globaltypes.adb		globaltypes.ali
 W param.params_test_data%s  param-params_test_data.adb  param-params_test_data.ali
 W system.img_bool%s	s-imgboo.adb		s-imgboo.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -70,15 +71,16 @@ D aunit-test_fixtures.ads  20140410144134 faadeab5 aunit.test_fixtures%s
 D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
 D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
 D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D globaltypes.ads	20161206092536 7b46f11a globaltypes%s
 D gnat.ads		20140406181358 fd2ad2f1 gnat%s
 D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
 D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
 D interfac.ads		20140406181358 69adb1b9 interfaces%s
 D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
-D param.ads		20161101142942 bdf697f5 param%s
+D param.ads		20161206092536 d9c95489 param%s
 D param-params_test_data.ads  20161030095946 87e0c777 param.params_test_data%s
 D param-params_test_data-params_tests.ads  20161030095946 8989e8dd param.params_test_data.params_tests%s
-D param-params_test_data-params_tests.adb  20161102131706 319571f1 param.params_test_data.params_tests%b
+D param-params_test_data-params_tests.adb  20161206092712 b33987f1 param.params_test_data.params_tests%b
 D system.ads		20140406181358 5fc8ae56 system%s
 D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
 D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
@@ -105,64 +107,68 @@ D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
 D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
 D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
 D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
-D test_info.ads		20161102130356 e0e722b4 test_info%s
+D test_info.ads		20161206093322 c55eade5 test_info%s
 D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
 X 1 ada.ads
-16K9*Ada 19e8 33|9r6 9r23
+16K9*Ada 19e8 34|9r6 9r23
 X 12 a-strunb.ads
-94V13*To_Unbounded_String{79R9} 33|33s25
-166V14*"="{boolean} 33|36s37 39s32 40s33
+94V13*To_Unbounded_String{79R9} 34|34s25
+166V14*"="{boolean} 34|40s32 41s33
 X 14 a-textio.ads
-49K13*Text_IO 471e16 33|9w10 9r27
-263U14*Put_Line 33|45s7
+49K13*Text_IO 471e16 34|9w10 9r27
+263U14*Put_Line 34|46s7
 X 18 ada_containers-aunit_lists.ads
 53R9*Cursor
 X 19 aunit.ads
-34K9*AUnit 48e10 33|8r6 8r28 42r7
+34K9*AUnit 48e10 34|8r6 8r28 43r7
 X 20 aunit-assertions.ads
-44K15*Assertions 155e21 33|8w12 8r34 42r13
-48U14*Assert 33|42s24
+44K15*Assertions 155e21 34|8w12 8r34 43r13
+48U14*Assert 34|43s24
 101U14*Init_Test
 104U14*Clear_Failures
 107V13*Has_Failures{boolean}
 110R9*Failure_Iter<18|53R9[145]>
 113V13*First_Failure{110R9}
-X 27 gnattest_generated.ads
-1K9*Gnattest_Generated 4e23 32|5w6 10r6
-2K12*GNATtest_Standard=2:38 32|10r25
-X 30 param.ads
-4K9*Param 26e10 32|7r9 10r43 15r5 33|12r14 51r5
-7R9*params 15e14 33|27r21 28r26
-9r8*date{12|79R9} 33|36r32 36r51
-10b8*isHelp{boolean} 33|37r23 37r44
-11b8*isRecursive{boolean} 33|38r23 38r49
-12r8*fileName{12|79R9} 33|39r23 39r46
-13r8*directory{12|79R9} 33|40r23 40r47
-14b8*isWholePath{boolean} 33|41r23 41r49
-16A9*Input(12|79R9)<integer> 33|25r21
-19U14*initialize 33|34s7
-21V13*getParams{7R9} 33|35s22
-X 31 param-params_test_data.ads
-11K15*params_Test_Data 30|4k9 31|25e27 32|7r15 10r49 15r11 33|12r20 51r11
-16R9*Test_params<21|78R9> 20e14 32|10r66
+X 25 globaltypes.ads
+3K9*GlobalTypes 19e16 34|11w6 11r23
+6A9*DateType<string>(character)<integer>
+13V14*"="{boolean} 34|37s37
+X 28 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 33|5w6 10r6
+2K12*GNATtest_Standard=2:38 33|10r25
+X 31 param.ads
+5K9*Param 38e10 33|7r9 10r43 15r5 34|13r14 52r5
+8R9*params 25e14 34|28r21 29r26
+10a7*date{25|6A9} 34|37r32 37r51
+11b7*isHelp{boolean} 34|38r23 38r44
+12b7*isRecursive{boolean} 34|39r23 39r49
+13+7*fileName{25|7+9} 34|40r23 40r46
+14+7*directory{25|8+9} 34|41r23 41r47
+15b7*isWholePath{boolean} 34|42r23 42r49
+27A9*Input(12|79R9)<integer> 34|26r21
+30U14*initialize 34|35s7
+32V13*getParams{8R9} 34|36s22
+X 32 param-params_test_data.ads
+11K15*params_Test_Data 31|5k9 32|25e27 33|7r15 10r49 15r11 34|13r20 52r11
+16R9*Test_params<21|78R9> 20e14 33|10r66
 22U14*Set_Up<21|80p14>
 23U14*Tear_Down<21|83p14>
-X 32 param-params_test_data-params_tests.ads
-7K32*params_Tests 31|11k15 32|15l28 15e40 33|12b37 51l28 51t40
-9R9*Test_params<31|16R9> 20|101p14 104p14 107p13 113p13 31|22P14 23P14 32|10e94
-. 12p14 12r57 33|16r50 17r57 19r50
-12U14*Test_getParams_279e1e 12=37 33|17b14
-12r37 Gnattest_T{9R9} 33|17b37
-X 33 param-params_test_data-params_tests.adb
-16U14 Test_getParams 16=30 17r78 19b14 48l8 48t22
-16r30 Gnattest_T{32|9R9} 19b30 23r28
-24i7 ARGC_CASE26{integer} 34r18
-25a7 ARGA_CASE26{30|16A9} 33m7 34r31
-26b7 ARGB_CASE26{boolean} 36m7 43r10 44r70 45r76
-27r7 ARGP_CASE26{30|7R9} 35m7 36r39 37r32 38r37 39r34 40r35 41r37
-28r7 parameter{30|7R9} 36r22 37r13 38r13 39r13 40r13 41r13
-X 60 test_info.ads
-1K9*Test_Info 33|10w6 44r10 44r92 45r16 45r98 60|4e14
-2a4*SW_Version{string} 33|44r20 45r26
-3a4*CURRENT_DATE{string} 33|44r102 45r108
+X 33 param-params_test_data-params_tests.ads
+7K32*params_Tests 32|11k15 33|15l28 15e40 34|13b37 52l28 52t40
+9R9*Test_params<32|16R9> 20|101p14 104p14 107p13 113p13 32|22P14 23P14 33|10e94
+. 12p14 12r57 34|17r50 18r57 20r50
+12U14*Test_getParams_279e1e 12=37 34|18b14
+12r37 Gnattest_T{9R9} 34|18b37
+X 34 param-params_test_data-params_tests.adb
+17U14 Test_getParams 17=30 18r78 20b14 49l8 49t22
+17r30 Gnattest_T{33|9R9} 20b30 24r28
+25i7 ARGC_CASE26{integer} 35r18
+26a7 ARGA_CASE26{31|27A9} 34m7 35r31
+27b7 ARGB_CASE26{boolean} 37m7 44r10 45r70 46r76
+28r7 ARGP_CASE26{31|8R9} 36m7 37r39 38r32 39r37 40r34 41r35 42r37
+29r7 parameter{31|8R9} 37r22 38r13 39r13 40r13 41r13 42r13
+X 61 test_info.ads
+1K9*Test_Info 34|10w6 45r10 45r92 46r16 46r98 61|4e14
+2a4*SW_Version{string} 34|45r20 46r26
+3a4*CURRENT_DATE{string} 34|45r102 46r108
 

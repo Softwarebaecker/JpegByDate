@@ -10,6 +10,7 @@ P SS ZX
 
 RN
 RV NO_DISPATCHING_CALLS
+RV NO_IO
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
@@ -33,13 +34,25 @@ D a-calend.ads		20140406181358 d86d6c8c ada.calendar%s
 D a-charac.ads		20140406181358 2d3ec45b ada.characters%s
 D a-chlat1.ads		20140406181358 66457d31 ada.characters.latin_1%s
 D a-comlin.ads		20140406181358 ea62afbc ada.command_line%s
+D a-contai.ads		20140406181356 61e5e089 ada.containers%s
+D a-convec.ads		20140406181358 0aaf3975 ada.containers.vectors%s
+D a-direct.ads		20140406181354 9d42e46d ada.directories%s
 D a-except.ads		20140406181356 43d57f8c ada.exceptions%s
 D a-finali.ads		20140406181358 69f99942 ada.finalization%s
+D a-ioexce.ads		20140406181358 e4a01f64 ada.io_exceptions%s
+D a-iteint.ads		20140406181354 7c7305e9 ada.iterator_interfaces%s
 D a-stream.ads		20140406181354 1a984740 ada.streams%s
+D a-ststio.ads		20140406181354 c3455b31 ada.streams.stream_io%s
 D a-string.ads		20140406181358 90ac6797 ada.strings%s
+D a-strbou.ads		20140406181354 9806fe84 ada.strings.bounded%s
+D a-strfix.ads		20140406181356 d07c346e ada.strings.fixed%s
 D a-strmap.ads		20140406181358 e8bb714a ada.strings.maps%s
+D a-strsup.ads		20140406181358 a27dcb33 ada.strings.superbounded%s
 D a-strunb.ads		20140406181358 3f91d4c5 ada.strings.unbounded%s
+D a-suteio.ads		20140406181358 26d8e9aa ada.strings.unbounded.text_io%s
 D a-tags.ads		20140406181356 dc4d0634 ada.tags%s
+D a-textio.ads		20140406181358 386df5d4 ada.text_io%s
+D a-tiunio.ads		20140406181358 759c6b0c ada.text_io.unbounded_io%s
 D a-unccon.ads		20140406181358 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20140406181358 f15a5ed1 ada.unchecked_deallocation%s
 D ada_containers.ads	20140410144134 11329e00 ada_containers%s
@@ -50,18 +63,24 @@ D aunit-test_fixtures.ads  20140410144134 faadeab5 aunit.test_fixtures%s
 D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
 D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
 D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D globaltypes.ads	20161206092536 7b46f11a globaltypes%s
 D gnat.ads		20140406181358 fd2ad2f1 gnat%s
 D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
 D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
-D param.ads		20161101142942 bdf697f5 param%s
-D search.ads		20161024133446 a35a997e search%s
+D imagefile.ads		20161206092536 9cc84dce imagefile%s
+D interfac.ads		20140406181358 69adb1b9 interfaces%s
+D i-cstrea.ads		20140406181356 febc86ed interfaces.c_streams%s
+D param.ads		20161206092536 d9c95489 param%s
+D search.ads		20161206092536 72bb0bd7 search%s
 D search-test_data.ads	20161030095946 46ed0565 search.test_data%s
 D search-test_data-tests.ads  20161030095946 9d09420f search.test_data.tests%s
 D search-test_data-tests.adb  20161030095946 dda509f6 search.test_data.tests%b
 D system.ads		20140406181358 5fc8ae56 system%s
 D s-atocou.ads		20140406181358 cd7c94ca system.atomic_counters%s
 D s-atocou.adb		20140406181356 276bb8fc system.atomic_counters%b
+D s-crtl.ads		20140406181356 2c012597 system.crtl%s
 D s-exctab.ads		20140406181354 54135002 system.exception_table%s
+D s-ficobl.ads		20140406181354 078245e4 system.file_control_block%s
 D s-finmas.ads		20140406181356 814daec4 system.finalization_masters%s
 D s-finroo.ads		20140406181358 4ff27390 system.finalization_root%s
 D s-maccod.ads		20140406181358 0fbb7bce system.machine_code%s
@@ -80,37 +99,39 @@ D s-string.ads		20140406181358 8fe54fb7 system.strings%s
 D s-ststop.ads		20140406181356 e6693757 system.strings.stream_ops%s
 D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
 D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
+D s-wchcon.ads		20140406181358 1b7d22d2 system.wch_con%s
 D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
-X 16 ada_containers-aunit_lists.ads
+X 28 ada_containers-aunit_lists.ads
 53R9*Cursor
-X 17 aunit.ads
-34K9*AUnit 48e10 30|8r6 8r28 25r7
-X 18 aunit-assertions.ads
-44K15*Assertions 155e21 30|8w12 8r34 25r13
-48U14*Assert 30|25s24
+X 29 aunit.ads
+34K9*AUnit 48e10 46|8r6 8r28 25r7
+X 30 aunit-assertions.ads
+44K15*Assertions 155e21 46|8w12 8r34 25r13
+48U14*Assert 46|25s24
 101U14*Init_Test
 104U14*Clear_Failures
 107V13*Has_Failures{boolean}
-110R9*Failure_Iter<16|53R9[145]>
+110R9*Failure_Iter<28|53R9[145]>
 113V13*First_Failure{110R9}
-X 25 gnattest_generated.ads
-1K9*Gnattest_Generated 4e23 29|5w6 9r21 30|26r10
-2K12*GNATtest_Standard=2:38 29|9r40
-3b4*Default_Assert_Value{boolean} 30|26r29
-X 27 search.ads
-3K9*Search 8e11 29|7r9 9r58 15r5 30|10r14 33r5
-X 28 search-test_data.ads
-8K16*Test_Data 27|3k9 28|18e21 29|7r16 9r65 15r12 30|10r21 33r12
-11R9*Test<19|78R9> 13e20 29|9r75
-15U14*Set_Up<19|80p14>
-16U14*Tear_Down<19|83p14>
-X 29 search-test_data-tests.ads
-7K26*Tests 28|8k16 29|15l22 15e27 30|10b31 33l22 33t27
-9R9*Test<28|11R9> 18|101p14 104p14 107p13 113p13 28|15P14 16P14 29|10e20
-. 12p14 12r64 30|14r57 15r64 17r57
-12U14*Test_Search_Directory_666e42 12=44 30|15b14
-12r44 Gnattest_T{9R9} 30|15b44
-X 30 search-test_data-tests.adb
+X 38 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 45|5w6 9r21 46|26r10
+2K12*GNATtest_Standard=2:38 45|9r40
+3b4*Default_Assert_Value{boolean} 46|26r29
+X 43 search.ads
+10K9*Search 32e11 45|7r9 9r58 15r5 46|10r14 33r5
+17V14*"="{boolean} 7|43i19
+X 44 search-test_data.ads
+8K16*Test_Data 43|10k9 44|18e21 45|7r16 9r65 15r12 46|10r21 33r12
+11R9*Test<31|78R9> 13e20 45|9r75
+15U14*Set_Up<31|80p14>
+16U14*Tear_Down<31|83p14>
+X 45 search-test_data-tests.ads
+7K26*Tests 44|8k16 45|15l22 15e27 46|10b31 33l22 33t27
+9R9*Test<44|11R9> 30|101p14 104p14 107p13 113p13 44|15P14 16P14 45|10e20
+. 12p14 12r64 46|14r57 15r64 17r57
+12U14*Test_Search_Directory_666e42 12=44 46|15b14
+12r44 Gnattest_T{9R9} 46|15b44
+X 46 search-test_data-tests.adb
 14U14 Test_Search_Directory 14=37 15r78 17b14 30l8 30t29
-14r37 Gnattest_T{29|9R9} 17b37 21r28
+14r37 Gnattest_T{45|9R9} 17b37 21r28
 

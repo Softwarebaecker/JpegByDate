@@ -32,41 +32,76 @@ v 1.10;16; 2015-02-29; Valid? FALSE; 2016-11-01;YES
 v 1.10;16; 1900-02-29; Valid? FALSE; 2016-11-01;YES
 v 1.10;17; 2015-02-28; Valid? TRUE; 2016-11-01;YES
 v 1.10;18; ; correct? TRUE; 2016-11-01;YES
-v 1.10; 1; ; no Exception; 2016-11-02;YES
-v 1.10; 2; ; .; 2016-11-02;YES
-v 1.10; 3; -h; isHelp = TRUE; 2016-11-02;YES
-v 1.10; 3; '-r; isRecursive = TRUE; 2016-11-02;YES
-v 1.10; 4; di; Constraint_Error; 2016-11-02;YES
-v 1.10; 4; '-di; Constraint_Error; 2016-11-02;YES
-v 1.10; 4; '-dir; Constraint_Error; 2016-11-02;YES
-v 1.10; 5; '-h -r -p -f file -dir directory -d 2016-11-01; correct? TRUE!; 2016-11-02;YES
-v 1.10; 6; '-d 2016-11-01 -dir directory -f file -p -r -h; correct? TRUE!; 2016-11-02;YES
-v 1.10; 7; '-w; Constraint_Error; 2016-11-02;YES
-v 1.10; 8; 2016-11-01; Valid? TRUE; 2016-11-02;YES
-v 1.10; 9; 201-11-101; Valid? FALSE; 2016-11-02;YES
-v 1.10; 10; 2016-42-01; Valid? FALSE; 2016-11-02;YES
-v 1.10; 10; 2016-11-42; Valid? FALSE; 2016-11-02;YES
-v 1.10; 11; 2016-10-31; Valid? TRUE; 2016-11-02;YES
-v 1.10; 12; 2016-11-31; Valid? FALSE; 2016-11-02;YES
-v 1.10; 13; 2016-11-30; Valid? TRUE; 2016-11-02;YES
-v 1.10; 14; 2016-02-30; Valid? FALSE; 2016-11-02;YES
-v 1.10; 15; 2016-02-29; Valid? TRUE; 2016-11-02;YES
-v 1.10; 15; 2000-02-29; Valid? TRUE; 2016-11-02;YES
-v 1.10; 16; 2015-02-29; Valid? FALSE; 2016-11-02;YES
-v 1.10; 16; 1900-02-29; Valid? FALSE; 2016-11-02;YES
-v 1.10; 17; 2015-02-28; Valid? TRUE; 2016-11-02;YES
-v 1.10; 18; 201?-02-29; Valid? TRUE; 2016-11-02;YES
-v 1.10; 19; 201?-42-28; Valid? FALSE; 2016-11-02;YES
-v 1.10; 19; 201?-02-42; Valid? FALSE; 2016-11-02;YES
-v 1.10; 20; 2015-0?-31; Valid? TRUE; 2016-11-02;YES
-v 1.10; 21; 2015-0?-42; Valid? FALSE; 2016-11-02;YES
-v 1.10; 22; 2015-02-2?; Valid? TRUE; 2016-11-02;YES
-v 1.10; 23; 2015-42-2?; Valid? FALSE; 2016-11-02;YES
-v 1.10; 24; ????-??-??; Valid? TRUE; 2016-11-02;YES
-v 1.10; 25; ??-??-????; Valid? FALSE; 2016-11-02;YES
-v 1.10; 26; ; correct? TRUE; 2016-11-02;YES
-param.ads:17:4: corresponding test PASSED
-param.ads:22:4: corresponding test PASSED
-param.ads:19:4: corresponding test PASSED
-search.ads:4:4: corresponding test FAILED: Test not implemented. (search-test_data-tests.adb:25)
-4 tests run: 3 passed; 1 failed; 0 crashed.
+v 1.10;1; ; no Exception; 2016-11-02;YES
+v 1.10;2; ; .; 2016-11-02;YES
+v 1.10;3; -h; isHelp = TRUE; 2016-11-02;YES
+v 1.10;3; '-r; isRecursive = TRUE; 2016-11-02;YES
+v 1.10;4; di; Constraint_Error; 2016-11-02;YES
+v 1.10;4; '-di; Constraint_Error; 2016-11-02;YES
+v 1.10;4; '-dir; Constraint_Error; 2016-11-02;YES
+v 1.10;5; '-h -r -p -f file -dir directory -d 2016-11-01; correct? TRUE!; 2016-11-02;YES
+v 1.10;6; '-d 2016-11-01 -dir directory -f file -p -r -h; correct? TRUE!; 2016-11-02;YES
+v 1.10;7; '-w; Constraint_Error; 2016-11-02;YES
+v 1.10;8; 2016-11-01; Valid? TRUE; 2016-11-02;YES
+v 1.10;9; 201-11-101; Valid? FALSE; 2016-11-02;YES
+v 1.10;10; 2016-42-01; Valid? FALSE; 2016-11-02;YES
+v 1.10;10; 2016-11-42; Valid? FALSE; 2016-11-02;YES
+v 1.10;11; 2016-10-31; Valid? TRUE; 2016-11-02;YES
+v 1.10;12; 2016-11-31; Valid? FALSE; 2016-11-02;YES
+v 1.10;13; 2016-11-30; Valid? TRUE; 2016-11-02;YES
+v 1.10;14; 2016-02-30; Valid? FALSE; 2016-11-02;YES
+v 1.10;15; 2016-02-29; Valid? TRUE; 2016-11-02;YES
+v 1.10;15; 2000-02-29; Valid? TRUE; 2016-11-02;YES
+v 1.10;16; 2015-02-29; Valid? FALSE; 2016-11-02;YES
+v 1.10;16; 1900-02-29; Valid? FALSE; 2016-11-02;YES
+v 1.10;17; 2015-02-28; Valid? TRUE; 2016-11-02;YES
+v 1.10;18; 201?-02-29; Valid? TRUE; 2016-11-02;YES
+v 1.10;19; 201?-42-28; Valid? FALSE; 2016-11-02;YES
+v 1.10;19; 201?-02-42; Valid? FALSE; 2016-11-02;YES
+v 1.10;20; 2015-0?-31; Valid? TRUE; 2016-11-02;YES
+v 1.10;21; 2015-0?-42; Valid? FALSE; 2016-11-02;YES
+v 1.10;22; 2015-02-2?; Valid? TRUE; 2016-11-02;YES
+v 1.10;23; 2015-42-2?; Valid? FALSE; 2016-11-02;YES
+v 1.10;24; ????-??-??; Valid? TRUE; 2016-11-02;YES
+v 1.10;25; ??-??-????; Valid? FALSE; 2016-11-02;YES
+v 1.10;26; ; correct? TRUE; 2016-11-02;YES
+v 2.00;1; ; no Exceptions; 2016-12-06;YES
+v 2.00;2; ; .; 2016-12-06;YES
+v 2.00; 3.1; '-d 2016-11-23; Date = 2016-11-23; 2016-12-06;YES
+v 2.00; 3.2; -h; isHelp = TRUE; 2016-12-06;YES
+v 2.00; 3.3; '-r; isRecursive = TRUE; 2016-12-06;YES
+v 2.00; 3.4; '-f picture.jpg; fileName = picture.jpg; 2016-12-06;YES
+v 2.00; 3.5; '-dir C:; Directory = C:; 2016-12-06;YES
+v 2.00; 3.6; '-p; isWholePath = TRUE; 2016-12-06;YES
+v 2.00; 3.7; '-pp; isPipe = TRUE; 2016-12-06;YES
+v 2.00; 3.8; '-fis 200 300; imageSize = ( 200 /  300); 2016-12-06;YES
+v 2.00; 3.9; '-ffs 50; imageSize = 50; 2016-12-06;YES
+v 2.00; 3.10; '-fdr 2016-01-01 2016-12-31; dateRange = (2016-01-01 / 2016-12-31); 2016-12-06;YES
+v 2.00; 3.11; '-fdt 11:11:11; dateTime =11:11:11; 2016-12-06;YES
+v 2.00; 3.12; '-e; isExcelOutput =TRUE; 2016-12-06;YES
+v 2.00;4; di; Constraint_Error; 2016-12-06;YES
+v 2.00;4; '-di; Constraint_Error; 2016-12-06;YES
+v 2.00;4; '-dir; Constraint_Error; 2016-12-06;YES
+v 2.00;8; 2016-11-01; Valid? TRUE; 2016-12-06;YES
+v 2.00;9; 201-11-101; Valid? FALSE; 2016-12-06;YES
+v 2.00;10; 2016-42-01; Valid? FALSE; 2016-12-06;YES
+v 2.00;10; 2016-11-42; Valid? FALSE; 2016-12-06;YES
+v 2.00;11; 2016-10-31; Valid? TRUE; 2016-12-06;YES
+v 2.00;12; 2016-11-31; Valid? FALSE; 2016-12-06;YES
+v 2.00;13; 2016-11-30; Valid? TRUE; 2016-12-06;YES
+v 2.00;14; 2016-02-30; Valid? FALSE; 2016-12-06;YES
+v 2.00;15; 2016-02-29; Valid? TRUE; 2016-12-06;YES
+v 2.00;15; 2000-02-29; Valid? TRUE; 2016-12-06;YES
+v 2.00;16; 2015-02-29; Valid? FALSE; 2016-12-06;YES
+v 2.00;16; 1900-02-29; Valid? FALSE; 2016-12-06;YES
+v 2.00;17; 2015-02-28; Valid? TRUE; 2016-12-06;YES
+v 2.00;18; 201?-02-29; Valid? TRUE; 2016-12-06;YES
+v 2.00;19; 201?-42-28; Valid? FALSE; 2016-12-06;YES
+v 2.00;19; 201?-02-42; Valid? FALSE; 2016-12-06;YES
+v 2.00;20; 2015-0?-31; Valid? TRUE; 2016-12-06;YES
+v 2.00;21; 2015-0?-42; Valid? FALSE; 2016-12-06;YES
+v 2.00;22; 2015-02-2?; Valid? TRUE; 2016-12-06;YES
+v 2.00;23; 2015-42-2?; Valid? FALSE; 2016-12-06;YES
+v 2.00;24; ????-??-??; Valid? TRUE; 2016-12-06;YES
+v 2.00;25; ??-??-????; Valid? FALSE; 2016-12-06;YES
+v 2.00;26; ; correct? TRUE; 2016-12-06;YES

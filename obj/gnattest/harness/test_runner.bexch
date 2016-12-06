@@ -4,7 +4,7 @@ b__test_runner.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_driver.gpr
 20161031085708
 C:\GNAT\2014\Workspace\JpegByDate\jpegbydate.gpr
-20161024161300
+20161206092536
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_jpegbydate.gpr
 20161030095946
 C:\GNAT\2014\lib\gnat\aunit_shared.gpr
@@ -12,8 +12,10 @@ C:\GNAT\2014\lib\gnat\aunit_shared.gpr
 C:\GNAT\2014\lib\gnat\aunit.gpr
 20161031091412
 [BOUND OBJECT FILES]
+C:\GNAT\2014\Workspace\JpegByDate\obj\GlobalTypes.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\gnattest_generated.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_runner.o
+C:\GNAT\2014\Workspace\JpegByDate\obj\ImageFile.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\param.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data.o
 C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data-params_tests-suite.o

@@ -78,10 +78,11 @@ D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
 D aunit-test_suites.ads	20140410144134 6821dc24 aunit.test_suites%s
 D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
 D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D globaltypes.ads	20161206092536 7b46f11a globaltypes%s
 D gnat.ads		20140406181358 fd2ad2f1 gnat%s
 D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
 D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
-D param.ads		20161101142942 bdf697f5 param%s
+D param.ads		20161206092536 d9c95489 param%s
 D param-params_test_data.ads  20161030095946 87e0c777 param.params_test_data%s
 D param-params_test_data-params_tests.ads  20161030095946 8989e8dd param.params_test_data.params_tests%s
 D param-params_test_data-params_tests-suite.ads  20161030095946 6d0f1b01 param.params_test_data.params_tests.suite%s
@@ -110,36 +111,36 @@ D s-traent.ads		20140406181354 b5116092 system.traceback_entries%s
 D s-unstyp.ads		20140406181356 510692af system.unsigned_types%s
 D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  20161030095946 00000000
 X 17 aunit.ads
-34K9*AUnit 48e10 38|5r6 9r26 39|5r6 10r28 13r21 17r26
+34K9*AUnit 48e10 39|5r6 9r26 40|5r6 10r28 13r21 17r26
 X 24 aunit-test_caller.ads
-78k15*Test_Caller 121e22 39|5w12 10r34
-80R9*Test_Case<23|44R9> 39|15r54[10]
-91U14*Create 39|20s16[10]
-112P9 Fixture_Access(37|9R9)
+78k15*Test_Caller 121e22 40|5w12 10r34
+80R9*Test_Case<23|44R9> 40|15r54[10]
+91U14*Create 40|20s16[10]
+112P9 Fixture_Access(38|9R9)
 X 25 aunit-test_caller.adb
-38V13 New_Fixture[20|40]{24|112P9[39|10]} 21|38b13[39|10]
-66P12 Access_Type(24|80R9[39|10])
-67V16 Alloc[20|40]{66P12[39|10]} 21|38b13[39|10]
+38V13 New_Fixture[20|40]{24|112P9[40|10]} 21|38b13[40|10]
+66P12 Access_Type(24|80R9[40|10])
+67V16 Alloc[20|40]{66P12[40|10]} 21|38b13[40|10]
 X 29 aunit-test_suites.ads
-41K15*Test_Suites 86e22 38|5w12 9r32 39|13r27 17r32
-43R9*Test_Suite<30|38R9> 84e14 39|13r39
-44P9*Access_Test_Suite(43R9) 38|9r44 39|17r44
-48U14*Add_Test 39|25s14
-X 34 gnattest_generated.ads
-1K9*Gnattest_Generated 4e23 39|6w6 11r7
-2K12*GNATtest_Standard=2:38 39|11r26
-X 35 param.ads
-4K9*Param 26e10 38|7r9 11r5 39|8r14 11r44 31r5
-X 36 param-params_test_data.ads
-11K15*params_Test_Data 35|4k9 36|25e27 38|7r15 11r11 39|8r20 11r50 31r11
-X 37 param-params_test_data-params_tests.ads
-7K32*params_Tests 36|11k15 37|15e40 38|7r32 11r28 39|8r37 11r67 31r28
-9R9*Test_params<36|16R9> 10e94 39|11r80
-12U14*Test_getParams_279e1e 39|23r10
-X 38 param-params_test_data-params_tests-suite.ads
-7K45*Suite 37|7k32 38|11l41 11e46 39|8b50 31l41 31t46
-9V13*Suite{29|44P9} 39|17b13 29l8 29t13
-X 39 param-params_test_data-params_tests-suite.adb
+41K15*Test_Suites 86e22 39|5w12 9r32 40|13r27 17r32
+43R9*Test_Suite<30|38R9> 84e14 40|13r39
+44P9*Access_Test_Suite(43R9) 39|9r44 40|17r44
+48U14*Add_Test 40|25s14
+X 35 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 40|6w6 11r7
+2K12*GNATtest_Standard=2:38 40|11r26
+X 36 param.ads
+5K9*Param 38e10 39|7r9 11r5 40|8r14 11r44 31r5
+X 37 param-params_test_data.ads
+11K15*params_Test_Data 36|5k9 37|25e27 39|7r15 11r11 40|8r20 11r50 31r11
+X 38 param-params_test_data-params_tests.ads
+7K32*params_Tests 37|11k15 38|15e40 39|7r32 11r28 40|8r37 11r67 31r28
+9R9*Test_params<37|16R9> 10e94 40|11r80
+12U14*Test_getParams_279e1e 40|23r10
+X 39 param-params_test_data-params_tests-suite.ads
+7K45*Suite 38|7k32 39|11l41 11e46 40|8b50 31l41 31t46
+9V13*Suite{29|44P9} 40|17b13 29l8 29t13
+X 40 param-params_test_data-params_tests-suite.adb
 10K12 Runner_1[24|78] 15r45 20r7
 13r4 Result{29|43R9} 25r7 27m14 27r14
 15r4 Case_1_1_Test_getParams_279e1e{24|80R9[10]} 21m10 25m24 25r24

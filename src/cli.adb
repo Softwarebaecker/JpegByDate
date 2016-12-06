@@ -39,7 +39,7 @@ Package body Cli is
          --Creating and filling the excel file.
          xl.Create("Image Search from " & currentDate & ".xls");
          for i in files.First_Index .. files.Last_Index loop
-            xl.Put_Line(files.Element(i).filename);
+            xl.Put_Line(Unbounded_String(files.Element(i).filename));
          end loop;
          xl.Close;
          --End of Excel creation.
@@ -49,7 +49,7 @@ Package body Cli is
       --appears line by line on cmd.
       if parameter.isPipe and parameter.isHelp /= true and parameter.isWholePath then
          for i in files.First_Index .. files.Last_Index loop
-            SUIO.Put_Line(Item => files.Element(i).filename);
+            SUIO.Put_Line(Item => Unbounded_String(files.Element(i).filename));
          end loop;
 
 
@@ -81,7 +81,7 @@ Package body Cli is
       --Loop from beginning to end from the vector. While in loop extraction of Data.
       for i in files.First_Index .. files.Last_Index loop
          x:= x+1;
-         SUIO.Put_Line (Item =>x'Img & HT & String(files.Element(i).date) & HT & String(files.Element(i).time) &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
+         SUIO.Put_Line (Item =>x'Img & HT & String(files.Element(i).date) & HT & String(files.Element(i).time) &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(Unbounded_String(files.Element(i).filename)))));
       end loop;
             Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
 
