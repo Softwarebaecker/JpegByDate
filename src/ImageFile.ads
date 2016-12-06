@@ -12,7 +12,7 @@ Package ImageFile is
 
    type ExifData is
      tagged record
-      filename : Unbounded_String;
+      filename : FileNameType;
       fileSize : FileSizeType;
       date : DateType := "          ";
       time : TimeType := "        ";

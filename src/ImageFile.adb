@@ -7,10 +7,10 @@ Package body ImageFile is
       Extension : Unbounded_String;
    begin
       ExifDatas := new ExifData;
-      ExifDatas.filename := fileName;
+      ExifDatas.filename := FileNameType(fileName);
 
       --get file extension
-      Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(ExifDatas.filename)));
+      Extension := To_Unbounded_String(Ada.Directories.Extension(Ada.Strings.Unbounded.To_String(filename)));
       --file extension to lowercase
       Extension := To_Unbounded_String(Ada.Strings.Fixed.Translate(To_String(Extension), Ada.Strings.Maps.Constants.Lower_Case_Map));
 
@@ -39,7 +39,7 @@ Package body ImageFile is
    begin
       --open FileStream
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
-                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+                                 Ada.Strings.Unbounded.To_String(Unbounded_String(ExifDatas.filename)));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
       readFileSize;
 
@@ -127,7 +127,7 @@ Package body ImageFile is
    begin
       --open FileStream
       Ada.Streams.Stream_IO.Open(File, Ada.Streams.Stream_IO.In_File,
-                                 Ada.Strings.Unbounded.To_String(ExifDatas.filename));
+                                 Ada.Strings.Unbounded.To_String(Unbounded_String(ExifDatas.filename)));
       Input_Stream := Ada.Streams.Stream_IO.Stream(File);
 
       readFileSize;
