@@ -1,9 +1,9 @@
 Package body Cli is
-
+--This procedure is responsible for the correct dump of search result information
    procedure displayMessage( files : FileVector.Vector; parameter : Param.params ) is
 
    begin
-
+      --When param.isHelp is True then help Message appears.
       if parameter.isHelp then
 
          Ada.Text_IO.Put_Line("");
@@ -25,6 +25,8 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search specific date time.");
       end if;
 
+      --When parameter.isExcelOutput is True and parameter.isHelp is false then the search result
+      --will be wrote down on an excel file in the same directory as JpegByDate.exe.
       if parameter.isExcelOutput and parameter.isHelp /= true Then
 
       --Getting current Date in String and replacing ":" with "-" and buidling excel file.
@@ -33,9 +35,8 @@ Package body Cli is
             if currentDate(z) = ':' then
                 currentDate(z) := '-';
             end if;
-
         end loop;
-
+         --Creating and filling the excel file.
          xl.Create("Image Search from " & currentDate & ".xls");
          for i in files.First_Index .. files.Last_Index loop
             xl.Put_Line(files.Element(i).filename);
@@ -44,7 +45,8 @@ Package body Cli is
          --End of Excel creation.
 
       end if;
-
+      --When parameter.isPipe is True and parameter.isHelp is false then the searh result
+      --appears line by line on cmd.
       if parameter.isPipe and parameter.isHelp /= true then
          for i in files.First_Index .. files.Last_Index loop
             SUIO.Put_Line(Item => files.Element(i).filename);
@@ -53,12 +55,9 @@ Package body Cli is
 
       else
       if parameter.isHelp /= true then
-
       --Parametresized view
       --Output depends on parameters
-            Ada.Text_IO.Put_Line("Found Images: " & Integer'Image(Integer(Search.FileVector.Length(files))));
-
-
+      Ada.Text_IO.Put_Line("Found Images: " & Integer'Image(Integer(Search.FileVector.Length(files))));
       Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
       if parameter.isWholePath then
       Ada.Text_IO.Put_Line("Path: "&PU.To_String(PU.Unbounded_String(parameter.directory)));
@@ -75,13 +74,13 @@ Package body Cli is
       --Loop from beginning to end from the vector. While in loop extraction of Data.
       for i in files.First_Index .. files.Last_Index loop
          x:= x+1;
-         --SUIO.Put_Line (Item => i'Img & " " & files.Element(i).filename);
          SUIO.Put_Line (Item =>x'Img & HT & String(files.Element(i).date) & HT & String(files.Element(i).time) &HT& PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(files.Element(i).filename))));
       end loop;
             Ada.Text_IO.Put_Line("------------------------------------------------------------------------------");
 
             end if;
       end if;
+      --upcoming easter egg.
       if parameter.directory /= "." and parameter.isHelp = True Then
 
 
