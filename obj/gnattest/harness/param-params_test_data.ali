@@ -14,21 +14,19 @@ RV NO_DISPATCHING_CALLS
 RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTION_PROPAGATION
 RV NO_EXCEPTIONS
-RV NO_SECONDARY_STACK
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U param.params_test_data%b  param-params_test_data.adb  54efff58 OO PK
+U param.params_test_data%b  param-params_test_data.adb  54efff58 OO PF PK
 W ada.tags%s		a-tags.adb		a-tags.ali
 W param%s		param.adb		param.ali
-W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.standard_library%s  s-stalib.adb	s-stalib.ali
 
-U param.params_test_data%s  param-params_test_data.ads  f3f327eb EE OO PF PK
+U param.params_test_data%s  param-params_test_data.ads  97cce497 EE OO PF PK
 W ada.tags%s		a-tags.adb		a-tags.ali
 W aunit%s		aunit.adb		aunit.ali
 W aunit.test_fixtures%s	aunit-test_fixtures.adb	aunit-test_fixtures.ali
@@ -63,10 +61,11 @@ D aunit-test_fixtures.ads  20140410144134 faadeab5 aunit.test_fixtures%s
 D aunit-test_results.ads  20140410144134 171847c9 aunit.test_results%s
 D aunit-tests.ads	20140410144134 1da11d49 aunit.tests%s
 D aunit-time_measure.ads  20161031085132 58355f18 aunit.time_measure%s
+D globaltypes.ads	20161206092536 7b46f11a globaltypes%s
 D gnat.ads		20140406181358 fd2ad2f1 gnat%s
 D g-souinf.ads		20140406181358 a510dad3 gnat.source_info%s
 D gnattest_generated.ads  20161030123900 33489ddc gnattest_generated%s
-D param.ads		20161101142942 bdf697f5 param%s
+D param.ads		20161206092536 d9c95489 param%s
 D param-params_test_data.ads  20161030095946 87e0c777 param.params_test_data%s
 D param-params_test_data.adb  20161030095946 d30f382f param.params_test_data%b
 D system.ads		20140406181358 5fc8ae56 system%s
@@ -95,7 +94,7 @@ D c:\gnat\2014\workspace\jpegbydate\obj\gnattest\harness\suppress.adc  201610300
 X 16 ada_containers-aunit_lists.ads
 53R9*Cursor
 X 17 aunit.ads
-34K9*AUnit 48e10 27|7r6 16r28
+34K9*AUnit 48e10 28|7r6 16r28
 X 18 aunit-assertions.ads
 101U14*Init_Test
 104U14*Clear_Failures
@@ -103,24 +102,24 @@ X 18 aunit-assertions.ads
 110R9*Failure_Iter<16|53R9[145]>
 113V13*First_Failure{110R9}
 X 19 aunit-test_fixtures.ads
-76K15*Test_Fixtures 90e24 27|7w12 16r34
-78R9*Test_Fixture<18|96R9> 88e67 27|16r48
-X 25 gnattest_generated.ads
-1K9*Gnattest_Generated 4e23 27|9w6 13r37 28|8r27
-2K12*GNATtest_Standard=2:38 27|13r56 28|8r46
-X 26 param.ads
-4K9*Param 26e10 27|11r9 13r74 25r5 28|6r14 8r64 19r5
-7R9*params 15e14 27|13r80 28|8r70
-X 27 param-params_test_data.ads
-11K15*params_Test_Data 26|4k9 27|25l11 25e27 28|6b20 19l11 19t27
-13P9*params_Access(26|7R9) 19r17
-16R9*Test_params<19|78R9> 18|101p14 104p14 107p13 113p13 27|20e14 22P14 22r42
-. 23P14 23r45 28|9r42 14r45
-19p7*Fixture{13P9} 28|11m18
-22U14*Set_Up<19|80p14> 22=22 28|9b14 12l8 12t14
-22r22 Gnattest_T{16R9} 28|9b22 11m7
-23U14*Tear_Down<19|83p14> 23=25 28|14b14 17l8 17t17
-23r25 Gnattest_T{16R9} 28|14b25
-X 28 param-params_test_data.adb
-8r4 Local_params{26|7R9} 11m29 11r29
+76K15*Test_Fixtures 90e24 28|7w12 16r34
+78R9*Test_Fixture<18|96R9> 88e67 28|16r48
+X 26 gnattest_generated.ads
+1K9*Gnattest_Generated 4e23 28|9w6 13r37 29|8r27
+2K12*GNATtest_Standard=2:38 28|13r56 29|8r46
+X 27 param.ads
+5K9*Param 38e10 28|11r9 13r74 25r5 29|6r14 8r64 19r5
+8R9*params 25e14 28|13r80 29|8r70
+X 28 param-params_test_data.ads
+11K15*params_Test_Data 27|5k9 28|25l11 25e27 29|6b20 19l11 19t27
+13P9*params_Access(27|8R9) 19r17
+16R9*Test_params<19|78R9> 18|101p14 104p14 107p13 113p13 28|20e14 22P14 22r42
+. 23P14 23r45 29|9r42 14r45
+19p7*Fixture{13P9} 29|11m18
+22U14*Set_Up<19|80p14> 22=22 29|9b14 12l8 12t14
+22r22 Gnattest_T{16R9} 29|9b22 11m7
+23U14*Tear_Down<19|83p14> 23=25 29|14b14 17l8 17t17
+23r25 Gnattest_T{16R9} 29|14b25
+X 29 param-params_test_data.adb
+8r4 Local_params{27|8R9} 11m29 11r29
 

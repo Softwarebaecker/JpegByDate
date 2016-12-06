@@ -9,6 +9,7 @@ package body ada_main is
    E179 : Short_Integer; pragma Import (Ada, E179, "system__os_lib_E");
    E020 : Short_Integer; pragma Import (Ada, E020, "system__soft_links_E");
    E028 : Short_Integer; pragma Import (Ada, E028, "system__exception_table_E");
+   E230 : Short_Integer; pragma Import (Ada, E230, "ada__containers_E");
    E098 : Short_Integer; pragma Import (Ada, E098, "ada__io_exceptions_E");
    E119 : Short_Integer; pragma Import (Ada, E119, "ada__strings_E");
    E123 : Short_Integer; pragma Import (Ada, E123, "ada__strings__maps_E");
@@ -24,20 +25,20 @@ package body ada_main is
    E087 : Short_Integer; pragma Import (Ada, E087, "system__finalization_masters_E");
    E144 : Short_Integer; pragma Import (Ada, E144, "system__storage_pools__subpools_E");
    E076 : Short_Integer; pragma Import (Ada, E076, "ada__calendar_E");
-   E233 : Short_Integer; pragma Import (Ada, E233, "ada__calendar__time_zones_E");
+   E236 : Short_Integer; pragma Import (Ada, E236, "ada__calendar__time_zones_E");
    E184 : Short_Integer; pragma Import (Ada, E184, "gnat__directory_operations_E");
    E104 : Short_Integer; pragma Import (Ada, E104, "system__pool_global_E");
    E182 : Short_Integer; pragma Import (Ada, E182, "system__file_control_block_E");
-   E206 : Short_Integer; pragma Import (Ada, E206, "ada__streams__stream_io_E");
+   E208 : Short_Integer; pragma Import (Ada, E208, "ada__streams__stream_io_E");
    E175 : Short_Integer; pragma Import (Ada, E175, "system__file_io_E");
    E139 : Short_Integer; pragma Import (Ada, E139, "system__object_reader_E");
    E118 : Short_Integer; pragma Import (Ada, E118, "system__dwarf_lines_E");
    E024 : Short_Integer; pragma Import (Ada, E024, "system__secondary_stack_E");
    E168 : Short_Integer; pragma Import (Ada, E168, "ada__strings__unbounded_E");
-   E229 : Short_Integer; pragma Import (Ada, E229, "ada__directories_E");
+   E232 : Short_Integer; pragma Import (Ada, E232, "ada__directories_E");
    E194 : Short_Integer; pragma Import (Ada, E194, "system__regexp_E");
    E163 : Short_Integer; pragma Import (Ada, E163, "gnat__command_line_E");
-   E204 : Short_Integer; pragma Import (Ada, E204, "system__strings__stream_ops_E");
+   E206 : Short_Integer; pragma Import (Ada, E206, "system__strings__stream_ops_E");
    E173 : Short_Integer; pragma Import (Ada, E173, "ada__text_io_E");
    E068 : Short_Integer; pragma Import (Ada, E068, "ada_containers__aunit_lists_E");
    E005 : Short_Integer; pragma Import (Ada, E005, "aunit_E");
@@ -51,22 +52,24 @@ package body ada_main is
    E153 : Short_Integer; pragma Import (Ada, E153, "aunit__reporter_E");
    E155 : Short_Integer; pragma Import (Ada, E155, "aunit__reporter__gnattest_E");
    E063 : Short_Integer; pragma Import (Ada, E063, "aunit__simple_test_cases_E");
-   E212 : Short_Integer; pragma Import (Ada, E212, "aunit__test_fixtures_E");
-   E219 : Short_Integer; pragma Import (Ada, E219, "aunit__test_caller_E");
+   E214 : Short_Integer; pragma Import (Ada, E214, "aunit__test_fixtures_E");
+   E221 : Short_Integer; pragma Import (Ada, E221, "aunit__test_caller_E");
    E161 : Short_Integer; pragma Import (Ada, E161, "aunit__test_suites_E");
    E159 : Short_Integer; pragma Import (Ada, E159, "aunit__run_E");
+   E202 : Short_Integer; pragma Import (Ada, E202, "globaltypes_E");
    E198 : Short_Integer; pragma Import (Ada, E198, "gnattest_main_suite_E");
+   E249 : Short_Integer; pragma Import (Ada, E249, "imagefile_E");
    E200 : Short_Integer; pragma Import (Ada, E200, "param_E");
-   E210 : Short_Integer; pragma Import (Ada, E210, "param__params_test_data_E");
-   E214 : Short_Integer; pragma Import (Ada, E214, "param__params_test_data__params_tests_E");
-   E217 : Short_Integer; pragma Import (Ada, E217, "param__params_test_data__params_tests__suite_E");
-   E221 : Short_Integer; pragma Import (Ada, E221, "param__test_data_E");
-   E223 : Short_Integer; pragma Import (Ada, E223, "param__test_data__tests_E");
-   E225 : Short_Integer; pragma Import (Ada, E225, "param__test_data__tests__suite_E");
-   E227 : Short_Integer; pragma Import (Ada, E227, "search_E");
-   E246 : Short_Integer; pragma Import (Ada, E246, "search__test_data_E");
-   E248 : Short_Integer; pragma Import (Ada, E248, "search__test_data__tests_E");
-   E250 : Short_Integer; pragma Import (Ada, E250, "search__test_data__tests__suite_E");
+   E212 : Short_Integer; pragma Import (Ada, E212, "param__params_test_data_E");
+   E216 : Short_Integer; pragma Import (Ada, E216, "param__params_test_data__params_tests_E");
+   E219 : Short_Integer; pragma Import (Ada, E219, "param__params_test_data__params_tests__suite_E");
+   E223 : Short_Integer; pragma Import (Ada, E223, "param__test_data_E");
+   E225 : Short_Integer; pragma Import (Ada, E225, "param__test_data__tests_E");
+   E227 : Short_Integer; pragma Import (Ada, E227, "param__test_data__tests__suite_E");
+   E229 : Short_Integer; pragma Import (Ada, E229, "search_E");
+   E256 : Short_Integer; pragma Import (Ada, E256, "search__test_data_E");
+   E258 : Short_Integer; pragma Import (Ada, E258, "search__test_data__tests_E");
+   E260 : Short_Integer; pragma Import (Ada, E260, "search__test_data__tests__suite_E");
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -75,214 +78,240 @@ package body ada_main is
 
    procedure finalize_library is
    begin
-      E214 := E214 - 1;
-      E223 := E223 - 1;
+      E216 := E216 - 1;
+      E225 := E225 - 1;
       declare
          procedure F1;
          pragma Import (Ada, F1, "search__test_data__tests__suite__finalize_body");
       begin
-         E250 := E250 - 1;
+         E260 := E260 - 1;
          F1;
       end;
-      E248 := E248 - 1;
+      E258 := E258 - 1;
       declare
          procedure F2;
          pragma Import (Ada, F2, "search__test_data__tests__finalize_spec");
       begin
          F2;
       end;
-      E246 := E246 - 1;
+      E256 := E256 - 1;
       declare
          procedure F3;
          pragma Import (Ada, F3, "search__test_data__finalize_spec");
       begin
          F3;
       end;
+      E229 := E229 - 1;
       declare
          procedure F4;
-         pragma Import (Ada, F4, "param__test_data__tests__suite__finalize_body");
+         pragma Import (Ada, F4, "search__finalize_spec");
       begin
-         E225 := E225 - 1;
          F4;
       end;
       declare
          procedure F5;
-         pragma Import (Ada, F5, "param__test_data__tests__finalize_spec");
+         pragma Import (Ada, F5, "param__test_data__tests__suite__finalize_body");
       begin
+         E227 := E227 - 1;
          F5;
       end;
-      E221 := E221 - 1;
       declare
          procedure F6;
-         pragma Import (Ada, F6, "param__test_data__finalize_spec");
+         pragma Import (Ada, F6, "param__test_data__tests__finalize_spec");
       begin
          F6;
       end;
+      E223 := E223 - 1;
       declare
          procedure F7;
-         pragma Import (Ada, F7, "param__params_test_data__params_tests__suite__finalize_body");
+         pragma Import (Ada, F7, "param__test_data__finalize_spec");
       begin
-         E217 := E217 - 1;
          F7;
       end;
       declare
          procedure F8;
-         pragma Import (Ada, F8, "param__params_test_data__params_tests__finalize_spec");
+         pragma Import (Ada, F8, "param__params_test_data__params_tests__suite__finalize_body");
       begin
+         E219 := E219 - 1;
          F8;
       end;
-      E210 := E210 - 1;
       declare
          procedure F9;
-         pragma Import (Ada, F9, "param__params_test_data__finalize_spec");
+         pragma Import (Ada, F9, "param__params_test_data__params_tests__finalize_spec");
       begin
          F9;
       end;
-      E200 := E200 - 1;
       declare
          procedure F10;
-         pragma Import (Ada, F10, "param__finalize_spec");
+         pragma Import (Ada, F10, "param__params_test_data__finalize_body");
       begin
+         E212 := E212 - 1;
          F10;
       end;
-      E161 := E161 - 1;
       declare
          procedure F11;
-         pragma Import (Ada, F11, "aunit__test_suites__finalize_spec");
+         pragma Import (Ada, F11, "param__params_test_data__finalize_spec");
       begin
          F11;
       end;
-      E212 := E212 - 1;
       declare
          procedure F12;
-         pragma Import (Ada, F12, "aunit__test_fixtures__finalize_spec");
+         pragma Import (Ada, F12, "param__finalize_body");
       begin
+         E200 := E200 - 1;
          F12;
+      end;
+      declare
+         procedure F13;
+         pragma Import (Ada, F13, "param__finalize_spec");
+      begin
+         F13;
+      end;
+      E249 := E249 - 1;
+      declare
+         procedure F14;
+         pragma Import (Ada, F14, "imagefile__finalize_spec");
+      begin
+         F14;
+      end;
+      E161 := E161 - 1;
+      declare
+         procedure F15;
+         pragma Import (Ada, F15, "aunit__test_suites__finalize_spec");
+      begin
+         F15;
+      end;
+      E214 := E214 - 1;
+      declare
+         procedure F16;
+         pragma Import (Ada, F16, "aunit__test_fixtures__finalize_spec");
+      begin
+         F16;
       end;
       E061 := E061 - 1;
       E063 := E063 - 1;
       declare
-         procedure F13;
-         pragma Import (Ada, F13, "aunit__simple_test_cases__finalize_spec");
-      begin
-         F13;
-      end;
-      E155 := E155 - 1;
-      declare
-         procedure F14;
-         pragma Import (Ada, F14, "aunit__reporter__gnattest__finalize_spec");
-      begin
-         F14;
-      end;
-      E065 := E065 - 1;
-      declare
-         procedure F15;
-         pragma Import (Ada, F15, "aunit__assertions__finalize_spec");
-      begin
-         F15;
-      end;
-      E072 := E072 - 1;
-      declare
-         procedure F16;
-         pragma Import (Ada, F16, "aunit__test_results__finalize_spec");
-      begin
-         F16;
-      end;
-      declare
          procedure F17;
-         pragma Import (Ada, F17, "aunit__test_filters__finalize_spec");
+         pragma Import (Ada, F17, "aunit__simple_test_cases__finalize_spec");
       begin
          F17;
       end;
+      E155 := E155 - 1;
       declare
          procedure F18;
-         pragma Import (Ada, F18, "aunit__tests__finalize_spec");
+         pragma Import (Ada, F18, "aunit__reporter__gnattest__finalize_spec");
       begin
-         E085 := E085 - 1;
          F18;
       end;
-      E173 := E173 - 1;
+      E065 := E065 - 1;
       declare
          procedure F19;
-         pragma Import (Ada, F19, "ada__text_io__finalize_spec");
+         pragma Import (Ada, F19, "aunit__assertions__finalize_spec");
       begin
          F19;
       end;
-      E229 := E229 - 1;
-      E194 := E194 - 1;
+      E072 := E072 - 1;
       declare
          procedure F20;
-         pragma Import (Ada, F20, "system__regexp__finalize_spec");
+         pragma Import (Ada, F20, "aunit__test_results__finalize_spec");
       begin
          F20;
       end;
       declare
          procedure F21;
-         pragma Import (Ada, F21, "ada__directories__finalize_spec");
+         pragma Import (Ada, F21, "aunit__test_filters__finalize_spec");
       begin
          F21;
       end;
-      E168 := E168 - 1;
       declare
          procedure F22;
-         pragma Import (Ada, F22, "ada__strings__unbounded__finalize_spec");
+         pragma Import (Ada, F22, "aunit__tests__finalize_spec");
       begin
+         E085 := E085 - 1;
          F22;
       end;
+      E173 := E173 - 1;
       declare
          procedure F23;
-         pragma Import (Ada, F23, "system__object_reader__finalize_body");
+         pragma Import (Ada, F23, "ada__text_io__finalize_spec");
       begin
-         E139 := E139 - 1;
          F23;
       end;
-      E087 := E087 - 1;
-      E144 := E144 - 1;
+      E232 := E232 - 1;
+      E194 := E194 - 1;
       declare
          procedure F24;
-         pragma Import (Ada, F24, "system__file_io__finalize_body");
+         pragma Import (Ada, F24, "system__regexp__finalize_spec");
       begin
-         E175 := E175 - 1;
          F24;
       end;
       declare
          procedure F25;
-         pragma Import (Ada, F25, "system__object_reader__finalize_spec");
+         pragma Import (Ada, F25, "ada__directories__finalize_spec");
       begin
          F25;
       end;
-      E206 := E206 - 1;
+      E168 := E168 - 1;
       declare
          procedure F26;
-         pragma Import (Ada, F26, "ada__streams__stream_io__finalize_spec");
+         pragma Import (Ada, F26, "ada__strings__unbounded__finalize_spec");
       begin
          F26;
       end;
       declare
          procedure F27;
-         pragma Import (Ada, F27, "system__file_control_block__finalize_spec");
+         pragma Import (Ada, F27, "system__object_reader__finalize_body");
       begin
-         E182 := E182 - 1;
+         E139 := E139 - 1;
          F27;
       end;
-      E104 := E104 - 1;
+      E087 := E087 - 1;
+      E144 := E144 - 1;
       declare
          procedure F28;
-         pragma Import (Ada, F28, "system__pool_global__finalize_spec");
+         pragma Import (Ada, F28, "system__file_io__finalize_body");
       begin
+         E175 := E175 - 1;
          F28;
       end;
       declare
          procedure F29;
-         pragma Import (Ada, F29, "system__storage_pools__subpools__finalize_spec");
+         pragma Import (Ada, F29, "system__object_reader__finalize_spec");
       begin
          F29;
       end;
+      E208 := E208 - 1;
       declare
          procedure F30;
-         pragma Import (Ada, F30, "system__finalization_masters__finalize_spec");
+         pragma Import (Ada, F30, "ada__streams__stream_io__finalize_spec");
       begin
          F30;
+      end;
+      declare
+         procedure F31;
+         pragma Import (Ada, F31, "system__file_control_block__finalize_spec");
+      begin
+         E182 := E182 - 1;
+         F31;
+      end;
+      E104 := E104 - 1;
+      declare
+         procedure F32;
+         pragma Import (Ada, F32, "system__pool_global__finalize_spec");
+      begin
+         F32;
+      end;
+      declare
+         procedure F33;
+         pragma Import (Ada, F33, "system__storage_pools__subpools__finalize_spec");
+      begin
+         F33;
+      end;
+      declare
+         procedure F34;
+         pragma Import (Ada, F34, "system__finalization_masters__finalize_spec");
+      begin
+         F34;
       end;
       declare
          procedure Reraise_Library_Exception_If_Any;
@@ -379,6 +408,8 @@ package body ada_main is
       System.Soft_Links'Elab_Spec;
       System.Exception_Table'Elab_Body;
       E028 := E028 + 1;
+      Ada.Containers'Elab_Spec;
+      E230 := E230 + 1;
       Ada.Io_Exceptions'Elab_Spec;
       E098 := E098 + 1;
       Ada.Strings'Elab_Spec;
@@ -405,14 +436,14 @@ package body ada_main is
       Ada.Calendar'Elab_Body;
       E076 := E076 + 1;
       Ada.Calendar.Time_Zones'Elab_Spec;
-      E233 := E233 + 1;
+      E236 := E236 + 1;
       Gnat.Directory_Operations'Elab_Spec;
       System.Pool_Global'Elab_Spec;
       E104 := E104 + 1;
       System.File_Control_Block'Elab_Spec;
       E182 := E182 + 1;
       Ada.Streams.Stream_Io'Elab_Spec;
-      E206 := E206 + 1;
+      E208 := E208 + 1;
       System.Object_Reader'Elab_Spec;
       System.Dwarf_Lines'Elab_Spec;
       System.File_Io'Elab_Body;
@@ -443,10 +474,10 @@ package body ada_main is
       System.Regexp'Elab_Spec;
       E194 := E194 + 1;
       Ada.Directories'Elab_Body;
-      E229 := E229 + 1;
+      E232 := E232 + 1;
       Gnat.Command_Line'Elab_Spec;
       System.Strings.Stream_Ops'Elab_Body;
-      E204 := E204 + 1;
+      E206 := E206 + 1;
       Ada.Text_Io'Elab_Spec;
       Ada.Text_Io'Elab_Body;
       E173 := E173 + 1;
@@ -475,36 +506,40 @@ package body ada_main is
       E063 := E063 + 1;
       E061 := E061 + 1;
       Aunit.Test_Fixtures'Elab_Spec;
-      E212 := E212 + 1;
-      E219 := E219 + 1;
+      E214 := E214 + 1;
+      E221 := E221 + 1;
       Aunit.Test_Suites'Elab_Spec;
       E161 := E161 + 1;
       E159 := E159 + 1;
+      E202 := E202 + 1;
+      imagefile'elab_spec;
+      E249 := E249 + 1;
       Param'Elab_Spec;
       Param'Elab_Body;
       E200 := E200 + 1;
       Param.Params_Test_Data'Elab_Spec;
       Param.Params_Test_Data'Elab_Body;
-      E210 := E210 + 1;
+      E212 := E212 + 1;
       Param.Params_Test_Data.Params_Tests'Elab_Spec;
       Param.Params_Test_Data.Params_Tests.Suite'Elab_Body;
-      E217 := E217 + 1;
+      E219 := E219 + 1;
       Param.Test_Data'Elab_Spec;
-      E221 := E221 + 1;
+      E223 := E223 + 1;
       Param.Test_Data.Tests'Elab_Spec;
       Param.Test_Data.Tests.Suite'Elab_Body;
-      E225 := E225 + 1;
       E227 := E227 + 1;
+      Search'Elab_Spec;
+      E229 := E229 + 1;
       Search.Test_Data'Elab_Spec;
-      E246 := E246 + 1;
+      E256 := E256 + 1;
       Search.Test_Data.Tests'Elab_Spec;
-      E248 := E248 + 1;
+      E258 := E258 + 1;
       Search.Test_Data.Tests.Suite'Elab_Body;
-      E250 := E250 + 1;
+      E260 := E260 + 1;
       Gnattest_Main_Suite'Elab_Body;
       E198 := E198 + 1;
-      E223 := E223 + 1;
-      E214 := E214 + 1;
+      E225 := E225 + 1;
+      E216 := E216 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
@@ -540,8 +575,10 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
+   --   C:\GNAT\2014\Workspace\JpegByDate\obj\GlobalTypes.o
    --   C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\gnattest_generated.o
    --   C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\test_runner.o
+   --   C:\GNAT\2014\Workspace\JpegByDate\obj\ImageFile.o
    --   C:\GNAT\2014\Workspace\JpegByDate\obj\param.o
    --   C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data.o
    --   C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\harness\param-params_test_data-params_tests-suite.o

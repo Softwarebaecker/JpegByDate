@@ -1,8 +1,28 @@
 <?xml version="1.0"?>
 <Locations >
   <Project >
-    <file_marker current="true" column=" 1" line=" 2" >
+    <file_marker column=" 1" line=" 2" >
       <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\src\start.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\src\GlobelTyps.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 73" line=" 122" >
+      <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\tests\param-test_data-tests.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 2" >
+      <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\tests\test_info.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 140" line=" 177" >
+      <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\tests\param-test_data-tests.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 4" line=" 3" >
+      <vfs_file>C:\GNAT\2014\Workspace\JpegByDate\obj\gnattest\tests\test_info.ads</vfs_file>
+    </file_marker>
+  </Project>
+  <Project >
+    <file_marker current="true" column=" 1" line=" 2">
+      <vfs_file >C:\GNAT\2014\Workspace\JpegByDate\src\start.ads</vfs_file>
     </file_marker>
   </Project>
   <Project >
