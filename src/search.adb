@@ -92,7 +92,7 @@ Package body Search is
 
       --check for parameter date
       if parameters.date /= "          " and then
-        parameters.date = image.date then
+        parameters.date /= image.date then
          fileFitsParameters := False;
       end if;
 
