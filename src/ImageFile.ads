@@ -32,9 +32,12 @@ Package ImageFile is
    ExceptionReadError : exception;
 
    --constructor
+   --open the commited file, read the exif datas and give a pointer to a ExifData type back.
    function create(fileName : Unbounded_String) return ExifDataAccess;
 
-  private
+private
+
+--attributes
    littleEndian : Boolean;
    File : Ada.Streams.Stream_IO.File_Type;
    Input_Stream : Ada.Streams.Stream_IO.Stream_Access;
@@ -42,25 +45,40 @@ Package ImageFile is
    IFD0 : Ada.Streams.Stream_IO.Positive_Count;
    ExifDatas : ExifDataAccess;
 
-   --JPEG
+--subroutines
+
+ --JPEG
+   -- read a jpeg file and validat it
    procedure readJpegFiel;
+   --checks the formate of a jpeg file
    procedure checkJpegFile;
+   --search the exif tag for the tiff header
    procedure readExifTag;
+   --read the tiff header in a jepg file
    procedure readTiffHeader;
 
-   --TIFF
+ --TIFF
+   --read the tiff file format
    procedure readTiffFile;
 
+   --search the image file Directories for specific tags
    procedure readImageFileDirectories;
+   --read the file size
    procedure readFileSize;
+   --read the date and time tag (9003) from the exif data
    procedure readDateTime;
+   --read the width pixel tag (A002) in the exif data
    procedure readImageWidth;
+   --read the height pixel tag (A003) in the exif data
    procedure readImageHeight;
 
+   --read a Integer with the commited lenth from the open file
    function readInt(ByteCount : Integer) return Integer;
+   --read a string with a specific length from the file
    function readString(Position : Ada.Streams.Stream_IO.Positive_Count;
                        Length : Integer) return String;
 
+   --convert the date in the ISO formate
    function convertDate(Date : DateType) return DateType;
 
 end ImageFile;
