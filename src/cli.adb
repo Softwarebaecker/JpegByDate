@@ -19,10 +19,10 @@ Package body Cli is
          Ada.Text_IO.Put_Line(HT & "-f" & HT & "Search for a specific filename.");
          Ada.Text_IO.Put_Line(HT & "-p" & HT & "Shows the selected path on the output.");
          Ada.Text_IO.Put_Line(HT & "-pp" & HT & "Pipe stream for special use.");
-         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for imagesize greater then (width height).");
-         Ada.Text_IO.Put_Line(HT & "-ffs" & HT & "Search with filesize greater then (Byte).");
+         Ada.Text_IO.Put_Line(HT & "-fis" & HT & "Search for image size greater than (width height).");
+         Ada.Text_IO.Put_Line(HT & "-ffs" & HT & "Search with file size greater than (Byte).");
          Ada.Text_IO.Put_Line(HT & "-fdr" & HT & "Search for a specific date range.");
-         Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search time of day greater then.");
+         Ada.Text_IO.Put_Line(HT & "-fdt" & HT & "Search time of day(hh:mm:ss) greater than.");
       end if;
 
       --When parameter.isExcelOutput is True and parameter.isHelp is false then the search result
