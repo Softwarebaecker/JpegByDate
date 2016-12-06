@@ -1,0 +1,1 @@
+cloc-1.64.exe src --by-file --by-percent c > output.txt
