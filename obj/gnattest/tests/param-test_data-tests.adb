@@ -9,6 +9,7 @@ with AUnit.Assertions; use AUnit.Assertions;
 with Ada.Text_IO; use Ada.Text_IO;
 with Test_Info;
 with Param;
+with GlobalTypes; use GlobalTypes;
 
 package body Param.Test_Data.Tests is
 
@@ -52,9 +53,9 @@ package body Param.Test_Data.Tests is
       ARGC_CASE1 : Integer := 0;
       ARGA_CASE1 : Input := (To_Unbounded_String(1), To_Unbounded_String(1));
       ARGC_CASE3 : Integer := 1;
-      ARGA_CASE3 : Input(1 .. 1);
-      ARGC_CASE5 : Integer := 9;
-      ARGA_CASE5 : Input(1 .. 9) := (To_Unbounded_String("-h"),
+      ARGA_CASE3 : Input(1 .. 3);
+      ARGC_CASE5 : Integer := 20;
+      ARGA_CASE5 : Input(1 .. 20) := (To_Unbounded_String("-h"),
                                      To_Unbounded_String("-r"),
                                      To_Unbounded_String("-p"),
                                      To_Unbounded_String("-f"),
@@ -62,11 +63,28 @@ package body Param.Test_Data.Tests is
                                      To_Unbounded_String("-dir"),
                                      To_Unbounded_String("directory"),
                                      To_Unbounded_String("-d"),
-                                     To_Unbounded_String("2016-11-01"));
+                                     To_Unbounded_String("2016-11-01"),
+                                     To_Unbounded_String("-pp"),
+                                     To_Unbounded_String("-fis"),
+                                     To_Unbounded_String("100"),
+                                     To_Unbounded_String("100"),
+                                     To_Unbounded_String("-ffs"),
+                                     To_Unbounded_String("1000"),
+                                     To_Unbounded_String("-fdr"),
+                                     To_Unbounded_String("2016-11-01"),
+                                     To_Unbounded_String("-fdt"),
+                                     To_Unbounded_String("11:11:11"),
+                                     To_Unbounded_String("-e"));
       ARGP_CASE5 : params;
       ARGB_CASE5 : Boolean;
-      ARGC_CASE6 : Integer := 9;
-      ARGA_CASE6 : Input(1 .. 9) := (To_Unbounded_String("-d"),
+      ARGC_CASE6 : Integer := 20;
+      ARGA_CASE6 : Input(1 .. 20) := (To_Unbounded_String("-pp"),
+                                     To_Unbounded_String("-fis"),
+                                     To_Unbounded_String("100"),
+                                     To_Unbounded_String("100"),
+                                     To_Unbounded_String("-ffs"),
+                                     To_Unbounded_String("1000"),
+                                     To_Unbounded_String("-d"),
                                      To_Unbounded_String("2016-11-01"),
                                      To_Unbounded_String("-dir"),
                                      To_Unbounded_String("directory"),
@@ -74,7 +92,12 @@ package body Param.Test_Data.Tests is
                                      To_Unbounded_String("file"),
                                      To_Unbounded_String("-p"),
                                      To_Unbounded_String("-r"),
-                                     To_Unbounded_String("-h"));
+                                     To_Unbounded_String("-h"),
+                                     To_Unbounded_String("-fdr"),
+                                     To_Unbounded_String("2016-11-01"),
+                                     To_Unbounded_String("-fdt"),
+                                     To_Unbounded_String("11:11:11"),
+                                     To_Unbounded_String("-e"));
       ARGP_CASE6 : params;
       ARGB_CASE6 : Boolean;
 
@@ -82,25 +105,97 @@ package body Param.Test_Data.Tests is
 
       --Case1:
       initialize(ARGC_CASE1, ARGA_CASE1);
-      put_line(Test_Info.SW_VERSION & "; 1; ; no Exception; " & Test_Info.CURRENT_DATE & ";YES");
+      put_line(Test_Info.SW_VERSION & "; 1; ; no Exceptions; " & Test_Info.CURRENT_DATE & ";YES");
 
 
       --Case2:
       initialize(ARGC_CASE1, ARGA_CASE1);
-      Assert(param.getParams.directory = ".", Test_Info.SW_VERSION & "; 2; ; " & To_String(param.getParams.directory) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      Assert(param.getParams.directory = DirectoryType' (To_Unbounded_String(".")), Test_Info.SW_VERSION & "; 2; ; " & To_String(param.getParams.directory) & "; " & Test_Info.CURRENT_DATE & ";NO");
       put_line(Test_Info.SW_VERSION & "; 2; ; " & To_String(param.getParams.directory) & "; " & Test_Info.CURRENT_DATE & ";YES");
 
 
       --Case3:
-      ARGA_CASE3(1) := To_Unbounded_String("-h");
+      ARGA_CASE3(1) := To_Unbounded_String("-d");
+      ARGA_CASE3(2) := To_Unbounded_String("2016-11-23");
+      ARGC_CASE3 := 2;
       initialize(ARGC_CASE3, ARGA_CASE3);
-      Assert(param.getParams.isHelp, Test_Info.SW_VERSION & "; 3; -h; is Help = " & Boolean' Image(param.getParams.isHelp) & "; " & Test_Info.CURRENT_DATE & ";NO");
-      put_line(Test_Info.SW_VERSION & "; 3; -h; isHelp = " & Boolean' Image(param.getParams.isHelp) & "; " & Test_Info.CURRENT_DATE & ";YES");
+      Assert(param.getParams.date = DateType' ("2016-11-23"), Test_Info.SW_VERSION & "; 3.1; '-d 2016-11-23; Date =" & String(param.getParams.date) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.1; '-d 2016-11-23; Date = " & String(param.getParams.date) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-h");
+      ARGC_CASE3 := 1;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      ARGC_CASE3 := 1;
+      Assert(param.getParams.isHelp, Test_Info.SW_VERSION & "; 3.2; -h; is Help = " & Boolean' Image(param.getParams.isHelp) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.2; -h; isHelp = " & Boolean' Image(param.getParams.isHelp) & "; " & Test_Info.CURRENT_DATE & ";YES");
 
       ARGA_CASE3(1) := To_Unbounded_String("-r");
       initialize(ARGC_CASE3, ARGA_CASE3);
-      Assert(param.getParams.isRecursive, Test_Info.SW_VERSION & "; 3; '-r; isRecursive =" & Boolean' Image(param.getParams.isRecursive) & "; " & Test_Info.CURRENT_DATE & ";NO");
-      put_line(Test_Info.SW_VERSION & "; 3; '-r; isRecursive = " & Boolean' Image(param.getParams.isRecursive) & "; " & Test_Info.CURRENT_DATE & ";YES");
+      ARGC_CASE3 := 1;
+      Assert(param.getParams.isRecursive, Test_Info.SW_VERSION & "; 3.3; '-r; isRecursive =" & Boolean' Image(param.getParams.isRecursive) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.3; '-r; isRecursive = " & Boolean' Image(param.getParams.isRecursive) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-f");
+      ARGA_CASE3(2) := To_Unbounded_String("picture.jpg");
+      ARGC_CASE3 := 2;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.fileName = To_Unbounded_String("picture.jpg"), Test_Info.SW_VERSION & "; 3.4; '-f picture.jpg; fileName =" & To_String(param.getParams.fileName) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.4; '-f picture.jpg; fileName = " & To_String(param.getParams.fileName) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-dir");
+      ARGA_CASE3(2) := To_Unbounded_String("C:");
+      ARGC_CASE3 := 2;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.directory = DirectoryType' (To_Unbounded_String("C:")), Test_Info.SW_VERSION & "; 3.5; '-dir C:; Directory =" & To_String(param.getParams.directory) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.5; '-dir C:; Directory = " & To_String(param.getParams.directory) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-p");
+      ARGC_CASE3 := 1;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.isWholePath, Test_Info.SW_VERSION & "; 3.6; '-p; isWholePath =" & Boolean' Image(param.getParams.isWholePath) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.6; '-p; isWholePath = " & Boolean' Image(param.getParams.isWholePath) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-pp");
+      ARGC_CASE3 := 1;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.isPipe, Test_Info.SW_VERSION & "; 3.7; '-pp; isPipe =" & Boolean' Image(param.getParams.isPipe) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.7; '-pp; isPipe = " & Boolean' Image(param.getParams.isPipe) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-fis");
+      ARGA_CASE3(2) := To_Unbounded_String("200");
+      ARGA_CASE3(3) := To_Unbounded_String("300");
+      ARGC_CASE3 := 3;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.imageSizeX = 200 and param.getParams.imageSizeY = 300, Test_Info.SW_VERSION & "; 3.8; '-fis 200 300; imageSize = (" & Integer' Image(Integer(param.getParams.imageSizeX)) & " / " & Integer' Image(Integer(param.getParams.imageSizeY)) & "); " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.8; '-fis 200 300; imageSize = (" & Integer' Image(Integer(param.getParams.imageSizeX)) & " / " & Integer' Image(Integer(param.getParams.imageSizeY)) & "); " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-ffs");
+      ARGA_CASE3(2) := To_Unbounded_String("50");
+      ARGC_CASE3 := 2;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.fileSize = 50, Test_Info.SW_VERSION & "; 3.9; '-ffs 50; fileSize =" & Integer' Image(Integer(param.getParams.fileSize)) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.9; '-ffs 50; fileSize =" & Integer' Image(Integer(param.getParams.fileSize)) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-fdr");
+      ARGA_CASE3(2) := To_Unbounded_String("2016-01-01");
+      ARGA_CASE3(3) := To_Unbounded_String("2016-12-31");
+      ARGC_CASE3 := 3;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.dateRangeStart = "2016-01-01" and param.getParams.dateRangeEnd = "2016-12-31", Test_Info.SW_VERSION & "; 3.10; '-fdr 2016-01-01 2016-12-31; dateRange = (" & String(param.getParams.dateRangeStart) & " / " & String(param.getParams.dateRangeEnd) & "); " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.10; '-fdr 2016-01-01 2016-12-31; dateRange = (" & String(param.getParams.dateRangeStart) & " / " & String(param.getParams.dateRangeEnd) & "); " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-fdt");
+      ARGA_CASE3(2) := To_Unbounded_String("11:11:11");
+      ARGC_CASE3 := 2;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.dateTime = "11:11:11", Test_Info.SW_VERSION & "; 3.11; '-fdt 11:11:11; dateTime =" & String(param.getParams.dateTime) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.11; '-fdt 11:11:11; dateTime =" & String(param.getParams.dateTime) & "; " & Test_Info.CURRENT_DATE & ";YES");
+
+      ARGA_CASE3(1) := To_Unbounded_String("-e");
+      ARGC_CASE3 := 1;
+      initialize(ARGC_CASE3, ARGA_CASE3);
+      Assert(param.getParams.isExcelOutput, Test_Info.SW_VERSION & "; 3.12; '-e; isExcelOutput =" & Boolean' Image(param.getParams.isExcelOutput) & "; " & Test_Info.CURRENT_DATE & ";NO");
+      put_line(Test_Info.SW_VERSION & "; 3.12; '-e; isExcelOutput =" & Boolean' Image(param.getParams.isExcelOutput) & "; " & Test_Info.CURRENT_DATE & ";YES");
 
 
       --Case4:
@@ -120,7 +215,7 @@ package body Param.Test_Data.Tests is
       --Case5:
       initialize(ARGC_CASE5, ARGA_CASE5);
       ARGP_CASE5 := getParams;
-      ARGB_CASE5 := ARGP_CASE5.date = To_Unbounded_String("2016-11-01") and
+      ARGB_CASE5 := ARGP_CASE5.date = "2016-11-01" and
         ARGP_CASE5.fileName = To_Unbounded_String("file") and
         ARGP_CASE5.directory = To_Unbounded_String("directory") and
         ARGP_CASE5.isHelp and ARGP_CASE5.isRecursive and ARGP_CASE5.isWholePath;
@@ -131,7 +226,7 @@ package body Param.Test_Data.Tests is
       --Case6:
       initialize(ARGC_CASE6, ARGA_CASE6);
       ARGP_CASE6 := getParams;
-      ARGB_CASE6 := ARGP_CASE6.date = To_Unbounded_String("2016-11-01") and
+      ARGB_CASE6 := ARGP_CASE6.date = "2016-11-01" and
         ARGP_CASE6.fileName = To_Unbounded_String("file") and
         ARGP_CASE6.directory = To_Unbounded_String("directory") and
         ARGP_CASE6.isHelp and ARGP_CASE6.isRecursive and ARGP_CASE5.isWholePath;

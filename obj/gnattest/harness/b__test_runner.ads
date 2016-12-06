@@ -431,110 +431,130 @@ package ada_main is
    pragma Export (C, u00197, "gnattest_main_suiteB");
    u00198 : constant Version_32 := 16#eea1e993#;
    pragma Export (C, u00198, "gnattest_main_suiteS");
-   u00199 : constant Version_32 := 16#abf7cd23#;
+   u00199 : constant Version_32 := 16#733ad7fd#;
    pragma Export (C, u00199, "paramB");
-   u00200 : constant Version_32 := 16#6805ec8c#;
+   u00200 : constant Version_32 := 16#777cdeea#;
    pragma Export (C, u00200, "paramS");
-   u00201 : constant Version_32 := 16#4b37b589#;
-   pragma Export (C, u00201, "system__val_enumB");
-   u00202 : constant Version_32 := 16#e4d2ecc3#;
-   pragma Export (C, u00202, "system__val_enumS");
-   u00203 : constant Version_32 := 16#a6cec3cf#;
-   pragma Export (C, u00203, "system__strings__stream_opsB");
-   u00204 : constant Version_32 := 16#5ed775a4#;
-   pragma Export (C, u00204, "system__strings__stream_opsS");
-   u00205 : constant Version_32 := 16#9f609ffa#;
-   pragma Export (C, u00205, "ada__streams__stream_ioB");
-   u00206 : constant Version_32 := 16#3aff46f1#;
-   pragma Export (C, u00206, "ada__streams__stream_ioS");
-   u00207 : constant Version_32 := 16#5de653db#;
-   pragma Export (C, u00207, "system__communicationB");
-   u00208 : constant Version_32 := 16#6f11cd91#;
-   pragma Export (C, u00208, "system__communicationS");
-   u00209 : constant Version_32 := 16#54efff58#;
-   pragma Export (C, u00209, "param__params_test_dataB");
-   u00210 : constant Version_32 := 16#f3f327eb#;
-   pragma Export (C, u00210, "param__params_test_dataS");
-   u00211 : constant Version_32 := 16#269b1972#;
-   pragma Export (C, u00211, "aunit__test_fixturesB");
-   u00212 : constant Version_32 := 16#3b99f1a5#;
-   pragma Export (C, u00212, "aunit__test_fixturesS");
-   u00213 : constant Version_32 := 16#d76fa29a#;
-   pragma Export (C, u00213, "param__params_test_data__params_testsB");
-   u00214 : constant Version_32 := 16#3d21b276#;
-   pragma Export (C, u00214, "param__params_test_data__params_testsS");
-   u00215 : constant Version_32 := 16#e0e722b4#;
-   pragma Export (C, u00215, "test_infoS");
-   u00216 : constant Version_32 := 16#12817d26#;
-   pragma Export (C, u00216, "param__params_test_data__params_tests__suiteB");
-   u00217 : constant Version_32 := 16#8ca72ff8#;
-   pragma Export (C, u00217, "param__params_test_data__params_tests__suiteS");
-   u00218 : constant Version_32 := 16#8f189ee8#;
-   pragma Export (C, u00218, "aunit__test_callerB");
-   u00219 : constant Version_32 := 16#581d22b8#;
-   pragma Export (C, u00219, "aunit__test_callerS");
-   u00220 : constant Version_32 := 16#c6f3ebcc#;
-   pragma Export (C, u00220, "param__test_dataB");
-   u00221 : constant Version_32 := 16#bff2ddf2#;
-   pragma Export (C, u00221, "param__test_dataS");
-   u00222 : constant Version_32 := 16#49ef437a#;
-   pragma Export (C, u00222, "param__test_data__testsB");
-   u00223 : constant Version_32 := 16#286a0bda#;
-   pragma Export (C, u00223, "param__test_data__testsS");
-   u00224 : constant Version_32 := 16#e6889926#;
-   pragma Export (C, u00224, "param__test_data__tests__suiteB");
-   u00225 : constant Version_32 := 16#91318ae0#;
-   pragma Export (C, u00225, "param__test_data__tests__suiteS");
-   u00226 : constant Version_32 := 16#8b0e0cae#;
-   pragma Export (C, u00226, "searchB");
-   u00227 : constant Version_32 := 16#1eac0e8b#;
-   pragma Export (C, u00227, "searchS");
-   u00228 : constant Version_32 := 16#7bfaddd0#;
-   pragma Export (C, u00228, "ada__directoriesB");
-   u00229 : constant Version_32 := 16#c81b541a#;
-   pragma Export (C, u00229, "ada__directoriesS");
-   u00230 : constant Version_32 := 16#7a13e6d7#;
-   pragma Export (C, u00230, "ada__calendar__formattingB");
-   u00231 : constant Version_32 := 16#929f882b#;
-   pragma Export (C, u00231, "ada__calendar__formattingS");
-   u00232 : constant Version_32 := 16#e3cca715#;
-   pragma Export (C, u00232, "ada__calendar__time_zonesB");
-   u00233 : constant Version_32 := 16#98f012d7#;
-   pragma Export (C, u00233, "ada__calendar__time_zonesS");
-   u00234 : constant Version_32 := 16#8ff77155#;
-   pragma Export (C, u00234, "system__val_realB");
-   u00235 : constant Version_32 := 16#a1e1d947#;
-   pragma Export (C, u00235, "system__val_realS");
-   u00236 : constant Version_32 := 16#0be1b996#;
-   pragma Export (C, u00236, "system__exn_llfB");
-   u00237 : constant Version_32 := 16#de4cb0b9#;
-   pragma Export (C, u00237, "system__exn_llfS");
-   u00238 : constant Version_32 := 16#1b28662b#;
-   pragma Export (C, u00238, "system__float_controlB");
-   u00239 : constant Version_32 := 16#bf34ed6a#;
-   pragma Export (C, u00239, "system__float_controlS");
-   u00240 : constant Version_32 := 16#0fb8c821#;
-   pragma Export (C, u00240, "system__powten_tableS");
-   u00241 : constant Version_32 := 16#0163d4b2#;
-   pragma Export (C, u00241, "ada__directories__validityB");
-   u00242 : constant Version_32 := 16#a2334639#;
-   pragma Export (C, u00242, "ada__directories__validityS");
-   u00243 : constant Version_32 := 16#f131b3c1#;
-   pragma Export (C, u00243, "system__file_attributesS");
-   u00244 : constant Version_32 := 16#8abf0aca#;
-   pragma Export (C, u00244, "system__os_constantsS");
-   u00245 : constant Version_32 := 16#c4e3cc82#;
-   pragma Export (C, u00245, "search__test_dataB");
-   u00246 : constant Version_32 := 16#1f1a76ae#;
-   pragma Export (C, u00246, "search__test_dataS");
-   u00247 : constant Version_32 := 16#f755a72f#;
-   pragma Export (C, u00247, "search__test_data__testsB");
-   u00248 : constant Version_32 := 16#e8acdab6#;
-   pragma Export (C, u00248, "search__test_data__testsS");
-   u00249 : constant Version_32 := 16#eb31c03f#;
-   pragma Export (C, u00249, "search__test_data__tests__suiteB");
-   u00250 : constant Version_32 := 16#ba2788e8#;
-   pragma Export (C, u00250, "search__test_data__tests__suiteS");
+   u00201 : constant Version_32 := 16#637dba96#;
+   pragma Export (C, u00201, "globaltypesB");
+   u00202 : constant Version_32 := 16#44d725df#;
+   pragma Export (C, u00202, "globaltypesS");
+   u00203 : constant Version_32 := 16#4b37b589#;
+   pragma Export (C, u00203, "system__val_enumB");
+   u00204 : constant Version_32 := 16#e4d2ecc3#;
+   pragma Export (C, u00204, "system__val_enumS");
+   u00205 : constant Version_32 := 16#a6cec3cf#;
+   pragma Export (C, u00205, "system__strings__stream_opsB");
+   u00206 : constant Version_32 := 16#5ed775a4#;
+   pragma Export (C, u00206, "system__strings__stream_opsS");
+   u00207 : constant Version_32 := 16#9f609ffa#;
+   pragma Export (C, u00207, "ada__streams__stream_ioB");
+   u00208 : constant Version_32 := 16#3aff46f1#;
+   pragma Export (C, u00208, "ada__streams__stream_ioS");
+   u00209 : constant Version_32 := 16#5de653db#;
+   pragma Export (C, u00209, "system__communicationB");
+   u00210 : constant Version_32 := 16#6f11cd91#;
+   pragma Export (C, u00210, "system__communicationS");
+   u00211 : constant Version_32 := 16#54efff58#;
+   pragma Export (C, u00211, "param__params_test_dataB");
+   u00212 : constant Version_32 := 16#97cce497#;
+   pragma Export (C, u00212, "param__params_test_dataS");
+   u00213 : constant Version_32 := 16#269b1972#;
+   pragma Export (C, u00213, "aunit__test_fixturesB");
+   u00214 : constant Version_32 := 16#3b99f1a5#;
+   pragma Export (C, u00214, "aunit__test_fixturesS");
+   u00215 : constant Version_32 := 16#0b3c2ad1#;
+   pragma Export (C, u00215, "param__params_test_data__params_testsB");
+   u00216 : constant Version_32 := 16#3d21b276#;
+   pragma Export (C, u00216, "param__params_test_data__params_testsS");
+   u00217 : constant Version_32 := 16#c55eade5#;
+   pragma Export (C, u00217, "test_infoS");
+   u00218 : constant Version_32 := 16#12817d26#;
+   pragma Export (C, u00218, "param__params_test_data__params_tests__suiteB");
+   u00219 : constant Version_32 := 16#8ca72ff8#;
+   pragma Export (C, u00219, "param__params_test_data__params_tests__suiteS");
+   u00220 : constant Version_32 := 16#8f189ee8#;
+   pragma Export (C, u00220, "aunit__test_callerB");
+   u00221 : constant Version_32 := 16#581d22b8#;
+   pragma Export (C, u00221, "aunit__test_callerS");
+   u00222 : constant Version_32 := 16#c6f3ebcc#;
+   pragma Export (C, u00222, "param__test_dataB");
+   u00223 : constant Version_32 := 16#dbcd1e8e#;
+   pragma Export (C, u00223, "param__test_dataS");
+   u00224 : constant Version_32 := 16#ebd8e1f1#;
+   pragma Export (C, u00224, "param__test_data__testsB");
+   u00225 : constant Version_32 := 16#286a0bda#;
+   pragma Export (C, u00225, "param__test_data__testsS");
+   u00226 : constant Version_32 := 16#e6889926#;
+   pragma Export (C, u00226, "param__test_data__tests__suiteB");
+   u00227 : constant Version_32 := 16#91318ae0#;
+   pragma Export (C, u00227, "param__test_data__tests__suiteS");
+   u00228 : constant Version_32 := 16#01180e52#;
+   pragma Export (C, u00228, "searchB");
+   u00229 : constant Version_32 := 16#dced1f83#;
+   pragma Export (C, u00229, "searchS");
+   u00230 : constant Version_32 := 16#5e196e91#;
+   pragma Export (C, u00230, "ada__containersS");
+   u00231 : constant Version_32 := 16#7bfaddd0#;
+   pragma Export (C, u00231, "ada__directoriesB");
+   u00232 : constant Version_32 := 16#c81b541a#;
+   pragma Export (C, u00232, "ada__directoriesS");
+   u00233 : constant Version_32 := 16#7a13e6d7#;
+   pragma Export (C, u00233, "ada__calendar__formattingB");
+   u00234 : constant Version_32 := 16#929f882b#;
+   pragma Export (C, u00234, "ada__calendar__formattingS");
+   u00235 : constant Version_32 := 16#e3cca715#;
+   pragma Export (C, u00235, "ada__calendar__time_zonesB");
+   u00236 : constant Version_32 := 16#98f012d7#;
+   pragma Export (C, u00236, "ada__calendar__time_zonesS");
+   u00237 : constant Version_32 := 16#8ff77155#;
+   pragma Export (C, u00237, "system__val_realB");
+   u00238 : constant Version_32 := 16#a1e1d947#;
+   pragma Export (C, u00238, "system__val_realS");
+   u00239 : constant Version_32 := 16#0be1b996#;
+   pragma Export (C, u00239, "system__exn_llfB");
+   u00240 : constant Version_32 := 16#de4cb0b9#;
+   pragma Export (C, u00240, "system__exn_llfS");
+   u00241 : constant Version_32 := 16#1b28662b#;
+   pragma Export (C, u00241, "system__float_controlB");
+   u00242 : constant Version_32 := 16#bf34ed6a#;
+   pragma Export (C, u00242, "system__float_controlS");
+   u00243 : constant Version_32 := 16#0fb8c821#;
+   pragma Export (C, u00243, "system__powten_tableS");
+   u00244 : constant Version_32 := 16#0163d4b2#;
+   pragma Export (C, u00244, "ada__directories__validityB");
+   u00245 : constant Version_32 := 16#a2334639#;
+   pragma Export (C, u00245, "ada__directories__validityS");
+   u00246 : constant Version_32 := 16#f131b3c1#;
+   pragma Export (C, u00246, "system__file_attributesS");
+   u00247 : constant Version_32 := 16#8abf0aca#;
+   pragma Export (C, u00247, "system__os_constantsS");
+   u00248 : constant Version_32 := 16#172fe050#;
+   pragma Export (C, u00248, "imagefileB");
+   u00249 : constant Version_32 := 16#8393837f#;
+   pragma Export (C, u00249, "imagefileS");
+   u00250 : constant Version_32 := 16#b602a99c#;
+   pragma Export (C, u00250, "system__exn_intB");
+   u00251 : constant Version_32 := 16#1d44b20a#;
+   pragma Export (C, u00251, "system__exn_intS");
+   u00252 : constant Version_32 := 16#54b8a3b7#;
+   pragma Export (C, u00252, "ada__text_io__unbounded_ioS");
+   u00253 : constant Version_32 := 16#97a2d3b4#;
+   pragma Export (C, u00253, "ada__strings__unbounded__text_ioB");
+   u00254 : constant Version_32 := 16#2124c8bb#;
+   pragma Export (C, u00254, "ada__strings__unbounded__text_ioS");
+   u00255 : constant Version_32 := 16#c4e3cc82#;
+   pragma Export (C, u00255, "search__test_dataB");
+   u00256 : constant Version_32 := 16#cefbe407#;
+   pragma Export (C, u00256, "search__test_dataS");
+   u00257 : constant Version_32 := 16#f755a72f#;
+   pragma Export (C, u00257, "search__test_data__testsB");
+   u00258 : constant Version_32 := 16#e8acdab6#;
+   pragma Export (C, u00258, "search__test_data__testsS");
+   u00259 : constant Version_32 := 16#eb31c03f#;
+   pragma Export (C, u00259, "search__test_data__tests__suiteB");
+   u00260 : constant Version_32 := 16#ba2788e8#;
+   pragma Export (C, u00260, "search__test_data__tests__suiteS");
    --  BEGIN ELABORATION ORDER
    --  ada%s
    --  ada.characters%s
@@ -552,6 +572,8 @@ package ada_main is
    --  system.atomic_counters%s
    --  system.case_util%s
    --  system.case_util%b
+   --  system.exn_int%s
+   --  system.exn_int%b
    --  system.exn_llf%s
    --  system.exn_llf%b
    --  system.float_control%s
@@ -630,6 +652,7 @@ package ada_main is
    --  system.compare_array_unsigned_8%b
    --  system.exception_table%s
    --  system.exception_table%b
+   --  ada.containers%s
    --  ada.io_exceptions%s
    --  ada.strings%s
    --  ada.strings.maps%s
@@ -723,6 +746,9 @@ package ada_main is
    --  ada.text_io%s
    --  ada.text_io%b
    --  gnat.command_line%b
+   --  ada.strings.unbounded.text_io%s
+   --  ada.strings.unbounded.text_io%b
+   --  ada.text_io.unbounded_io%s
    --  gnat.traceback%s
    --  gnat.traceback%b
    --  gnat.traceback.symbolic%s
@@ -759,9 +785,13 @@ package ada_main is
    --  aunit.test_suites%b
    --  aunit.run%s
    --  aunit.run%b
+   --  globaltypes%s
+   --  globaltypes%b
    --  gnattest_generated%s
    --  gnattest_main_suite%s
    --  test_runner%b
+   --  imagefile%s
+   --  imagefile%b
    --  param%s
    --  param%b
    --  param.params_test_data%s

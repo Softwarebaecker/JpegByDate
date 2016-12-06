@@ -8,6 +8,7 @@
 with AUnit.Assertions; use AUnit.Assertions;
 with Ada.Text_IO; use Ada.Text_IO;
 with Test_Info;
+with GlobalTypes; use GlobalTypes;
 
 package body Param.params_Test_Data.params_Tests is
 
