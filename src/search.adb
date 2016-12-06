@@ -129,7 +129,7 @@ Package body Search is
 
       if fileFitsParameters and then
         parameters.dateRangeEnd /= "          " and then
-        parameters.dateRangeStart < image.date then
+        parameters.dateRangeEnd < image.date then
          fileFitsParameters := False;
       end if;
 
