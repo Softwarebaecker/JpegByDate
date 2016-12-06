@@ -27,7 +27,7 @@ Package body Cli is
 
       --When parameter.isExcelOutput is True and parameter.isHelp is false then the search result
       --will be wrote down on an excel file in the same directory as JpegByDate.exe.
-      if parameter.isExcelOutput and parameter.isHelp /= true Then
+      if parameter.isExcelOutput and parameter.isHelp /= true and parameter.isWholePath Then
 
       --Getting current Date in String and replacing ":" with "-" and buidling excel file.
          currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
@@ -45,6 +45,26 @@ Package body Cli is
          --End of Excel creation.
 
       end if;
+      -- Excel without path
+      if parameter.isExcelOutput and parameter.isHelp /= true and parameter.isWholePath /= True Then
+
+      --Getting current Date in String and replacing ":" with "-" and buidling excel file.
+         currentDate := Ada.Calendar.Formatting.Image(Ada.Calendar."+"(Epoch, Dur));
+         for z in currentDate'range loop
+            if currentDate(z) = ':' then
+                currentDate(z) := '-';
+            end if;
+        end loop;
+         --Creating and filling the excel file.
+         xl.Create("Image Search from " & currentDate & ".xls");
+         for i in files.First_Index .. files.Last_Index loop
+            xl.Put_Line(PU.To_Unbounded_String(Ada.Directories.Simple_Name(PU.To_String(Unbounded_String(files.Element(i).filename)))));
+         end loop;
+         xl.Close;
+         --End of Excel creation.
+
+      end if;
+
       --When parameter.isPipe is True and parameter.isHelp is false then the searh result
       --appears line by line on cmd.
       if parameter.isPipe and parameter.isHelp /= true and parameter.isWholePath then
