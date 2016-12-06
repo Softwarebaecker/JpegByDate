@@ -13,8 +13,6 @@ Package body Param is
       input : Unbounded_String;
       arg : Unbounded_String;
       type paramlist is (d, h, r, f, dir, p, pp, fis, ffs, fdr, fdt, e);
-
-
    begin
       --Reset default values for testing
       parameter.date := "          ";
@@ -32,6 +30,9 @@ Package body Param is
       parameter.dateTime := "        ";
       parameter.isExcelOutput := false;
 
+      if Argument_Count <= 0 then
+         parameter.isHelp := TRUE;
+      end if;
 
       while i < Argument_Count loop
          i := i + 1;
