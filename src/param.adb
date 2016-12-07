@@ -12,9 +12,11 @@ Package body Param is
       i : Integer := 0;
       input : Unbounded_String;
       arg : Unbounded_String;
+      --The list of valid input parameters
       type paramlist is (d, h, r, f, dir, p, pp, fis, ffs, fdr, fdt, e);
    begin
-      --Reset default values for testing
+
+      --Reset default values for testing.
       parameter.date := "          ";
       parameter.isHelp := FALSE;
       parameter.isRecursive := FALSE;
@@ -30,83 +32,95 @@ Package body Param is
       parameter.dateTime := "        ";
       parameter.isExcelOutput := false;
 
+      --If there's no input parameter the Help message should be shown.
       if Argument_Count <= 0 then
          parameter.isHelp := TRUE;
       end if;
 
+      --Parse the given input parameters.
       while i < Argument_Count loop
          i := i + 1;
          input := Argument(i);
 
-         --Argument starts with '-'
+         --Argument must starts with '-'
          if Element(input, 1) = '-' then
-            --Delete '-'
+            --Delete '-' to be able to compare the parameter
             arg := Delete(input, 1, 1);
 
+            --Compare the given parameters with the valid parameter list.
             case paramlist'Value(To_String(arg)) is
-
+               --Search for files with creation date
                when d =>
                   i := i + 1;
+                  --Given date valid?
                   if validateDate(To_String(Argument(i))) then
                      parameter.date := GlobalTypes.DateType(To_String(Argument(i)));
                   else
+                     --Raise exception if not.
                      raise Constraint_Error;
                   end if;
-
+               --Display Help.
                when h =>
                   parameter.isHelp := true;
-
+               --Search Recursive.
                when r =>
                   parameter.isRecursive := true;
-
+               --Search for file name.
                when f =>
                   i := i + 1;
                   parameter.fileName := GlobalTypes.FileNameType(Argument(i));
-
+               --Search in directory.
                when dir =>
                   i := i + 1;
                   parameter.directory := GlobalTypes.DirectoryType(Argument(i));
-
+               --Display the whole path in the output.
                when p =>
                   parameter.isWholePath := true;
-
+               --Output the found files as pipe stream or in nice table.
                when pp =>
                   parameter.isPipe := true;
-
+               --Filter for image size.
                when fis =>
                   i := i + 1;
                   parameter.imageSizeX := GlobalTypes.ImageSizeType' Value(To_String(Argument(i)));
                   i := i + 1;
                   parameter.imageSizeY := GlobalTypes.ImageSizeType' Value(To_String(Argument(i)));
-
+               --Filter for file size.
                when ffs =>
                   i := i + 1;
                   parameter.fileSize := GlobalTypes.FileSizeType' Value(To_String(Argument(i)));
-
+               --Filter for a date range.
                when fdr =>
                   i := i + 1;
+                  --First date valid?
                   if validateDate(To_String(Argument(i))) then
                      parameter.dateRangeStart := GlobalTypes.DateType(To_String(Argument(i)));
                   else
+                     --Raise exception if not.
                      raise Constraint_Error;
                   end if;
 
                   i := i + 1;
+                  --Second date valid?
                   if validateDate(To_String(Argument(i))) then
                      parameter.dateRangeEnd := GlobalTypes.DateType(To_String(Argument(i)));
                   else
+                     --Raise exception if not.
                      raise Constraint_Error;
                   end if;
-
+               --Filter for a creation time.
                when fdt =>
                   i := i + 1;
                   parameter.dateTime := GlobalTypes.TimeType(To_String(Argument(i)));
-
+               --Output in Excel format.
                when e =>
                   parameter.isExcelOutput := true;
 
             end case;
+            --If the given parameter doesn't match any valid parameter,
+            --it must be invalid.
          else
+            --If there's no '-', the input syntax is not correct.
             raise Constraint_Error;
          end if;
       end loop;
